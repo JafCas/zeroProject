@@ -1,69 +1,88 @@
 import React, {useState} from 'react';
 import {
+  Pressable,
   SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
-  TextInput,
   useColorScheme,
   View,
 } from 'react-native';
 
 import {FirstTextInput} from './src/components/TextInput/FirstTextInput';
-
-// const Section = ({children, title}) => {
-//   const isDarkMode = useColorScheme() === 'dark';
-//   return (
-//   );
-// };
-
-const Colors = {
-  rose: '#F11A7B',
-  plum: '#982176',
-  jordyBlue: '#adc7ff',
-  tyrianPurple: '#3E001F',
-  peach: '#FFE5AD',
-};
+import {Colors} from './src/interface/colors/mainColors';
 
 const App = () => {
+  const [buttonColor, setButtonColor] = useState(Colors.tyrianPurple);
   const isDarkMode = useColorScheme() === 'dark';
-  const [textInputBorderWith, setTextInputBorderWith] = useState(0);
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.jordyBlue : Colors.peach,
     flex: 1,
   };
 
+  const styles = StyleSheet.create({
+    titleContainer: {
+      flex: 1,
+      justifyContent: 'center',
+      padding: 25,
+    },
+    titleTextContainer: {
+      flex: 1,
+      alignItems: 'flex-start',
+      justifyContent: 'flex-end',
+      marginBottom: 20,
+    },
+    titleText: {fontSize: 46},
+    secondSectionContainer: {
+      flex: 1,
+    },
+    textInputSection: {flex: 1, width: '100%', paddingVertical: 20},
+    thirdSection: {flex: 1, paddingTop: 40},
+  });
+
   return (
     <SafeAreaView style={backgroundStyle}>
-      <View style={{flex: 1, justifyContent: 'center', padding: 25}}>
-        <View
-          style={{
-            flex: 1,
-            alignItems: 'flex-start',
-            justifyContent: 'flex-end',
-            bottom: 42,
-          }}>
-          <Text style={{fontSize: 46}}>Hello there</Text>
+      <View style={styles.titleContainer}>
+        <View style={styles.titleTextContainer}>
+          <Text style={styles.titleText}>Hello there</Text>
         </View>
-        <View
-          style={{
-            flex: 2,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <View style={{flex: 1, width: '100%'}}>
-            <View
-              style={{
-                flex: 1,
-              }}>
-              <FirstTextInput valueName={'name'} placeHolderName={'Example'} />
-              <FirstTextInput valueName={'name'} placeHolderName={'Example'} />
-              {/* <FirstTextInput /> */}
-            </View>
-            <View style={{flex: 1}}></View>
+        <View style={styles.secondSectionContainer}>
+          <View style={styles.textInputSection}>
+            <FirstTextInput
+              valueName={'First Value'}
+              placeHolderName={'First Input'}
+            />
+            <FirstTextInput
+              valueName={'Second Value'}
+              placeHolderName={'Second Input'}
+            />
           </View>
+        </View>
+        <View style={styles.thirdSection}>
+          <Pressable
+            style={{
+              backgroundColor: buttonColor,
+              marginHorizontal: 50,
+              borderRadius: 10,
+              padding: 10,
+              alignItems: 'center',
+              elevation: 3,
+            }}
+            onPressIn={() => {
+              setButtonColor(Colors.rose);
+              console.log('in');
+            }}
+            onPressOut={() => {
+              setButtonColor(Colors.tyrianPurple);
+              console.log('out');
+            }}
+            onPress={() => {
+              console.log('first');
+            }}>
+            <Text style={{color: 'white', fontSize: 16, fontWeight: '600'}}>
+              Button
+            </Text>
+          </Pressable>
         </View>
       </View>
     </SafeAreaView>
