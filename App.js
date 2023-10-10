@@ -1,28 +1,23 @@
-import React, {useEffect, useState} from 'react';
+import React, { useState } from 'react';
 import {
-  Button,
   Keyboard,
   KeyboardAvoidingView,
   Platform,
-  Pressable,
   SafeAreaView,
   StyleSheet,
   Text,
-  TextInput,
   TouchableWithoutFeedback,
   useColorScheme,
   View,
 } from 'react-native';
 
-import {FirstTextInput} from './src/components/TextInput/FirstTextInput';
-import {Colors} from './src/assets/colors/mainColors';
+import { Colors } from './src/assets/colors/mainColors';
+
+import { FirstTextInput } from './src/components/TextInput/FirstTextInput';
 import GenericButton from './src/components/Buttons/GenericButton';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
-  const [buttonColor, setButtonColor] = useState(
-    isDarkMode ? Colors.peach : Colors.tyrianPurple,
-  );
   const [isTextInputSelected, setIsTextInputSelected] = useState(false);
 
   const onSelecting = isSelected => {
@@ -54,19 +49,10 @@ const App = () => {
     secondSectionContainer: {
       flex: isTextInputSelected ? 2 : 1,
     },
-    textInputSection: {flex: 1, width: '100%', paddingVertical: 20},
+    textInputSection: { flex: 1, width: '100%', paddingVertical: 20 },
     thirdSection: {
       flex: 1,
       paddingTop: 0,
-    },
-
-    buttonContainer: {
-      backgroundColor: buttonColor,
-      marginHorizontal: '30%',
-      borderRadius: 30,
-      padding: 10,
-      alignItems: 'center',
-      elevation: 3,
     },
   });
 
@@ -74,7 +60,8 @@ const App = () => {
     <SafeAreaView style={backgroundStyle}>
       <KeyboardAvoidingView
         style={backgroundStyle}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      >
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={styles.container}>
             <View style={styles.firstSectionContainer}>

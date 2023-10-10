@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
-import {Pressable, StyleSheet, Text, useColorScheme} from 'react-native';
+import React, { useState } from 'react';
+import { Pressable, StyleSheet, Text, useColorScheme } from 'react-native';
 
-import {Colors} from '../../assets/colors/mainColors';
+import { Colors } from '../../assets/colors/mainColors';
 
 export default function GenericButton() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -21,7 +21,8 @@ export default function GenericButton() {
       }}
       onPress={() => {
         console.log('first');
-      }}>
+      }}
+    >
       <Text style={styles.textStyle(isDarkMode)}>Button</Text>
     </Pressable>
   );

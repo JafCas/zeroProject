@@ -1,8 +1,14 @@
-import React, {useState} from 'react';
-import {StyleSheet, Text, TextInput, View, useColorScheme} from 'react-native';
-import {Colors} from '../../assets/colors/mainColors';
+import React, { useState } from 'react';
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  useColorScheme,
+} from 'react-native';
+import { Colors } from '../../assets/colors/mainColors';
 
-export const FirstTextInput = ({valueName, placeHolderName, onSelecting}) => {
+export const FirstTextInput = ({ valueName, placeHolderName, onSelecting }) => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const [textInputBorderWith, setTextInputBorderWith] = useState(0);
