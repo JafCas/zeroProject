@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, TextInput, View, useColorScheme} from 'react-native';
 import {Colors} from '../../interface/colors/mainColors';
 
-export const FirstTextInput = ({valueName, placeHolderName}) => {
+export const FirstTextInput = ({valueName, placeHolderName, onSelecting}) => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const [textInputBorderWith, setTextInputBorderWith] = useState(0);
@@ -16,9 +16,11 @@ export const FirstTextInput = ({valueName, placeHolderName}) => {
         style={styles.textInputBox(textInputBorderWith, isDarkMode)}
         onFocus={() => {
           setTextInputBorderWith(2);
+          onSelecting(true);
         }}
         onEndEditing={() => {
           setTextInputBorderWith(0);
+          onSelecting(false);
         }}
       />
     </View>

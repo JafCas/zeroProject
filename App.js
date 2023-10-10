@@ -22,16 +22,23 @@ const App = () => {
   const [buttonColor, setButtonColor] = useState(
     isDarkMode ? Colors.peach : Colors.tyrianPurple,
   );
+  const [isTextInputSelected, setIsTextInputSelected] = useState(false);
+
+  const onSelecting = isSelected => {
+    setIsTextInputSelected(isSelected);
+  };
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.tyrianPurple : Colors.peach,
     flex: 1,
   };
   const styles = StyleSheet.create({
-    titleContainer: {
+    firstSectionContainer: {
       flex: 1,
-      justifyContent: 'center',
-      padding: 25,
+    },
+    container: {
+      flex: 1,
+      paddingHorizontal: 25,
     },
     titleTextContainer: {
       flex: 1,
@@ -44,70 +51,53 @@ const App = () => {
       color: isDarkMode ? Colors.peach : Colors.tyrianPurple,
     },
     secondSectionContainer: {
-      flex: 1,
+      flex: isTextInputSelected ? 2 : 1,
     },
     textInputSection: {flex: 1, width: '100%', paddingVertical: 20},
-    thirdSection: {flex: 1, paddingTop: 40},
-    //
-    container: {
+    thirdSection: {
       flex: 1,
-      justifyContent: 'center',
-      backgroundColor: 'white',
+      paddingTop: 0,
     },
-    textInputNameContainer: {
-      marginLeft: 10,
-      marginBottom: 4,
-    },
-    textInputName: {
-      color: isDarkMode ? Colors.peach : Colors.tyrianPurple,
-      fontSize: 13,
-      fontWeight: '600',
-    },
-    textInputBox: {
-      backgroundColor: isDarkMode ? '#58002C' : '#F8E9C9',
+
+    buttonContainer: {
+      backgroundColor: buttonColor,
+      marginHorizontal: '30%',
+      borderRadius: 30,
       padding: 10,
-      borderBottomWidth: 2,
-      borderRightWidth: 2,
-      borderRadius: 5,
-      borderColor: '#C28F21',
-      opacity: 50,
+      alignItems: 'center',
+      elevation: 3,
     },
-    //
   });
 
   return (
     <SafeAreaView style={backgroundStyle}>
       <KeyboardAvoidingView
         style={{flex: 1}}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        keyboardVerticalOffset={Platform.OS === 'ios' ? 10 : 0}>
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <View style={styles.titleContainer}>
-            <View style={styles.titleTextContainer}>
-              <Text style={styles.titleText}>Hello there</Text>
+          <View style={styles.container}>
+            <View style={styles.firstSectionContainer}>
+              <View style={styles.titleTextContainer}>
+                <Text style={styles.titleText}>Hello there</Text>
+              </View>
             </View>
             <View style={styles.secondSectionContainer}>
               <View style={styles.textInputSection}>
                 <FirstTextInput
                   valueName={'Second Value'}
                   placeHolderName={'Second Input'}
+                  onSelecting={onSelecting}
                 />
                 <FirstTextInput
                   valueName={'Second Value'}
                   placeHolderName={'Second Input'}
+                  onSelecting={onSelecting}
                 />
               </View>
             </View>
             <View style={styles.thirdSection}>
               <Pressable
-                style={{
-                  backgroundColor: buttonColor,
-                  marginHorizontal: '30%',
-                  borderRadius: 30,
-                  padding: 10,
-                  alignItems: 'center',
-                  elevation: 3,
-                }}
+                style={styles.buttonContainer}
                 onPressIn={() => {
                   setButtonColor(Colors.rose);
                   console.log('in');
