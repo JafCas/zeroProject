@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Pressable, StyleSheet, Text, useColorScheme } from 'react-native';
 
+import * as Constants from '../../constants';
+
 import { Colors } from '../../assets/colors/mainColors';
 
 export default function GenericButton() {
@@ -23,7 +25,9 @@ export default function GenericButton() {
         console.log('first');
       }}
     >
-      <Text style={styles.textStyle(isDarkMode)}>Button</Text>
+      <Text style={styles.textStyle(isDarkMode)}>
+        {Constants.Logging_button}
+      </Text>
     </Pressable>
   );
 }

@@ -4,20 +4,32 @@ import {
   KeyboardAvoidingView,
   Platform,
   SafeAreaView,
-  StyleSheet,
   Text,
   TouchableWithoutFeedback,
   View,
   useColorScheme,
 } from 'react-native';
-import { FirstTextInput } from '../components/TextInput/FirstTextInput';
-import GenericButton from '../components/Buttons/GenericButton';
-import { Colors } from '../assets/colors/mainColors';
+
+// Components
+import { FirstTextInput } from '../../components/textInput/firstTextInput/FirstTextInput';
+import GenericButton from '../../components/buttons/GenericButton';
+
+// Assets
+import { Colors } from '../../assets/colors/mainColors';
+
+// Styles
+import styles from './styles';
+import * as Constants from '../../constants';
 
 const SignIn = () => {
   const isDarkMode = useColorScheme() === 'dark';
   const [isTextInputSelected, setIsTextInputSelected] = useState(false);
 
+  /**
+   * Get back isSelected flag from child component
+   * to set 2nd container flex value.
+   * @param isSelected the flag which will be returned from child
+   */
   const onSelecting = isSelected => {
     setIsTextInputSelected(isSelected);
   };
@@ -26,34 +38,6 @@ const SignIn = () => {
     backgroundColor: isDarkMode ? Colors.tyrianPurple : Colors.peach,
     flex: 1,
   };
-
-  const styles = StyleSheet.create({
-    firstSectionContainer: {
-      flex: 1,
-    },
-    container: {
-      flex: 1,
-      paddingHorizontal: 25,
-    },
-    titleTextContainer: {
-      flex: 1,
-      alignItems: 'flex-start',
-      justifyContent: 'flex-end',
-      marginBottom: 20,
-    },
-    titleText: {
-      fontSize: 46,
-      color: isDarkMode ? Colors.peach : Colors.tyrianPurple,
-    },
-    secondSectionContainer: {
-      flex: isTextInputSelected ? 2 : 1,
-    },
-    textInputSection: { flex: 1, width: '100%', paddingVertical: 20 },
-    thirdSection: {
-      flex: 1,
-      paddingTop: 0,
-    },
-  });
 
   return (
     <SafeAreaView style={backgroundStyle}>
@@ -65,19 +49,21 @@ const SignIn = () => {
           <View style={styles.container}>
             <View style={styles.firstSectionContainer}>
               <View style={styles.titleTextContainer}>
-                <Text style={styles.titleText}>Hello there</Text>
+                <Text style={styles.titleText(isDarkMode)}>
+                  {Constants.GREATINGS}
+                </Text>
               </View>
             </View>
-            <View style={styles.secondSectionContainer}>
+            <View style={styles.secondSectionContainer(isTextInputSelected)}>
               <View style={styles.textInputSection}>
                 <FirstTextInput
-                  valueName={'Second Value'}
-                  placeHolderName={'Second Input'}
+                  placeHolderName={Constants.First_name}
+                  valueName={Constants.First_value}
                   onSelecting={onSelecting}
                 />
                 <FirstTextInput
-                  valueName={'Second Value'}
-                  placeHolderName={'Second Input'}
+                  placeHolderName={Constants.Second_name}
+                  valueName={Constants.Second_value}
                   onSelecting={onSelecting}
                 />
               </View>

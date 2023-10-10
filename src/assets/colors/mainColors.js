@@ -4,4 +4,8 @@ export const Colors = {
   jordyBlue: '#adc7ff',
   tyrianPurple: '#3E001F',
   peach: '#FFE5AD',
+  darkPeach: '#C28F21',
+  darkTyrianPurple: '#58002C',
+  lightPeach: '#F8E9C9',
+  lightTyrianPurple: '#96014c',
 };
