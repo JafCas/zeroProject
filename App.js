@@ -15,7 +15,8 @@ import {
 } from 'react-native';
 
 import {FirstTextInput} from './src/components/TextInput/FirstTextInput';
-import {Colors} from './src/interface/colors/mainColors';
+import {Colors} from './src/assets/colors/mainColors';
+import GenericButton from './src/components/Buttons/GenericButton';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -72,7 +73,7 @@ const App = () => {
   return (
     <SafeAreaView style={backgroundStyle}>
       <KeyboardAvoidingView
-        style={{flex: 1}}
+        style={backgroundStyle}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={styles.container}>
@@ -96,30 +97,7 @@ const App = () => {
               </View>
             </View>
             <View style={styles.thirdSection}>
-              <Pressable
-                style={styles.buttonContainer}
-                onPressIn={() => {
-                  setButtonColor(Colors.rose);
-                  console.log('in');
-                }}
-                onPressOut={() => {
-                  setButtonColor(
-                    isDarkMode ? Colors.peach : Colors.tyrianPurple,
-                  );
-                  console.log('out');
-                }}
-                onPress={() => {
-                  console.log('first');
-                }}>
-                <Text
-                  style={{
-                    color: isDarkMode ? Colors.tyrianPurple : Colors.peach,
-                    fontSize: 16,
-                    fontWeight: '600',
-                  }}>
-                  Button
-                </Text>
-              </Pressable>
+              <GenericButton />
             </View>
           </View>
         </TouchableWithoutFeedback>

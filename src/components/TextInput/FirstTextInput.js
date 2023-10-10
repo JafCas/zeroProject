@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, TextInput, View, useColorScheme} from 'react-native';
-import {Colors} from '../../interface/colors/mainColors';
+import {Colors} from '../../assets/colors/mainColors';
 
 export const FirstTextInput = ({valueName, placeHolderName, onSelecting}) => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -28,7 +28,10 @@ export const FirstTextInput = ({valueName, placeHolderName, onSelecting}) => {
 };
 
 const styles = StyleSheet.create({
-  container: {flex: 1, justifyContent: 'center'},
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+  },
   textInputNameContainer: {
     marginLeft: 10,
     marginBottom: 4,
