@@ -21,7 +21,7 @@ import { Colors } from '../../assets/colors/mainColors';
 import styles from './styles';
 import * as Constants from '../../constants';
 
-const SignIn = () => {
+const SignIn = ({ navigation }) => {
   const isDarkMode = useColorScheme() === 'dark';
   const [isTextInputSelected, setIsTextInputSelected] = useState(false);
 
@@ -69,7 +69,11 @@ const SignIn = () => {
               </View>
             </View>
             <View style={styles.thirdSection}>
-              <GenericButton />
+              <GenericButton
+                onPress={() => {
+                  navigation.navigate('Details');
+                }}
+              />
             </View>
           </View>
         </TouchableWithoutFeedback>

@@ -5,7 +5,7 @@ import * as Constants from '../../constants';
 
 import { Colors } from '../../assets/colors/mainColors';
 
-export default function GenericButton() {
+export default function GenericButton({ onPress }) {
   const isDarkMode = useColorScheme() === 'dark';
   const [buttonColor, setButtonColor] = useState(
     isDarkMode ? Colors.peach : Colors.tyrianPurple,
@@ -23,6 +23,7 @@ export default function GenericButton() {
       }}
       onPress={() => {
         console.log('first');
+        onPress();
       }}
     >
       <Text style={styles.textStyle(isDarkMode)}>
