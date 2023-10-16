@@ -30,7 +30,7 @@ const SignIn = ({ navigation }) => {
    * to set 2nd container flex value.
    * @param isSelected the flag which will be returned from child
    */
-  const onSelecting = isSelected => {
+  const handleSelecting = isSelected => {
     setIsTextInputSelected(isSelected);
   };
 
@@ -59,19 +59,21 @@ const SignIn = ({ navigation }) => {
                 <FirstTextInput
                   placeHolderName={Constants.First_name}
                   valueName={Constants.First_value}
-                  onSelecting={onSelecting}
+                  onSelecting={handleSelecting}
                 />
                 <FirstTextInput
                   placeHolderName={Constants.Second_name}
                   valueName={Constants.Second_value}
-                  onSelecting={onSelecting}
+                  onSelecting={handleSelecting}
                 />
               </View>
             </View>
             <View style={styles.thirdSection}>
               <GenericButton
                 onPress={() => {
-                  navigation.navigate('Details');
+                  navigation.navigate('MainInfo', {
+                    otherParam: 'Ola we',
+                  });
                 }}
               />
             </View>
