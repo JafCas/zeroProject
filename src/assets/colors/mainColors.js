@@ -9,3 +9,8 @@ export const Colors = {
   lightPeach: '#F8E9C9',
   lightTyrianPurple: '#96014c',
 };
+
+export const Status = {
+  active: '#59A96A',
+  inactive: '#D7263D',
+};

@@ -1,11 +1,17 @@
 import { StyleSheet } from 'react-native';
-import { Colors } from '../../assets/colors/mainColors';
+import { Colors, Status } from '../../assets/colors/mainColors';
 
 const styles = StyleSheet.create({
-  safeAreaView: {
+  safeAreaView: isDarkMode => ({
+    backgroundColor: isDarkMode ? Colors.tyrianPurple : Colors.peach,
     flex: 1,
-    margin: 16,
-  },
+  }),
+
+  container: isDarkMode => ({
+    backgroundColor: isDarkMode ? Colors.tyrianPurple : Colors.peach,
+    flex: 1,
+    padding: 8,
+  }),
 
   // Status section
   statusButtonContainer: {
@@ -19,11 +25,11 @@ const styles = StyleSheet.create({
     height: 30,
     width: 30,
     borderRadius: 16,
-    backgroundColor: isStatusActive ? 'green' : 'red',
+    backgroundColor: isStatusActive ? Status.active : Status.inactive,
     marginHorizontal: 10,
   }),
   statusText: isStatusActive => ({
-    color: isStatusActive ? 'green' : 'red',
+    color: isStatusActive ? Status.active : Status.inactive,
     fontSize: 16,
   }),
 
@@ -35,10 +41,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     justifyContent: 'space-between',
   },
-  headerText: {
+  headerText: isDarkMode => ({
     fontSize: 26,
     fontWeight: 'bold',
-  },
+    color: isDarkMode ? Colors.peach : Colors.tyrianPurple,
+  }),
 
   //TODO: Change for toggle icon
   square: {
@@ -52,14 +59,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    paddingEnd: 30,
+    paddingEnd: 40,
   },
-  optionsText: {
+  optionsText: isDarkMode => ({
     fontWeight: '600',
-  },
+    color: isDarkMode ? Colors.peach : Colors.tyrianPurple,
+  }),
   infoContainer: {
     flex: 9,
-    backgroundColor: 'beige',
     paddingTop: 100,
     alignItems: 'center',
   },
