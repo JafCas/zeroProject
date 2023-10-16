@@ -48,9 +48,9 @@ const MainInfo = () => {
           <View style={styles.square} />
         </View>
         <View style={styles.optionsContainer}>
-          {optionsArray.map(option => {
+          {optionsArray.map((option, index) => {
             return (
-              <TouchableOpacity>
+              <TouchableOpacity key={index}>
                 <Text style={styles.optionsText(isDarkMode)}>
                   {option.name.toUpperCase()}
                 </Text>
