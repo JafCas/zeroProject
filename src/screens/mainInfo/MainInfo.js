@@ -1,9 +1,20 @@
 import React, { useState } from 'react';
 import { SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
+
+// Components
+import MyPokeDisplay from '../myPokeDisplay/MyPokeDisplay';
+
+// Styles
+import { HEADER_TEXT, STATUS } from '../../constants';
 import styles from './styles';
 
 const MainInfo = () => {
   const [isStatusActive, setIsStatusActive] = useState(false);
+
+  function onStatusTrigger() {
+    console.log('apretao');
+    setIsStatusActive(!isStatusActive);
+  }
 
   const optionsArray = [
     { id: 0, name: 'First' },
@@ -14,21 +25,16 @@ const MainInfo = () => {
   return (
     <SafeAreaView style={styles.safeAreaView}>
       <View style={styles.statusButtonContainer}>
-        <TouchableOpacity
-          onPress={() => {
-            console.log('apretao');
-            setIsStatusActive(!isStatusActive);
-          }}
-        >
+        <TouchableOpacity onPress={onStatusTrigger}>
           <View style={styles.buttonContent}>
             <View style={styles.statusCircle(isStatusActive)} />
-            <Text style={styles.statusText(isStatusActive)}>Status</Text>
+            <Text style={styles.statusText(isStatusActive)}>{STATUS}</Text>
           </View>
         </TouchableOpacity>
       </View>
       <View style={styles.headerContainer}>
         <View>
-          <Text style={styles.headerText}>Main Info</Text>
+          <Text style={styles.headerText}>{HEADER_TEXT}</Text>
         </View>
         <View style={styles.square} />
       </View>
@@ -44,18 +50,7 @@ const MainInfo = () => {
         })}
       </View>
       <View style={styles.infoContainer}>
-        <View style={{ height: 200, width: 200, backgroundColor: 'gray' }} />
-        <View style={{ margin: 5 }}>
-          <Text>There is nothing to be displayed yet</Text>
-        </View>
-        <View
-          style={{
-            height: 45,
-            width: 45,
-            backgroundColor: 'gray',
-            borderRadius: 25,
-          }}
-        />
+        <MyPokeDisplay />
       </View>
     </SafeAreaView>
   );

@@ -6,3 +6,9 @@ export const Second_name = 'Password';
 export const Second_value = '••••••••';
 
 export const Logging_button = 'Identify';
+
+export const STATUS = 'Status';
+
+// Main Info
+export const HEADER_TEXT = 'Main Info';
+export const EMPTY_DATA = 'There is nothing to be displayed yet';
