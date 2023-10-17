@@ -2,12 +2,12 @@ import { StyleSheet } from 'react-native';
 import { Colors, Status } from '../../assets/colors/mainColors';
 
 const styles = StyleSheet.create({
-  safeAreaView: isDarkMode => ({
+  safeAreaView: (isDarkMode: boolean) => ({
     backgroundColor: isDarkMode ? Colors.tyrianPurple : Colors.peach,
     flex: 1,
   }),
 
-  container: isDarkMode => ({
+  container: (isDarkMode: boolean) => ({
     backgroundColor: isDarkMode ? Colors.tyrianPurple : Colors.peach,
     flex: 1,
     padding: 8,
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     justifyContent: 'space-between',
   },
-  headerText: isDarkMode => ({
+  headerText: (isDarkMode: boolean) => ({
     fontSize: 26,
     fontWeight: 'bold',
     color: isDarkMode ? Colors.peach : Colors.tyrianPurple,
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingEnd: 40,
   },
-  optionsText: isDarkMode => ({
+  optionsText: (isDarkMode: boolean) => ({
     fontWeight: '600',
     color: isDarkMode ? Colors.peach : Colors.tyrianPurple,
   }),

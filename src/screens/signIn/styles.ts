@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 import { Colors } from '../../assets/colors/mainColors';
 
 const styles = StyleSheet.create({
-  safeAreaView: isDarkMode => ({
+  safeAreaView: (isDarkMode: boolean) => ({
     backgroundColor: isDarkMode ? Colors.tyrianPurple : Colors.peach,
     flex: 1,
   }),
@@ -19,11 +19,11 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     marginBottom: 20,
   },
-  titleText: isDarkMode => ({
+  titleText: (isDarkMode: boolean) => ({
     fontSize: 46,
     color: isDarkMode ? Colors.peach : Colors.tyrianPurple,
   }),
-  secondSectionContainer: isTextInputSelected => ({
+  secondSectionContainer: (isTextInputSelected: boolean) => ({
     flex: isTextInputSelected ? 2 : 1,
   }),
   textInputSection: { flex: 1, width: '100%', paddingVertical: 20 },

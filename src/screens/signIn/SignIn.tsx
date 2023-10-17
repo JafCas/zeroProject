@@ -30,7 +30,7 @@ const SignIn = ({ navigation }) => {
    * to set 2nd container flex value.
    * @param isSelected the flag which will be returned from child
    */
-  const handleSelecting = isSelected => {
+  const handleSelecting = (isSelected: boolean) => {
     setIsTextInputSelected(isSelected);
   };
 
