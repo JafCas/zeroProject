@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   SafeAreaView,
   Text,
@@ -14,15 +14,37 @@ import MyPokeDisplay from '../myPokeDisplay/MyPokeDisplay';
 import { HEADER_TEXT, STATUS } from '../../constants';
 import styles from './styles';
 
+type Pokimon = {
+  name: string;
+  url: string;
+};
+
 const MainInfo = () => {
+  const url = 'https://pokeapi.co/api/v2/';
+  const endpoint = 'pokemon?limit=173&offset=0';
+  const uri = `${url}${endpoint}`;
+
   const [isStatusActive, setIsStatusActive] = useState(false);
+  const [testPokemon, setTestPokemon] = useState<Pokimon[]>([]);
+  // const [isLoading, setIsLoading] = useState(true);
 
   const isDarkMode = useColorScheme() === 'dark';
 
-  function onStatusTrigger() {
+  const onStatusTrigger = async () => {
     console.log('apretao');
     setIsStatusActive(!isStatusActive);
-  }
+    try {
+      const response = await fetch(uri);
+      const json = await response.json();
+      setTestPokemon(json.results);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    console.log(testPokemon.map(pokimon => pokimon.name));
+  }, [testPokemon]);
 
   const optionsArray = [
     { id: 0, name: 'First' },
