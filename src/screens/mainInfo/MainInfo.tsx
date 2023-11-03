@@ -26,6 +26,7 @@ const MainInfo = () => {
 
   const [isStatusActive, setIsStatusActive] = useState(false);
   const [testPokemon, setTestPokemon] = useState<Pokimon[]>([]);
+  const [displayImage, setDisplayImage] = useState(false);
   // const [isLoading, setIsLoading] = useState(true);
 
   const isDarkMode = useColorScheme() === 'dark';
@@ -33,6 +34,7 @@ const MainInfo = () => {
   const onStatusTrigger = async () => {
     console.log('apretao');
     setIsStatusActive(!isStatusActive);
+    setDisplayImage(!displayImage);
     try {
       const response = await fetch(uri);
       const json = await response.json();
@@ -81,7 +83,7 @@ const MainInfo = () => {
           })}
         </View>
         <View style={styles.infoContainer}>
-          <MyPokeDisplay />
+          <MyPokeDisplay isImageDisplayable={displayImage} />
         </View>
       </View>
     </SafeAreaView>

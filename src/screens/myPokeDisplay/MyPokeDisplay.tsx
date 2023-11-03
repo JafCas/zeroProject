@@ -1,14 +1,27 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
 
 // Styles
 import styles from './styles';
 import { EMPTY_DATA } from '../../constants';
 
-const MyPokeDisplay = () => {
+type MyPokeDisplayProps = {
+  isImageDisplayable: Boolean;
+};
+
+const MyPokeDisplay = ({ isImageDisplayable }: MyPokeDisplayProps) => {
   return (
     <View style={styles.container}>
-      <View style={styles.square} />
+      {isImageDisplayable ? (
+        <Image
+          style={styles.square}
+          source={{
+            uri: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/173.png',
+          }}
+        />
+      ) : (
+        <View style={styles.square} />
+      )}
       <View style={styles.textContainer}>
         <Text style={styles.text}>{EMPTY_DATA}</Text>
       </View>

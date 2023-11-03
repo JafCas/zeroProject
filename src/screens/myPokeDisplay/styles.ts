@@ -8,7 +8,6 @@ const styles = StyleSheet.create({
   square: {
     height: 200,
     width: 200,
-    backgroundColor: 'gray',
   },
   textContainer: {
     margin: 5,
