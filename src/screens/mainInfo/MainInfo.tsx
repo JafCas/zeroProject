@@ -11,7 +11,10 @@ import {
 import MyPokeDisplay from '../myPokeDisplay/MyPokeDisplay';
 
 // Styles
+import { optionsArray } from '../../components/misc/optionsArray';
+
 import { HEADER_TEXT, STATUS } from '../../constants';
+
 import styles from './styles';
 
 type Pokimon = {
@@ -47,13 +50,6 @@ const MainInfo = () => {
   useEffect(() => {
     console.log(testPokemon.map(pokimon => pokimon.name));
   }, [testPokemon]);
-
-  const optionsArray = [
-    { id: 0, name: 'First' },
-    { id: 1, name: 'Second' },
-    { id: 2, name: 'Third' },
-    { id: 3, name: 'Fourth' },
-  ];
   return (
     <SafeAreaView style={styles.safeAreaView(isDarkMode)}>
       <View style={styles.container(isDarkMode)}>
