@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import {
   SafeAreaView,
   Text,
@@ -22,6 +22,8 @@ type Pokimon = {
   url: string;
 };
 
+export const UrlContext = createContext(null);
+
 const MainInfo = () => {
   const url = 'https://pokeapi.co/api/v2/';
   const endpoint = 'pokemon?limit=173&offset=0';
@@ -33,6 +35,9 @@ const MainInfo = () => {
   // const [isLoading, setIsLoading] = useState(true);
 
   const isDarkMode = useColorScheme() === 'dark';
+
+  const photoUrl =
+    'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/173.png';
 
   const onStatusTrigger = async () => {
     console.log('apretao');
@@ -79,7 +84,9 @@ const MainInfo = () => {
           })}
         </View>
         <View style={styles.infoContainer}>
-          <MyPokeDisplay isImageDisplayable={displayImage} />
+          <UrlContext.Provider value={photoUrl}>
+            <MyPokeDisplay isImageDisplayable={displayImage} />
+          </UrlContext.Provider>
         </View>
       </View>
     </SafeAreaView>

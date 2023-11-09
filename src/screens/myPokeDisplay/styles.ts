@@ -8,12 +8,14 @@ const styles = StyleSheet.create({
   square: {
     height: 200,
     width: 200,
+    backgroundColor: 'white',
   },
   textContainer: {
     margin: 5,
   },
   text: {
     fontSize: 16,
+    color: 'gray',
   },
   reloadCircle: {
     height: 45,
