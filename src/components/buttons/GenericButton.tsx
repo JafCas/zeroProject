@@ -1,18 +1,26 @@
 import React, { useState } from 'react';
-import { Pressable, StyleSheet, Text, useColorScheme } from 'react-native';
+import { Pressable, StyleSheet, Text } from 'react-native';
 
 import * as Constants from '../../constants';
 
 import { Colors } from '../../assets/colors/mainColors';
+import { useTheme } from '../../context/ThemeContext';
 
-export default function GenericButton({ onPress }) {
-  const isDarkMode = useColorScheme() === 'dark';
+interface GenericButtonProps {
+  onPress: () => void;
+}
+
+export default function GenericButton({ onPress }: GenericButtonProps) {
+  const isDarkMode = useTheme();
+
   const [buttonColor, setButtonColor] = useState(
     isDarkMode ? Colors.peach : Colors.tyrianPurple,
   );
+
+  const styles = getStyles(isDarkMode, buttonColor);
   return (
     <Pressable
-      style={styles.buttonContainer(buttonColor)}
+      style={styles.buttonContainer}
       onPressIn={() => {
         setButtonColor(Colors.rose);
         console.log('in');
@@ -26,25 +34,25 @@ export default function GenericButton({ onPress }) {
         onPress();
       }}
     >
-      <Text style={styles.textStyle(isDarkMode)}>
-        {Constants.Logging_button}
-      </Text>
+      <Text style={styles.textStyle}>{Constants.Logging_button}</Text>
     </Pressable>
   );
 }
 
-const styles = StyleSheet.create({
-  buttonContainer: buttonColor => ({
-    backgroundColor: buttonColor,
-    marginHorizontal: '30%',
-    borderRadius: 30,
-    padding: 10,
-    alignItems: 'center',
-    elevation: 3,
-  }),
-  textStyle: isDarkMode => ({
-    color: isDarkMode ? Colors.tyrianPurple : Colors.peach,
-    fontSize: 16,
-    fontWeight: '600',
-  }),
-});
+const getStyles = (isDarkMode: boolean, buttonColor: string) => {
+  return StyleSheet.create({
+    buttonContainer: {
+      backgroundColor: buttonColor,
+      marginHorizontal: '30%',
+      borderRadius: 30,
+      padding: 10,
+      alignItems: 'center',
+      elevation: 3,
+    },
+    textStyle: {
+      color: isDarkMode ? Colors.tyrianPurple : Colors.peach,
+      fontSize: 16,
+      fontWeight: '600',
+    },
+  });
+};
