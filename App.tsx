@@ -1,15 +1,14 @@
 // TODO: Solve this issue
-import React, { createContext, useContext } from 'react';
+import React from 'react';
+import { useColorScheme } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import SignIn from './src/screens/signIn/SignIn';
 import MainInfo from './src/screens/mainInfo/MainInfo';
-import { useColorScheme } from 'react-native';
+import { ThemeContext } from './src/context/ThemeContext';
 
 const Stack = createNativeStackNavigator();
-
-export const ThemeContext = createContext(false);
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';

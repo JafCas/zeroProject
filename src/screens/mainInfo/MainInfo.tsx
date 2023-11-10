@@ -6,11 +6,12 @@ import MyPokeDisplay from '../myPokeDisplay/MyPokeDisplay';
 
 // Styles
 import { optionsArray } from '../../components/misc/optionsArray';
+import StatusButton from '../../components/buttons/statusButton/StatusButton';
 
 import { HEADER_TEXT } from '../../constants';
 
 import getStyles from './styles';
-import StatusButton from '../../components/buttons/statusButton/StatusButton';
+
 import { useTheme } from '../../context/ThemeContext';
 
 type Pokimon = {
