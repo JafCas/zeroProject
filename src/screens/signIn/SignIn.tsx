@@ -7,8 +7,10 @@ import {
   Text,
   TouchableWithoutFeedback,
   View,
-  useColorScheme,
 } from 'react-native';
+
+// Context
+import { useTheme } from '../../context/ThemeContext';
 
 // Components
 import { FirstTextInput } from '../../components/textInput/firstTextInput/FirstTextInput';
@@ -18,12 +20,15 @@ import GenericButton from '../../components/buttons/GenericButton';
 import { Colors } from '../../assets/colors/mainColors';
 
 // Styles
-import styles from './styles';
+import getStyles from './styles';
 import * as Constants from '../../constants';
 
 const SignIn = ({ navigation }) => {
-  const isDarkMode = useColorScheme() === 'dark';
   const [isTextInputSelected, setIsTextInputSelected] = useState(false);
+
+  const isDarkMode = useTheme();
+
+  const styles = getStyles(isDarkMode, isTextInputSelected);
 
   /**
    * Get back isSelected flag from child component
@@ -49,12 +54,10 @@ const SignIn = ({ navigation }) => {
           <View style={styles.container}>
             <View style={styles.firstSectionContainer}>
               <View style={styles.titleTextContainer}>
-                <Text style={styles.titleText(isDarkMode)}>
-                  {Constants.GREATINGS}
-                </Text>
+                <Text style={styles.titleText}>{Constants.GREATINGS}</Text>
               </View>
             </View>
-            <View style={styles.secondSectionContainer(isTextInputSelected)}>
+            <View style={styles.secondSectionContainer}>
               <View style={styles.textInputSection}>
                 <FirstTextInput
                   placeHolderName={Constants.First_name}

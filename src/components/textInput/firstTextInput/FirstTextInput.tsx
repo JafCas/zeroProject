@@ -1,10 +1,21 @@
 import React, { useRef } from 'react';
-import { Animated, Text, TextInput, View, useColorScheme } from 'react-native';
+import { Animated, Text, TextInput, View } from 'react-native';
 
-import styles from './styles';
+import { useTheme } from '../../../context/ThemeContext';
+import getStyles from './styles';
 
-export const FirstTextInput = ({ valueName, placeHolderName, onSelecting }) => {
-  const isDarkMode = useColorScheme() === 'dark';
+interface FirstTextInputProps {
+  valueName: string;
+  placeHolderName: string;
+  onSelecting: (isSelected: boolean) => void;
+}
+
+export const FirstTextInput = ({
+  valueName,
+  placeHolderName,
+  onSelecting,
+}: FirstTextInputProps) => {
+  const isDarkMode = useTheme();
 
   const fadeBorder = useRef(new Animated.Value(0)).current;
 
@@ -26,15 +37,17 @@ export const FirstTextInput = ({ valueName, placeHolderName, onSelecting }) => {
     }).start();
   };
 
+  const styles = getStyles(isDarkMode, fadeBorder);
+
   return (
     <View style={styles.container}>
       <View style={styles.textInputNameContainer}>
-        <Text style={styles.textInputName(isDarkMode)}>{placeHolderName}</Text>
+        <Text style={styles.textInputName}>{placeHolderName}</Text>
       </View>
       <View>
         <TextInput
           placeholder={valueName}
-          style={styles.textInputBox(isDarkMode)}
+          style={styles.textInputBox}
           onFocus={() => {
             onSelecting(true);
             fadeIn();
@@ -44,7 +57,7 @@ export const FirstTextInput = ({ valueName, placeHolderName, onSelecting }) => {
             fadeOut();
           }}
         />
-        <Animated.View style={styles.animatedShadow(isDarkMode, fadeBorder)} />
+        <Animated.View style={styles.animatedShadow} />
       </View>
     </View>
   );
