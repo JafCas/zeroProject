@@ -14,6 +14,8 @@ import getStyles from './styles';
 
 import { useTheme } from '../../context/ThemeContext';
 
+import PokeSelector from '../../components/modals/pokeSelector/PokeSelector';
+
 type Pokimon = {
   name: string;
   url: string;
@@ -31,6 +33,7 @@ const MainInfo = () => {
   const [isStatusActive, setIsStatusActive] = useState(false);
   const [testPokemon, setTestPokemon] = useState<Pokimon[]>([]);
   const [displayImage, setDisplayImage] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
   // const [isLoading, setIsLoading] = useState(true);
 
   const isDarkMode = useTheme();
@@ -43,6 +46,7 @@ const MainInfo = () => {
     console.log('apretao');
     setIsStatusActive(!isStatusActive);
     setDisplayImage(!displayImage);
+    setIsModalVisible(true);
     try {
       const response = await fetch(uri);
       const json = await response.json();
@@ -57,6 +61,12 @@ const MainInfo = () => {
   }, [testPokemon]);
   return (
     <SafeAreaView style={styles.safeAreaView}>
+      <PokeSelector
+        isModalVisible={isModalVisible}
+        onDisplayModal={() => {
+          setIsModalVisible(false);
+        }}
+      />
       <View style={styles.container}>
         <View style={styles.statusButtonContainer}>
           <TouchableOpacity onPress={onStatusTrigger}>
