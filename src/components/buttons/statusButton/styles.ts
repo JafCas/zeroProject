@@ -8,11 +8,9 @@ const getStyles = (statusContext: boolean) => {
       alignItems: 'center',
     },
     statusCircle: {
-      height: 30,
-      width: 30,
-      borderRadius: 16,
-      backgroundColor: statusContext ? Status.active : Status.inactive,
-      marginHorizontal: 10,
+      marginLeft: 10,
+      marginRight: 5,
+      color: statusContext ? Status.active : Status.inactive,
     },
     statusText: {
       color: statusContext ? Status.active : Status.inactive,

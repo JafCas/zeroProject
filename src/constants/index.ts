@@ -7,7 +7,7 @@ export const Second_value = '••••••••';
 
 export const Logging_button = 'Identify';
 
-export const STATUS = 'Status';
+export const STATUS = 'Select Pokemon';
 
 // Main Info
 export const HEADER_TEXT = 'Main Info';
