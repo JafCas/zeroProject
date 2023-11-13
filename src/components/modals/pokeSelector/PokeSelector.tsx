@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Modal, SafeAreaView, View } from 'react-native';
+import { Modal, SafeAreaView, ScrollView, View } from 'react-native';
 
 import PokeCard from '../../cards/pokeCard/pokeCard';
 
@@ -57,12 +57,44 @@ const PokeSelectorModal = ({
     >
       <SafeAreaView style={styles.centeredView}>
         <View style={styles.modalView}>
-          <PokeCard
-            onPress={onDisplayModal}
-            imageUrl={pokemonSprite}
-            pokemonName={pokemonName}
-            pokemonNumer={pokemonId}
-          />
+          <ScrollView style={{ width: '100%', borderRadius: 16 }}>
+            <PokeCard
+              onPress={onDisplayModal}
+              imageUrl={pokemonSprite}
+              pokemonName={pokemonName}
+              pokemonNumer={pokemonId}
+            />
+            <PokeCard
+              onPress={onDisplayModal}
+              imageUrl={pokemonSprite}
+              pokemonName={pokemonName}
+              pokemonNumer={pokemonId}
+            />
+            <PokeCard
+              onPress={onDisplayModal}
+              imageUrl={pokemonSprite}
+              pokemonName={pokemonName}
+              pokemonNumer={pokemonId}
+            />
+            <PokeCard
+              onPress={onDisplayModal}
+              imageUrl={pokemonSprite}
+              pokemonName={pokemonName}
+              pokemonNumer={pokemonId}
+            />
+            <PokeCard
+              onPress={onDisplayModal}
+              imageUrl={pokemonSprite}
+              pokemonName={pokemonName}
+              pokemonNumer={pokemonId}
+            />
+            <PokeCard
+              onPress={onDisplayModal}
+              imageUrl={pokemonSprite}
+              pokemonName={pokemonName}
+              pokemonNumer={pokemonId}
+            />
+          </ScrollView>
         </View>
       </SafeAreaView>
     </Modal>
