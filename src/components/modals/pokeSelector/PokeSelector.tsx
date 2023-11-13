@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal, Pressable, Text, View } from 'react-native';
 import getStyles from './styles';
+import PokeCard from '../../cards/pokeCard/pokeCard';
 
 interface PokeSelectorProps {
   isModalVisible: boolean;
@@ -28,6 +29,9 @@ const PokeSelector = ({
           <Pressable style={styles.button} onPress={onDisplayModal}>
             <Text>Button</Text>
           </Pressable>
+          <PokeCard />
+          <PokeCard />
+          <PokeCard />
         </View>
       </View>
     </Modal>

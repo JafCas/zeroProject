@@ -11,7 +11,7 @@ export default function getStyles() {
     modalView: {
       backgroundColor: Colors.lightPeach,
       borderRadius: 20,
-      padding: 35,
+      padding: 4,
       alignItems: 'center',
       shadowColor: '#000',
       shadowOffset: {
