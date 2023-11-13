@@ -14,6 +14,7 @@ import { HEADER_TEXT } from '../../constants';
 import getStyles from './styles';
 
 import { useTheme } from '../../context/ThemeContext';
+import PokeCard from '../../components/cards/pokeCard/pokeCard';
 
 type Pokimon = {
   name: string;

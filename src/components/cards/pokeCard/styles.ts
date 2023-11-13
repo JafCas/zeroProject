@@ -6,19 +6,19 @@ export default function getStyles() {
       width: '100%',
     },
     pokeCardView: {
-      backgroundColor: 'white',
+      backgroundColor: 'cyan',
       height: 120,
-      borderRadius: 8,
+      borderRadius: 16,
       shadowColor: 'black',
+      marginVertical: 4,
 
       /** Android */
       elevation: 8,
 
       /** iOS */
-      shadowOffset: { width: 0, height: 1 },
-      shadowOpacity: 1,
+      shadowOffset: { width: 0, height: 0 },
+      shadowOpacity: 0.4,
       shadowRadius: 4,
-      marginVertical: 4,
     },
     innerView: {
       flex: 1,

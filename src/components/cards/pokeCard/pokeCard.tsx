@@ -1,11 +1,15 @@
 import React from 'react';
-import { Pressable, Text, TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import getStyles from './styles';
 
-export default function PokeCard() {
+type pokeCardProps = {
+  onPress: () => void;
+};
+
+export default function PokeCard({ onPress }: pokeCardProps) {
   const styles = getStyles();
   return (
-    <TouchableOpacity style={styles.pressCard}>
+    <TouchableOpacity style={styles.pressCard} onPress={onPress}>
       <View style={styles.pokeCardView}>
         <View style={styles.largeImageView} />
         <View style={styles.innerView}>

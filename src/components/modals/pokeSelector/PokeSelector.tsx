@@ -1,7 +1,9 @@
 import React from 'react';
-import { Modal, Pressable, Text, View } from 'react-native';
-import getStyles from './styles';
+import { Modal, SafeAreaView, View } from 'react-native';
+
 import PokeCard from '../../cards/pokeCard/pokeCard';
+
+import getStyles from './styles';
 
 interface PokeSelectorProps {
   isModalVisible: boolean;
@@ -17,23 +19,18 @@ const PokeSelector = ({
   const styles = getStyles();
   return (
     <Modal
-      animationType="slide"
+      animationType="fade"
       transparent={true}
       visible={isModalVisible}
       onRequestClose={() => {
         console.log('cerrao');
       }}
     >
-      <View style={styles.centeredView}>
+      <SafeAreaView style={styles.centeredView}>
         <View style={styles.modalView}>
-          <Pressable style={styles.button} onPress={onDisplayModal}>
-            <Text>Button</Text>
-          </Pressable>
-          <PokeCard />
-          <PokeCard />
-          <PokeCard />
+          <PokeCard onPress={onDisplayModal} />
         </View>
-      </View>
+      </SafeAreaView>
     </Modal>
   );
 };

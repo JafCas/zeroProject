@@ -5,13 +5,13 @@ export default function getStyles() {
   return StyleSheet.create({
     centeredView: {
       flex: 1,
-      justifyContent: 'flex-end',
+      justifyContent: 'center',
       alignItems: 'center',
     },
     modalView: {
-      backgroundColor: Colors.lightPeach,
+      backgroundColor: Platform.OS === 'android' ? '#800080a0' : '#f5f5dcbb',
       borderRadius: 20,
-      padding: 4,
+      padding: 8,
       alignItems: 'center',
       shadowColor: '#000',
       shadowOffset: {
@@ -21,16 +21,10 @@ export default function getStyles() {
       shadowOpacity: 0.25,
       shadowRadius: 4,
       elevation: 5,
-      width: '99%',
-      height: Platform.OS === 'android' ? '92%' : '88%',
-      opacity: 0.9,
-    },
-    button: {
-      borderRadius: 20,
-      padding: 10,
-      elevation: 2,
+      width: '96%',
+      height: '96%',
       opacity: 1,
-      backgroundColor: 'white',
+      paddingVertical: 8,
     },
   });
 }
