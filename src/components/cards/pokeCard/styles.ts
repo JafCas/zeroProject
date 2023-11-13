@@ -4,6 +4,7 @@ import { Colors } from '../../../assets/colors/mainColors';
 export default function getStyles() {
   return StyleSheet.create({
     pressCard: {
+      flex: 1,
       width: '100%',
     },
     pokeCardView: {
@@ -33,10 +34,8 @@ export default function getStyles() {
     },
     // TODO: change for pkimage
     imageCircle: {
-      width: 70,
-      height: 70,
-      borderRadius: 40,
-      backgroundColor: 'white',
+      width: 180,
+      height: 180,
     },
     infoView: {
       flex: 3,
@@ -68,8 +67,13 @@ export default function getStyles() {
     largeImageView: {
       height: '100%',
       width: '80%',
-      // backgroundColor: 'aqua',
       position: 'absolute',
+      alignSelf: 'center',
+      opacity: 0.4,
+    },
+    largeImage: {
+      height: '100%',
+      width: '360%',
       alignSelf: 'center',
       opacity: 0.4,
     },
