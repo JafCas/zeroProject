@@ -6,7 +6,7 @@ import MyPokeDisplay from '../myPokeDisplay/MyPokeDisplay';
 
 // Styles
 import { optionsArray } from '../../components/misc/optionsArray';
-import PokeSelector from '../../components/modals/pokeSelector/PokeSelector';
+import PokeSelectorModal from '../../components/modals/pokeSelector/PokeSelector';
 import StatusButton from '../../components/buttons/statusButton/StatusButton';
 
 import { HEADER_TEXT } from '../../constants';
@@ -61,27 +61,27 @@ const MainInfo = () => {
   }, [testPokemon]);
   return (
     <SafeAreaView style={styles.safeAreaView}>
-      <PokeSelector
+      <PokeSelectorModal
         isModalVisible={isModalVisible}
         onDisplayModal={() => {
           setIsModalVisible(false);
         }}
       />
       <View style={styles.container}>
-        <View style={styles.statusButtonContainer}>
+        <View style={styles.statusView}>
           <TouchableOpacity onPress={onStatusTrigger}>
             <FlagContext.Provider value={isStatusActive}>
               <StatusButton />
             </FlagContext.Provider>
           </TouchableOpacity>
         </View>
-        <View style={styles.headerContainer}>
+        <View style={styles.headerView}>
           <View>
             <Text style={styles.headerText}>{HEADER_TEXT}</Text>
           </View>
           <View style={styles.square} />
         </View>
-        <View style={styles.optionsContainer}>
+        <View style={styles.optionsView}>
           {optionsArray.map((option, index) => {
             return (
               <TouchableOpacity key={index}>
@@ -92,7 +92,7 @@ const MainInfo = () => {
             );
           })}
         </View>
-        <View style={styles.infoContainer}>
+        <View style={styles.infoView}>
           <UrlContext.Provider value={photoUrl}>
             <MyPokeDisplay isImageDisplayable={displayImage} />
           </UrlContext.Provider>

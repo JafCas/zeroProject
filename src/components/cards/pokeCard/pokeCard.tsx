@@ -19,10 +19,10 @@ export default function PokeCard({ onPress }: pokeCardProps) {
           </View>
           <View style={styles.infoView}>
             <View style={styles.numberTextView}>
-              <Text style={styles.infoText}>#001</Text>
+              <Text style={styles.infoText}>#173</Text>
             </View>
             <View style={styles.nameTextView}>
-              <Text style={styles.infoText}>Treecko</Text>
+              <Text style={styles.infoText}>Cleffa</Text>
             </View>
           </View>
           <View style={styles.elementView}>

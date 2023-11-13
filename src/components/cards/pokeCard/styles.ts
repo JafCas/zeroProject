@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { Colors } from '../../../assets/colors/mainColors';
 
 export default function getStyles() {
   return StyleSheet.create({
@@ -6,7 +7,7 @@ export default function getStyles() {
       width: '100%',
     },
     pokeCardView: {
-      backgroundColor: 'cyan',
+      backgroundColor: Colors.jordyBlue,
       height: 120,
       borderRadius: 16,
       shadowColor: 'black',

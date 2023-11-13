@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { Status } from '../../../assets/colors/mainColors';
 
-const getStyles = (statusContext: boolean) => {
+const getStyles = (isStatusActive: boolean) => {
   return StyleSheet.create({
     buttonContent: {
       flexDirection: 'row',
@@ -10,10 +10,10 @@ const getStyles = (statusContext: boolean) => {
     statusCircle: {
       marginLeft: 10,
       marginRight: 5,
-      color: statusContext ? Status.active : Status.inactive,
+      color: isStatusActive ? Status.active : Status.inactive,
     },
     statusText: {
-      color: statusContext ? Status.active : Status.inactive,
+      color: isStatusActive ? Status.active : Status.inactive,
       fontSize: 16,
     },
   });

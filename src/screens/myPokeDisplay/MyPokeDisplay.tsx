@@ -11,7 +11,14 @@ type MyPokeDisplayProps = {
   isImageDisplayable: Boolean;
 };
 
-const MyPokeDisplay = ({ isImageDisplayable }: MyPokeDisplayProps) => {
+/**
+ * Sample React Native App
+ * Display pokemon info or empty container.
+ *
+ * @format
+ * @flow strict-local
+ */
+function MyPokeDisplay({ isImageDisplayable }: MyPokeDisplayProps) {
   const imageUrl = useContext(UrlContext);
   return (
     <View style={styles.container}>
@@ -33,6 +40,6 @@ const MyPokeDisplay = ({ isImageDisplayable }: MyPokeDisplayProps) => {
       </TouchableOpacity>
     </View>
   );
-};
+}
 
 export default MyPokeDisplay;

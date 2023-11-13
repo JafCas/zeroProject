@@ -13,7 +13,7 @@ const getStyles = (isDarkMode: boolean, isStatusActive: boolean) => {
       padding: 8,
     },
     // Status section
-    statusButtonContainer: {
+    statusView: {
       justifyContent: 'center',
     },
     buttonContent: {
@@ -33,7 +33,7 @@ const getStyles = (isDarkMode: boolean, isStatusActive: boolean) => {
     },
 
     // Header
-    headerContainer: {
+    headerView: {
       flex: 1,
       flexDirection: 'row',
       alignItems: 'center',
@@ -52,7 +52,7 @@ const getStyles = (isDarkMode: boolean, isStatusActive: boolean) => {
       height: 40,
       width: 40,
     },
-    optionsContainer: {
+    optionsView: {
       height: 30,
       width: '100%',
       flexDirection: 'row',
@@ -64,7 +64,7 @@ const getStyles = (isDarkMode: boolean, isStatusActive: boolean) => {
       fontWeight: '600',
       color: isDarkMode ? Colors.peach : Colors.tyrianPurple,
     },
-    infoContainer: {
+    infoView: {
       flex: 9,
       paddingTop: 100,
       alignItems: 'center',

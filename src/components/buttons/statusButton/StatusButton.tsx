@@ -9,9 +9,9 @@ import { STATUS } from '../../../constants';
 import getStyles from './styles';
 
 function StatusButton() {
-  const StatusContext = useContext(FlagContext);
+  const isStatusActive = useContext(FlagContext);
 
-  const styles = getStyles(StatusContext);
+  const styles = getStyles(isStatusActive);
 
   return (
     <View style={styles.buttonContent}>

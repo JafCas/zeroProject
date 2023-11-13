@@ -5,15 +5,15 @@ import PokeCard from '../../cards/pokeCard/pokeCard';
 
 import getStyles from './styles';
 
-interface PokeSelectorProps {
+interface PokeSelectorModalProps {
   isModalVisible: boolean;
   onDisplayModal: () => void;
 }
 
-const PokeSelector = ({
+const PokeSelectorModal = ({
   isModalVisible,
   onDisplayModal,
-}: PokeSelectorProps) => {
+}: PokeSelectorModalProps) => {
   //   const handleCallback = displayModal;
 
   const styles = getStyles();
@@ -35,4 +35,4 @@ const PokeSelector = ({
   );
 };
 
-export default PokeSelector;
+export default PokeSelectorModal;
