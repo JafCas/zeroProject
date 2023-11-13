@@ -16,7 +16,7 @@ import getStyles from './styles';
 import { useTheme } from '../../context/ThemeContext';
 import PokeCard from '../../components/cards/pokeCard/pokeCard';
 
-type Pokimon = {
+export type Pokimon = {
   name: string;
   url: string;
 };
@@ -24,16 +24,20 @@ type Pokimon = {
 export const UrlContext = createContext('');
 
 export const FlagContext = createContext(false);
+// export const CleffaContext = createContext(Response);
 
 const MainInfo = () => {
   const url = 'https://pokeapi.co/api/v2/';
   const endpoint = 'pokemon?limit=173&offset=0';
-  const uri = `${url}${endpoint}`;
+  const cleffaEndpoint = 'pokemon?limit=173';
+  const uri = `${url}${cleffaEndpoint}`;
+  const cleffaUri = `${url}${cleffaEndpoint}`;
 
   const [isStatusActive, setIsStatusActive] = useState(false);
-  const [testPokemon, setTestPokemon] = useState<Pokimon[]>([]);
+  const [pokemonResults, setPokemonResults] = useState<Pokimon[]>([]);
   const [displayImage, setDisplayImage] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [pokemonInfo, setPokemonInfo] = useState<Response>();
   // const [isLoading, setIsLoading] = useState(true);
 
   const isDarkMode = useTheme();
@@ -50,23 +54,30 @@ const MainInfo = () => {
     try {
       const response = await fetch(uri);
       const json = await response.json();
-      setTestPokemon(json.results);
+      setPokemonResults(json.results);
+      setPokemonInfo(response);
+      // console.log('json: ', json);
+      console.log('json.results: ', json.results);
+      // console.log('response: ', response);
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-    console.log(testPokemon.map(pokimon => pokimon.name));
-  }, [testPokemon]);
+    console.log(pokemonResults.map(pokimon => pokimon.name));
+  }, [pokemonResults]);
   return (
     <SafeAreaView style={styles.safeAreaView}>
+      {/* <CleffaContext.Provider value={pokemonInfo}> */}
       <PokeSelectorModal
         isModalVisible={isModalVisible}
+        pokeData={pokemonResults}
         onDisplayModal={() => {
           setIsModalVisible(false);
         }}
       />
+      {/* </CleffaContext.Provider> */}
       <View style={styles.container}>
         <View style={styles.statusView}>
           <TouchableOpacity onPress={onStatusTrigger}>
