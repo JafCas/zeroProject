@@ -1,7 +1,7 @@
-import { StyleSheet } from 'react-native';
+import { Animated, StyleSheet } from 'react-native';
 import { Colors } from '../../../assets/colors/mainColors';
 
-export default function getStyles() {
+export default function getStyles(changeFlag?: Animated.Value) {
   return StyleSheet.create({
     pressCard: {
       flex: 1,
@@ -9,6 +9,7 @@ export default function getStyles() {
     },
     pokeCardView: {
       backgroundColor: Colors.jordyBlue,
+      opacity: changeFlag,
       height: 120,
       borderRadius: 16,
       shadowColor: 'black',
@@ -58,8 +59,9 @@ export default function getStyles() {
     elementIcon: {
       width: 32,
       height: 32,
-      backgroundColor: 'beige',
-      margin: 4,
+      // color: 'black',
+      marginRight: 8,
+      marginTop: 8,
     },
     infoText: {
       fontSize: 22,
