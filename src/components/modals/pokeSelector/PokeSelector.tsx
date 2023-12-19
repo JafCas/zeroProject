@@ -21,19 +21,18 @@ const PokeSelectorModal = ({
   const [pokemonName, setPokemonName] = useState('');
   const [pokemonId, setPokemonId] = useState(0);
 
+  // TODO: Mandar el fetch a una funcion exportable para solo mandarlo a llamar
+  // y con ello, regresar la data del pokemon en cuestion
   const getPokemonInfo = async (pokemonUrl: string) => {
-    try {
-      const pokemonResponse = await fetch(pokemonUrl);
-      const pokeJson = await pokemonResponse.json();
-      console.log('quiero ver un cleffa: ', pokeJson);
-      setPokemonSprite(pokeJson.sprites.front_default);
-      const formatPokemonName =
-        pokeJson.name.charAt(0).toUpperCase() + pokeJson.name.slice(1);
-      setPokemonName(formatPokemonName);
-      setPokemonId(pokeJson.id);
-    } catch (error) {
-      console.log('there was an error: ', error);
-    }
+    fetchPokeData(pokemonUrl)
+      .then(pokemonData => {
+        setPokemonId(pokemonData.pokemonId);
+        setPokemonName(pokemonData.pokemonName);
+        setPokemonSprite(pokemonData.pokemonSprite);
+      })
+      .catch(error => {
+        console.log('Error al obtener la pokemonData: ', error);
+      });
   };
 
   console.log('cambio el esteit del selector');
