@@ -5,6 +5,7 @@ import PokeCard from '../../cards/pokeCard/pokeCard';
 
 import getStyles from './styles';
 import { Pokimon } from '../../../screens/mainInfo/MainInfo';
+import fetchPokeData from '../../../services/fetchPokeData';
 
 interface PokeSelectorModalProps {
   isModalVisible: boolean;

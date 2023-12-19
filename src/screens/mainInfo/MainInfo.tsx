@@ -15,6 +15,8 @@ import getStyles from './styles';
 
 import { useTheme } from '../../context/ThemeContext';
 
+import config from '../../config';
+
 export type Pokimon = {
   name: string;
   url: string;
@@ -25,7 +27,8 @@ export const FlagContext = createContext(false);
 // export const CleffaContext = createContext(Response);
 
 const MainInfo = () => {
-  const url = 'https://pokeapi.co/api/v2/';
+  const url = config.API_URL;
+  console.log('url: ', url);
   // const endpoint = 'pokemon?limit=173&offset=0';
   const cleffaEndpoint = 'pokemon?limit=173';
   // const uri = `${url}${endpoint}`;
