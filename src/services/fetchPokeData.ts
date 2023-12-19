@@ -9,8 +9,13 @@ interface PokeDataReturn {
  * @param pokemonUrl the endpoint where the function will get the data from.
  * @returns Pokemon data to be displayed in Poke Cards.
  */
-const fetchPokeData = async (pokemonUrl: string): Promise<PokeDataReturn> => {
+const fetchPokeData = async (
+  pokemonUrl: string,
+): Promise<{ data: PokeDataReturn; isLoading: boolean }> => {
   try {
+    // TODO: Check how to return isLoading flag from here
+    // const isLoading = true;
+
     const pokemonResponse = await fetch(pokemonUrl);
     const pokeJson = await pokemonResponse.json();
     const formatPokemonName =
@@ -22,11 +27,11 @@ const fetchPokeData = async (pokemonUrl: string): Promise<PokeDataReturn> => {
       pokemonId: pokeJson.id,
     };
 
-    return pokemonData;
+    return { data: pokemonData, isLoading: false };
   } catch (error) {
     console.log('there was an error: ', error);
 
-    throw error;
+    throw { data: null, isLoading: false, error };
   }
 };
 
