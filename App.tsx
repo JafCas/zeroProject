@@ -1,4 +1,3 @@
-// TODO: Solve this issue
 import React from 'react';
 import { useColorScheme } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';

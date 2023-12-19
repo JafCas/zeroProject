@@ -33,7 +33,6 @@ export default function getStyles(changeFlag?: Animated.Value) {
       alignItems: 'center',
       justifyContent: 'center',
     },
-    // TODO: change for pkimage
     imageCircle: {
       width: 180,
       height: 180,
