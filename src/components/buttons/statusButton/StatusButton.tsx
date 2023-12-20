@@ -1,33 +1,25 @@
 import React, { useContext } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
 import { FlagContext } from '../../../screens/mainInfo/MainInfo';
+
 import { STATUS } from '../../../constants';
-import { Status } from '../../../assets/colors/mainColors';
+
+import getStyles from './styles';
 
 function StatusButton() {
-  const StatusContext = useContext(FlagContext);
+  const isStatusActive = useContext(FlagContext);
 
-  const styles = StyleSheet.create({
-    buttonContent: {
-      flexDirection: 'row',
-      alignItems: 'center',
-    },
-    statusCircle: {
-      height: 30,
-      width: 30,
-      borderRadius: 16,
-      backgroundColor: StatusContext ? Status.active : Status.inactive,
-      marginHorizontal: 10,
-    },
-    statusText: {
-      color: StatusContext ? Status.active : Status.inactive,
-      fontSize: 16,
-    },
-  });
+  const styles = getStyles(isStatusActive);
 
   return (
     <View style={styles.buttonContent}>
-      <View style={styles.statusCircle} />
+      <MaterialCommunityIcons
+        name="pokeball"
+        size={32}
+        style={styles.statusCircle}
+      />
       <Text style={styles.statusText}>{STATUS}</Text>
     </View>
   );
