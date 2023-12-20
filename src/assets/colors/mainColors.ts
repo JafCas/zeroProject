@@ -2,7 +2,7 @@ export const Colors = {
   rose: '#F11A7B',
   plum: '#982176',
   jordyBlue: '#adc7ff',
-  loadingJordyBlue: '#414361',
+  loadingJordyBlue: '#006DAA',
   tyrianPurple: '#3E001F',
   peach: '#FFE5AD',
   darkPeach: '#C28F21',
