@@ -48,7 +48,6 @@ export default function getStyles(changeFlag?: Animated.Value) {
       paddingHorizontal: 8,
     },
 
-    // isLoading = false
     numberTextView: {
       flex: 1,
       justifyContent: 'center',
@@ -95,6 +94,7 @@ export default function getStyles(changeFlag?: Animated.Value) {
       // backgroundColor: 'orange',
       borderRadius: 16,
     },
+
 
     largeImageView: {
       height: '100%',
