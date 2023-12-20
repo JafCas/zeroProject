@@ -10,10 +10,12 @@ import {
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import getStyles from './styles';
+import { Colors } from '../../../assets/colors/mainColors';
 
 type pokeCardProps = {
   onPress: () => void;
   imageUrl?: string;
+  isLoading: boolean;
   pokemonName?: string;
   pokemonNumer?: number;
   style?: ViewStyle;
@@ -22,6 +24,7 @@ type pokeCardProps = {
 export default function PokeCard({
   onPress,
   imageUrl,
+  isLoading,
   pokemonName = 'Hellow',
   pokemonNumer = 0,
   style,
@@ -56,35 +59,73 @@ export default function PokeCard({
     }).start();
   };
 
+  const displayPokemonNumer = isLoading ? ' ' : `# ${pokemonNumer}`;
+  const displayPokemonName = isLoading ? ' ' : pokemonName;
+  const numberTextViewStyle = isLoading
+    ? styles.loadingNumberTextView
+    : styles.numberTextView;
+  const nameTextViewStyle = isLoading
+    ? styles.loadingNameTextView
+    : styles.nameTextView;
+  const infoTextStyle = isLoading ? styles.loadingInfoText : styles.infoText;
+
   console.log('state en pokecard');
   return (
     <TouchableOpacity style={styles.pressCard} onPress={onPress}>
       <Animated.View style={[styles.pokeCardView, style]}>
         <View style={styles.largeImageView}>
-          {imageUrl !== '' && (
+          {imageUrl !== '' && !isLoading && (
             <Image style={styles.largeImage} source={{ uri: imageUrl }} />
           )}
         </View>
         <View style={styles.innerView}>
-          <View style={styles.pokeImageView}>
-            {imageUrl !== '' && (
-              <Image style={styles.imageCircle} source={{ uri: imageUrl }} />
-            )}
+          <View style={{ flex: 1, justifyContent: 'center' }}>
+            <View style={styles.pokeImageView}>
+              {isLoading ? (
+                <View
+                  style={{
+                    width: 64,
+                    height: 64,
+                    backgroundColor: Colors.loadingJordyBlue,
+                    borderRadius: 32,
+                  }}
+                ></View>
+              ) : (
+                <Image
+                  style={styles.imageCircle}
+                  source={{ uri: imageUrl }}
+                  // resizeMode="contain"
+                />
+              )}
+            </View>
+            {/* {{}} */}
           </View>
           <View style={styles.infoView}>
-            <View style={styles.numberTextView}>
-              <Text style={styles.infoText}>{`# ${pokemonNumer}`}</Text>
+            {/* TODO: change this to be a RESPONSIVE COMPONENT */}
+            <View style={numberTextViewStyle}>
+              <Text style={infoTextStyle}>{displayPokemonNumer}</Text>
             </View>
-            <View style={styles.nameTextView}>
-              <Text style={styles.infoText}>{pokemonName}</Text>
+            <View style={nameTextViewStyle}>
+              <Text style={infoTextStyle}>{displayPokemonName}</Text>
             </View>
           </View>
           <View style={styles.elementView}>
-            <AntDesign
-              name="customerservice"
-              size={32}
-              style={styles.elementIcon}
-            />
+            {isLoading ? (
+              <View
+                style={{
+                  backgroundColor: Colors.loadingJordyBlue,
+                  width: 32,
+                  height: 32,
+                  borderRadius: 16,
+                }}
+              />
+            ) : (
+              <AntDesign
+                name="customerservice"
+                size={32}
+                style={styles.elementIcon}
+              />
+            )}
           </View>
         </View>
       </Animated.View>

@@ -1,18 +1,11 @@
 import React, { useState } from 'react';
-import {
-  ActivityIndicator,
-  Modal,
-  SafeAreaView,
-  ScrollView,
-  View,
-} from 'react-native';
+import { Modal, SafeAreaView, ScrollView, View } from 'react-native';
 
 import PokeCard from '../../cards/pokeCard/pokeCard';
 
 import getStyles from './styles';
 import { Pokimon } from '../../../screens/mainInfo/MainInfo';
 import fetchPokeData from '../../../services/fetchPokeData';
-import { Colors } from '../../../assets/colors/mainColors';
 
 interface PokeSelectorModalProps {
   isModalVisible: boolean;
@@ -68,12 +61,9 @@ const PokeSelectorModal = ({
       <SafeAreaView style={styles.centeredView}>
         <View style={styles.modalView}>
           <ScrollView style={{ width: '100%', borderRadius: 16 }}>
-            {isLoading && (
-              // TODO: Add custom fading animation
-              <ActivityIndicator size="small" color={Colors.rose} />
-            )}
             <PokeCard
               onPress={onDisplayModal}
+              isLoading={isLoading}
               imageUrl={pokemonSprite}
               pokemonName={pokemonName}
               pokemonNumer={pokemonId}
