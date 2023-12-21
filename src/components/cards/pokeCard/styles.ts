@@ -5,7 +5,7 @@ export default function getStyles(changeFlag?: Animated.Value) {
   return StyleSheet.create({
     pressCard: {
       flex: 1,
-      width: '100%',
+      marginVertical: 4,
     },
 
     pokeCardView: {
@@ -13,16 +13,16 @@ export default function getStyles(changeFlag?: Animated.Value) {
       opacity: changeFlag,
       height: 120,
       borderRadius: 16,
-      shadowColor: 'black',
-      marginVertical: 4,
+      // shadowColor: Colors.lightTyrianPurple,
+      // marginVertical: 4,
 
       /** Android */
-      elevation: 8,
+      // elevation: 8,
 
-      /** iOS */
-      shadowOffset: { width: 0, height: 0 },
-      shadowOpacity: 0.4,
-      shadowRadius: 4,
+      // /** iOS */
+      // shadowOffset: { width: 0, height: 0 },
+      // shadowOpacity: 0.8,
+      // shadowRadius: 2,
     },
 
     innerView: {
@@ -94,7 +94,6 @@ export default function getStyles(changeFlag?: Animated.Value) {
       // backgroundColor: 'orange',
       borderRadius: 16,
     },
-
 
     largeImageView: {
       height: '100%',

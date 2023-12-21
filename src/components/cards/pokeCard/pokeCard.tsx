@@ -13,55 +13,59 @@ import getStyles from './styles';
 import { Colors } from '../../../assets/colors/mainColors';
 import { MotiView } from 'moti';
 
-type pokeCardProps = {
-  onPress: () => void;
+export type PokeData = {
   imageUrl?: string;
-  isLoading: boolean;
-  pokemonName?: string;
-  pokemonNumber?: number;
+  pokemonName: string | null;
+  pokemonNumber: number | null;
+};
+
+export type pokeCardProps = {
+  onPress?: () => void;
+  isLoading?: boolean;
+  data?: PokeData;
   style?: ViewStyle;
 };
 
 export default function PokeCard({
   onPress,
-  imageUrl,
   isLoading,
-  pokemonName = 'Hellow',
-  pokemonNumber = 0,
+  data,
   style,
 }: pokeCardProps) {
   const styles = getStyles();
 
-  const provitionalFunction = async () => {
-    console.log('card presionaa');
-    await setTimeout(() => {
-      changeIn();
-    }, 1000);
-    // changeIn();
-  };
+  // const provitionalFunction = async () => {
+  //   console.log('card presionaa');
+  //   await setTimeout(() => {
+  //     changeIn();
+  //   }, 1000);
+  //   // changeIn();
+  // };
 
-  const changeColor = useRef(new Animated.Value(0)).current;
+  // const changeColor = useRef(new Animated.Value(0)).current;
 
-  const changeIn = () => {
-    // Will change fadeAnim value to 1 in 0.5 seconds
-    Animated.timing(changeColor, {
-      toValue: 1,
-      duration: 500,
-      useNativeDriver: true,
-    }).start();
-  };
+  // const changeIn = () => {
+  //   // Will change fadeAnim value to 1 in 0.5 seconds
+  //   Animated.timing(changeColor, {
+  //     toValue: 1,
+  //     duration: 500,
+  //     useNativeDriver: true,
+  //   }).start();
+  // };
 
-  const changeOut = () => {
-    // Will change fadeAnim value to 0 in 0.5 seconds
-    Animated.timing(changeColor, {
-      toValue: 0,
-      duration: 500,
-      useNativeDriver: true,
-    }).start();
-  };
+  // const changeOut = () => {
+  //   // Will change fadeAnim value to 0 in 0.5 seconds
+  //   Animated.timing(changeColor, {
+  //     toValue: 0,
+  //     duration: 500,
+  //     useNativeDriver: true,
+  //   }).start();
+  // };
 
-  const displaypokemonNumber = isLoading ? ' ' : `# ${pokemonNumber}`;
-  const displayPokemonName = isLoading ? ' ' : pokemonName;
+  const displaypokemonNumber = isLoading
+    ? ' '
+    : `# ${data && data.pokemonNumber}`;
+  const displayPokemonName = isLoading ? ' ' : data && data.pokemonName;
   const numberTextViewStyle = isLoading
     ? styles.loadingNumberTextView
     : styles.numberTextView;
@@ -139,8 +143,12 @@ export default function PokeCard({
     <TouchableOpacity style={styles.pressCard} onPress={onPress}>
       <Animated.View style={[styles.pokeCardView, style]}>
         <View style={styles.largeImageView}>
-          {imageUrl !== '' && !isLoading && (
-            <Image style={styles.largeImage} source={{ uri: imageUrl }} />
+          {data && data.imageUrl !== '' && !isLoading && (
+            <Image
+              style={styles.largeImage}
+              // TODO: Cambiar el conditioning para data, quiza se necesite state changes, ojala no
+              source={{ uri: data && data.imageUrl }}
+            />
           )}
         </View>
         <View style={styles.innerView}>
@@ -194,7 +202,7 @@ export default function PokeCard({
                 <View style={styles.pokeImageView}>
                   <Image
                     style={styles.imageCircle}
-                    source={{ uri: imageUrl }}
+                    source={{ uri: data && data.imageUrl }}
                     // resizeMode="contain"
                   />
                 </View>

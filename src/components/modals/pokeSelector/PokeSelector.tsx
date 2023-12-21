@@ -1,5 +1,12 @@
-import React, { useState } from 'react';
-import { Modal, SafeAreaView, ScrollView, View } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import {
+  Animated,
+  FlatList,
+  Modal,
+  SafeAreaView,
+  ScrollView,
+  View,
+} from 'react-native';
 
 import PokeCard from '../../cards/pokeCard/pokeCard';
 
@@ -12,6 +19,27 @@ interface PokeSelectorModalProps {
   onDisplayModal: () => void;
   pokeData?: Pokimon[];
 }
+
+const DATA: PokeData[] = [
+  {
+    pokemonName: 'First Name',
+    imageUrl:
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/173.png',
+    pokemonNumber: 1,
+  },
+  {
+    pokemonName: 'Second Name',
+    imageUrl:
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/173.png',
+    pokemonNumber: 2,
+  },
+  {
+    pokemonName: 'Third Name',
+    imageUrl:
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/173.png',
+    pokemonNumber: 3,
+  },
+];
 
 const PokeSelectorModal = ({
   isModalVisible,
@@ -41,23 +69,20 @@ const PokeSelectorModal = ({
       });
   };
 
-  const renderPokeCards = () => {
-    const pokeCards = [];
-
-    for (let i = 0; i < 10; i++) {
-      pokeCards.push(
+  const RenderPokeCards = ({ pokeItem }: { pokeItem: PokeData }) => {
+    return (
         <PokeCard
-          key={i} // Asegúrate de proporcionar una clave única si estás utilizando una lista de componentes
+        // key={i} // Asegúrate de proporcionar una clave única si estás utilizando una lista de componentes
           onPress={onDisplayModal}
           isLoading={isLoading}
-          imageUrl={pokemonSprite}
-          pokemonName={pokemonName}
-          pokemonNumber={pokemonId}
-        />,
+        data={pokeItem}
+        // style={}
+      />
       );
-    }
+    // );
+    // }
 
-    return pokeCards;
+    // return pokeCards;
   };
 
   console.log('cambio el esteit del selector');
@@ -80,10 +105,24 @@ const PokeSelectorModal = ({
     >
       <SafeAreaView style={styles.centeredView}>
         <View style={styles.modalView}>
-          <ScrollView style={{ width: '100%', borderRadius: 16 }}>
-            {renderPokeCards()}
+          <View
+            style={{
+              flex: 1,
+              width: '100%',
+            }}
+          >
+            {/* {renderPokeCards()} */}
+            <FlatList
+              style={{ borderRadius: 16, margin: 8 }}
+              data={DATA}
+              renderItem={({ item: pokeItem }) => (
+                <RenderPokeCards pokeItem={pokeItem} />
+              )}
+              // keyExtractor={item => item.pokemonNumber?.toString()}
+              // style
+            />
             {/* )} */}
-          </ScrollView>
+          </View>
         </View>
       </SafeAreaView>
     </Modal>
