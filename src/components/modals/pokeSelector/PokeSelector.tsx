@@ -18,6 +18,8 @@ const PokeSelectorModal = ({
   onDisplayModal,
   pokeData,
 }: PokeSelectorModalProps) => {
+  const styles = getStyles();
+
   const [pokemonSprite, setPokemonSprite] = useState('');
   const [pokemonName, setPokemonName] = useState('');
   const [pokemonId, setPokemonId] = useState(0);
@@ -39,9 +41,27 @@ const PokeSelectorModal = ({
       });
   };
 
+  const renderPokeCards = () => {
+    const pokeCards = [];
+
+    for (let i = 0; i < 10; i++) {
+      pokeCards.push(
+        <PokeCard
+          key={i} // Asegúrate de proporcionar una clave única si estás utilizando una lista de componentes
+          onPress={onDisplayModal}
+          isLoading={isLoading}
+          imageUrl={pokemonSprite}
+          pokemonName={pokemonName}
+          pokemonNumber={pokemonId}
+        />,
+      );
+    }
+
+    return pokeCards;
+  };
+
   console.log('cambio el esteit del selector');
 
-  const styles = getStyles();
   return (
     <Modal
       animationType="fade"
@@ -61,13 +81,7 @@ const PokeSelectorModal = ({
       <SafeAreaView style={styles.centeredView}>
         <View style={styles.modalView}>
           <ScrollView style={{ width: '100%', borderRadius: 16 }}>
-            <PokeCard
-              onPress={onDisplayModal}
-              isLoading={isLoading}
-              imageUrl={pokemonSprite}
-              pokemonName={pokemonName}
-              pokemonNumer={pokemonId}
-            />
+            {renderPokeCards()}
             {/* )} */}
           </ScrollView>
         </View>

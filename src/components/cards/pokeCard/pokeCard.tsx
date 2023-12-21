@@ -18,7 +18,7 @@ type pokeCardProps = {
   imageUrl?: string;
   isLoading: boolean;
   pokemonName?: string;
-  pokemonNumer?: number;
+  pokemonNumber?: number;
   style?: ViewStyle;
 };
 
@@ -27,7 +27,7 @@ export default function PokeCard({
   imageUrl,
   isLoading,
   pokemonName = 'Hellow',
-  pokemonNumer = 0,
+  pokemonNumber = 0,
   style,
 }: pokeCardProps) {
   const styles = getStyles();
@@ -60,7 +60,7 @@ export default function PokeCard({
     }).start();
   };
 
-  const displayPokemonNumer = isLoading ? ' ' : `# ${pokemonNumer}`;
+  const displaypokemonNumber = isLoading ? ' ' : `# ${pokemonNumber}`;
   const displayPokemonName = isLoading ? ' ' : pokemonName;
   const numberTextViewStyle = isLoading
     ? styles.loadingNumberTextView
@@ -166,7 +166,7 @@ export default function PokeCard({
               <View style={styles.infoView}>
                 <View style={numberTextViewStyle}>
                   <LoadingAvatar>
-                    <Text style={infoTextStyle}>{displayPokemonNumer}</Text>
+                    <Text style={infoTextStyle}>{displaypokemonNumber}</Text>
                   </LoadingAvatar>
                 </View>
                 <View style={nameTextViewStyle}>
@@ -201,7 +201,7 @@ export default function PokeCard({
               </View>
               <View style={styles.infoView}>
                 <View style={numberTextViewStyle}>
-                  <Text style={infoTextStyle}>{displayPokemonNumer}</Text>
+                  <Text style={infoTextStyle}>{displaypokemonNumber}</Text>
                 </View>
                 <View style={nameTextViewStyle}>
                   <Text style={infoTextStyle}>{displayPokemonName}</Text>
