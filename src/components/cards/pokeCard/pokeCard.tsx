@@ -34,34 +34,6 @@ export default function PokeCard({
 }: pokeCardProps) {
   const styles = getStyles();
 
-  // const provitionalFunction = async () => {
-  //   console.log('card presionaa');
-  //   await setTimeout(() => {
-  //     changeIn();
-  //   }, 1000);
-  //   // changeIn();
-  // };
-
-  // const changeColor = useRef(new Animated.Value(0)).current;
-
-  // const changeIn = () => {
-  //   // Will change fadeAnim value to 1 in 0.5 seconds
-  //   Animated.timing(changeColor, {
-  //     toValue: 1,
-  //     duration: 500,
-  //     useNativeDriver: true,
-  //   }).start();
-  // };
-
-  // const changeOut = () => {
-  //   // Will change fadeAnim value to 0 in 0.5 seconds
-  //   Animated.timing(changeColor, {
-  //     toValue: 0,
-  //     duration: 500,
-  //     useNativeDriver: true,
-  //   }).start();
-  // };
-
   const displaypokemonNumber = isLoading
     ? ' '
     : `# ${data && data.pokemonNumber}`;
@@ -73,40 +45,6 @@ export default function PokeCard({
     ? styles.loadingNameTextView
     : styles.nameTextView;
   const infoTextStyle = isLoading ? styles.loadingInfoText : styles.infoText;
-
-  // const LoadingCircle = ({ size }: { size: number }) => {
-  //   return (
-  //     <MotiView
-  //       from={{
-  //         width: size,
-  //         height: size,
-  //         borderRadius: size / 2,
-  //       }}
-  //       animate={{
-  //         width: size + 20,
-  //         height: size + 20,
-  //         borderRadius: (size + 20) / 2,
-  //       }}
-  //       transition={{
-  //         type: 'timing',
-  //         duration: 800,
-  //         loop: true,
-  //       }}
-  //       style={{
-  //         width: size,
-  //         height: size,
-  //         borderRadius: size / 2,
-  //         borderWidth: size / 10,
-  //         borderColor: Colors.peach,
-  //         // neon effect
-  //         shadowColor: Colors.lightPeach,
-  //         shadowOffset: { width: 0, height: 0 },
-  //         shadowOpacity: 1,
-  //         shadowRadius: 4,
-  //       }}
-  //     />
-  //   );
-  // };
 
   interface LoadingAvatarProps {
     children: ReactElement;
@@ -138,7 +76,6 @@ export default function PokeCard({
     );
   };
 
-  console.log('state en pokecard');
   return (
     <TouchableOpacity style={styles.pressCard} onPress={onPress}>
       <Animated.View style={[styles.pokeCardView, style]}>
@@ -156,8 +93,6 @@ export default function PokeCard({
             <>
               <View style={{ flex: 1, justifyContent: 'center' }}>
                 <View style={styles.pokeImageView}>
-                  {/* // <LoadingCircle size={60} />
-                  // <LoadingAvatar size={60} /> */}
                   <LoadingAvatar>
                     <View
                       style={{
