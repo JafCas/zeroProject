@@ -12,9 +12,10 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import getStyles from './styles';
 import { Colors } from '../../../assets/colors/mainColors';
 import { MotiView } from 'moti';
+import { PokeDataReturn } from '../../../services/fetchPokeData';
 
 export type PokeData = {
-  imageUrl?: string;
+  pokemonSprite?: string;
   pokemonName: string | null;
   pokemonNumber: number | null;
 };
@@ -22,7 +23,7 @@ export type PokeData = {
 export type pokeCardProps = {
   onPress?: () => void;
   isLoading?: boolean;
-  data?: PokeData;
+  data?: PokeDataReturn;
   style?: ViewStyle;
 };
 
@@ -34,9 +35,7 @@ export default function PokeCard({
 }: pokeCardProps) {
   const styles = getStyles();
 
-  const displaypokemonNumber = isLoading
-    ? ' '
-    : `# ${data && data.pokemonNumber}`;
+  const displaypokemonNumber = isLoading ? ' ' : `# ${data && data.pokemonId}`;
   const displayPokemonName = isLoading ? ' ' : data && data.pokemonName;
   const numberTextViewStyle = isLoading
     ? styles.loadingNumberTextView
@@ -80,11 +79,11 @@ export default function PokeCard({
     <TouchableOpacity style={styles.pressCard} onPress={onPress}>
       <Animated.View style={[styles.pokeCardView, style]}>
         <View style={styles.largeImageView}>
-          {data && data.imageUrl !== '' && !isLoading && (
+          {data && data.pokemonSprite !== '' && !isLoading && (
             <Image
               style={styles.largeImage}
               // TODO: Cambiar el conditioning para data, quiza se necesite state changes, ojala no
-              source={{ uri: data && data.imageUrl }}
+              source={{ uri: data && data.pokemonSprite }}
             />
           )}
         </View>
@@ -137,7 +136,7 @@ export default function PokeCard({
                 <View style={styles.pokeImageView}>
                   <Image
                     style={styles.imageCircle}
-                    source={{ uri: data && data.imageUrl }}
+                    source={{ uri: data && data.pokemonSprite }}
                     // resizeMode="contain"
                   />
                 </View>

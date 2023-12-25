@@ -1,45 +1,17 @@
-import React, { useEffect, useRef, useState } from 'react';
-import {
-  Animated,
-  FlatList,
-  Modal,
-  SafeAreaView,
-  ScrollView,
-  View,
-} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { FlatList, Modal, SafeAreaView, View } from 'react-native';
 
-import PokeCard from '../../cards/pokeCard/pokeCard';
+import PokeCard, { pokeCardProps } from '../../cards/pokeCard/pokeCard';
 
 import getStyles from './styles';
 import { Pokimon } from '../../../screens/mainInfo/MainInfo';
-import fetchPokeData from '../../../services/fetchPokeData';
+import fetchPokeData, { PokeDataReturn } from '../../../services/fetchPokeData';
 
 interface PokeSelectorModalProps {
   isModalVisible: boolean;
   onDisplayModal: () => void;
-  pokeData?: Pokimon[];
+  pokeData: Pokimon[];
 }
-
-const DATA: PokeData[] = [
-  {
-    pokemonName: 'First Name',
-    imageUrl:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/173.png',
-    pokemonNumber: 1,
-  },
-  {
-    pokemonName: 'Second Name',
-    imageUrl:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/173.png',
-    pokemonNumber: 2,
-  },
-  {
-    pokemonName: 'Third Name',
-    imageUrl:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/173.png',
-    pokemonNumber: 3,
-  },
-];
 
 const PokeSelectorModal = ({
   isModalVisible,
@@ -48,56 +20,74 @@ const PokeSelectorModal = ({
 }: PokeSelectorModalProps) => {
   const styles = getStyles();
 
-  const [pokemonSprite, setPokemonSprite] = useState('');
-  const [pokemonName, setPokemonName] = useState('');
-  const [pokemonId, setPokemonId] = useState(0);
+  const [pokemonsData, setPokemonData] = useState<PokeDataReturn[]>([
+    {
+      pokemonSprite: undefined,
+      pokemonName: null,
+      pokemonId: null,
+    },
+  ]);
+  const [pokemons, setPokemons] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   // TODO: Mandar el fetch a una funcion exportable para solo mandarlo a llamar
   // y con ello, regresar la data del pokemon en cuestion
-  const getPokemonInfo = async (pokemonUrl: string) => {
-    fetchPokeData(pokemonUrl)
-      .then(pokemonData => {
-        setIsLoading(true);
-        setPokemonId(pokemonData.data.pokemonId);
-        setPokemonName(pokemonData.data.pokemonName);
-        setPokemonSprite(pokemonData.data.pokemonSprite);
-        setIsLoading(false);
-      })
-      .catch(error => {
-        console.log('Error al obtener la pokemonData: ', error);
-      });
+
+  const getPokemonInfo = async (pokemonUrl: string[]) => {
+    console.log('pokemon URL received: ', pokemonUrl);
+
+    try {
+      setIsLoading(true);
+      const pokeApiResponse = await fetchPokeData(pokemonUrl);
+      const pokeCardInfo = pokeApiResponse.data;
+      console.log('pokeCardInfo', pokeCardInfo);
+      setPokemonData(pokeCardInfo);
+    } catch (error) {
+      console.log('error al obtener la pokemonData: ', error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  const RenderPokeCards = ({ pokeItem }: { pokeItem: PokeData }) => {
+  const RenderPokeCards = ({ pokeItem }: { pokeItem: PokeDataReturn }) => {
     return (
-        <PokeCard
-        // key={i} // Asegúrate de proporcionar una clave única si estás utilizando una lista de componentes
-          onPress={onDisplayModal}
-          isLoading={isLoading}
+      <PokeCard
+        key={pokeItem.pokemonId} // Asegúrate de proporcionar una clave única si estás utilizando una lista de componentes
+        onPress={onDisplayModal}
+        isLoading={isLoading}
         data={pokeItem}
-        // style={}
       />
-      );
-    // );
-    // }
-
-    // return pokeCards;
+    );
   };
 
-  console.log('cambio el esteit del selector');
+  /**
+   * Map and store the first 10 pokemon url to display through cards.
+   * @param pokimonList The pokemon list whose url will be set into the state.
+   */
+  const callForPokeData = (pokimonList: Pokimon[]) => {
+    // obtain the first 10 URL
+    const firsUrls = pokimonList.slice(0, 10).map(pokemon => pokemon.url);
+    setPokemons(prevPokemons => [...prevPokemons, ...firsUrls]);
+  };
+
+  useEffect(() => {
+    if (pokeData.length > 0) {
+      callForPokeData(pokeData);
+    }
+  }, [pokeData]);
+
+  useEffect(() => {
+    if (pokemons.length > 0) {
+      getPokemonInfo(pokemons);
+    }
+  }, [pokemons]);
+
+  console.log('state changed in pokeselector');
 
   return (
     <Modal
-      animationType="fade"
+      animationType="slide"
       transparent={true}
-      onShow={() => {
-        pokeData?.map((pokimon, index) => {
-          if (index === 172) {
-            getPokemonInfo(pokimon.url);
-          }
-        });
-      }}
       visible={isModalVisible}
       onRequestClose={() => {
         console.log('cerrao');
@@ -111,17 +101,14 @@ const PokeSelectorModal = ({
               width: '100%',
             }}
           >
-            {/* {renderPokeCards()} */}
             <FlatList
               style={{ borderRadius: 16, margin: 8 }}
-              data={DATA}
+              data={pokemonsData}
               renderItem={({ item: pokeItem }) => (
                 <RenderPokeCards pokeItem={pokeItem} />
               )}
               // keyExtractor={item => item.pokemonNumber?.toString()}
-              // style
             />
-            {/* )} */}
           </View>
         </View>
       </SafeAreaView>
