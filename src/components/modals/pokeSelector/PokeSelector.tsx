@@ -31,15 +31,15 @@ const PokeSelectorModal = ({
     },
   ]);
 
-  // TODO: Mandar el fetch a una funcion exportable para solo mandarlo a llamar
-  // y con ello, regresar la data del pokemon en cuestion
-
+  /**
+   * Makes the API call and set isLoading value.
+   * @param pokemonUrl the list of Url that will be used to make the API call.
+   */
   const getPokemonInfo = async (pokemonUrl: string[]) => {
     try {
       setIsLoading(true);
       const { pokeData: data } = await fetchPokeData(pokemonUrl);
       const pokeCardInfo = data;
-      console.log('pokeCardInfo', pokeCardInfo);
       setPokeCardsData(pokeCardInfo);
     } catch (error) {
       console.log('error al obtener la pokemonData: ', error);

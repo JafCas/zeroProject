@@ -12,7 +12,6 @@ export interface PokeDataReturn {
 const fetchPokeData = async (
   pokemonUrls?: string[],
 ): Promise<{ pokeData: PokeDataReturn[] }> => {
-  console.log('running fetch');
   try {
     if (!pokemonUrls || pokemonUrls.length === 0) {
       return { pokeData: [] };
