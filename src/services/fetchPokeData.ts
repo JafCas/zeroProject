@@ -11,11 +11,11 @@ export interface PokeDataReturn {
  */
 const fetchPokeData = async (
   pokemonUrls?: string[],
-): Promise<{ data: PokeDataReturn[]; isLoading: boolean }> => {
+): Promise<{ pokeData: PokeDataReturn[] }> => {
   console.log('running fetch');
   try {
     if (!pokemonUrls || pokemonUrls.length === 0) {
-      return { data: [], isLoading: false };
+      return { pokeData: [] };
     }
 
     //Promise array for the API calls.
@@ -32,12 +32,9 @@ const fetchPokeData = async (
       } as PokeDataReturn;
     });
 
-    const pokemonData = await Promise.all(pokeApiResponses);
+    const pokeData = await Promise.all(pokeApiResponses);
 
-    return { data: pokemonData, isLoading: false };
-
-    //   // TODO: Check how to return isLoading flag from here
-    //   // const isLoading = true;
+    return { pokeData };
   } catch (error) {
     console.log('error: ', error);
 
