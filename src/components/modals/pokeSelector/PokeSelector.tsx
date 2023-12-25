@@ -23,7 +23,7 @@ const PokeSelectorModal = ({
   const styles = getStyles();
 
   const [isLoading, setIsLoading] = useState(true);
-  const [pokemonsData, setPokemonData] = useState<PokeDataReturn[]>([
+  const [pokeCardsData, setPokeCardsData] = useState<PokeDataReturn[]>([
     {
       pokemonSprite: undefined,
       pokemonName: null,
@@ -40,7 +40,7 @@ const PokeSelectorModal = ({
       const { pokeData: data } = await fetchPokeData(pokemonUrl);
       const pokeCardInfo = data;
       console.log('pokeCardInfo', pokeCardInfo);
-      setPokemonData(pokeCardInfo);
+      setPokeCardsData(pokeCardInfo);
     } catch (error) {
       console.log('error al obtener la pokemonData: ', error);
     } finally {
@@ -70,7 +70,7 @@ const PokeSelectorModal = ({
           <View style={{ flex: 1, width: '100%' }}>
             <FlatList
               style={{ borderRadius: 16, margin: 8 }}
-              data={pokemonsData}
+              data={pokeCardsData}
               renderItem={({ item: pokeItem }) => (
                 <PokeCard
                   key={pokeItem.pokemonId}
