@@ -68,19 +68,26 @@ const PokeSelectorModal = ({
       <SafeAreaView style={styles.centeredView}>
         <View style={styles.modalView}>
           <View style={{ flex: 1, width: '100%' }}>
-            <FlatList
-              style={{ borderRadius: 16, margin: 8 }}
-              data={pokeCardsData}
-              renderItem={({ item: pokeItem }) => (
-                <PokeCard
-                  key={pokeItem.pokemonId}
-                  onPress={onDisplayModal}
-                  isLoading={isLoading}
-                  data={pokeItem}
-                />
-              )}
-              // keyExtractor={item => item.pokemonNumber?.toString()}
-            />
+            {/* TODO: Add empty cards and modal content for empty scenario */}
+            {pokeCardsData && !isLoading ? (
+              <FlatList
+                style={{
+                  borderRadius: 16,
+                  margin: 6,
+                }}
+                data={pokeCardsData}
+                renderItem={({ item: pokeItem }) =>
+                  pokeItem ? (
+                    <PokeCard
+                      key={pokeItem.pokemonId}
+                      onPress={onDisplayModal}
+                      isLoading={isLoading}
+                      data={pokeItem}
+                    />
+                  ) : null
+                }
+              />
+            ) : null}
           </View>
         </View>
       </SafeAreaView>

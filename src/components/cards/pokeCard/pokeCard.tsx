@@ -1,17 +1,12 @@
-import React, { ReactElement, useRef } from 'react';
-import {
-  Animated,
-  Image,
-  Text,
-  TouchableOpacity,
-  View,
-  ViewStyle,
-} from 'react-native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
+import React, { ReactElement } from 'react';
+import { Image, Text, TouchableOpacity, View, ViewStyle } from 'react-native';
+import AntDesign from 'react-native-vector-icons/MaterialCommunityIcons';
+import { MotiView } from 'moti';
+
+import { Colors } from '../../../assets/colors/mainColors';
 
 import getStyles from './styles';
-import { Colors } from '../../../assets/colors/mainColors';
-import { MotiView } from 'moti';
+
 import { PokeDataReturn } from '../../../services/fetchPokeData';
 
 export type PokeData = {
@@ -48,6 +43,7 @@ export default function PokeCard({
   interface LoadingAvatarProps {
     children: ReactElement;
   }
+  console.log('rendering pokecard');
 
   const LoadingAvatar = ({ children }: LoadingAvatarProps) => {
     return (
@@ -62,12 +58,8 @@ export default function PokeCard({
         }}
         transition={{
           type: 'timing',
-          duration: 669,
+          duration: 740,
           loop: true,
-        }}
-        style={{
-          opacity: 0,
-          // width: 0,
         }}
       >
         {children}
@@ -77,7 +69,7 @@ export default function PokeCard({
 
   return (
     <TouchableOpacity style={styles.pressCard} onPress={onPress}>
-      <Animated.View style={[styles.pokeCardView, style]}>
+      <View style={[styles.pokeCardView, style]}>
         <View style={styles.largeImageView}>
           {data && data.pokemonSprite !== '' && !isLoading && (
             <Image
@@ -95,9 +87,9 @@ export default function PokeCard({
                   <LoadingAvatar>
                     <View
                       style={{
-                        width: 64,
-                        height: 64,
-                        backgroundColor: Colors.loadingJordyBlue,
+                        width: 60,
+                        height: 60,
+                        backgroundColor: Colors.darkTyrianPurple,
                         borderRadius: 32,
                         opacity: 1,
                       }}
@@ -119,13 +111,10 @@ export default function PokeCard({
               </View>
               <View style={styles.elementView}>
                 <LoadingAvatar>
-                  <View
-                    style={{
-                      backgroundColor: Colors.loadingJordyBlue,
-                      width: 32,
-                      height: 32,
-                      borderRadius: 16,
-                    }}
+                  <AntDesign
+                    name="pokeball"
+                    size={32}
+                    style={styles.elementIcon}
                   />
                 </LoadingAvatar>
               </View>
@@ -151,7 +140,7 @@ export default function PokeCard({
               </View>
               <View style={styles.elementView}>
                 <AntDesign
-                  name="customerservice"
+                  name="pokeball"
                   size={32}
                   style={styles.elementIcon}
                 />
@@ -159,7 +148,7 @@ export default function PokeCard({
             </>
           )}
         </View>
-      </Animated.View>
+      </View>
     </TouchableOpacity>
   );
 }

@@ -1,7 +1,7 @@
-import { Animated, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Colors } from '../../../assets/colors/mainColors';
 
-export default function getStyles(changeFlag?: Animated.Value) {
+export default function getStyles() {
   return StyleSheet.create({
     pressCard: {
       flex: 1,
@@ -10,19 +10,8 @@ export default function getStyles(changeFlag?: Animated.Value) {
 
     pokeCardView: {
       backgroundColor: Colors.jordyBlue,
-      opacity: changeFlag,
-      height: 120,
+      height: 82,
       borderRadius: 16,
-      // shadowColor: Colors.lightTyrianPurple,
-      // marginVertical: 4,
-
-      /** Android */
-      // elevation: 8,
-
-      // /** iOS */
-      // shadowOffset: { width: 0, height: 0 },
-      // shadowOpacity: 0.8,
-      // shadowRadius: 2,
     },
 
     innerView: {
@@ -38,8 +27,8 @@ export default function getStyles(changeFlag?: Animated.Value) {
     },
 
     imageCircle: {
-      width: 180,
-      height: 180,
+      width: 64,
+      height: 64,
     },
 
     infoView: {
@@ -97,18 +86,18 @@ export default function getStyles(changeFlag?: Animated.Value) {
 
     largeImageView: {
       height: '100%',
-      width: '80%',
+      width: '100%',
       position: 'absolute',
       alignSelf: 'center',
+      borderRadius: 16,
       opacity: 0.4,
-      // backgroundColor: 'white',
+      overflow: 'hidden',
     },
 
     largeImage: {
       height: '100%',
       width: '360%',
       alignSelf: 'center',
-      opacity: 0.4,
     },
   });
 }
