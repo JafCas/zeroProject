@@ -56,25 +56,12 @@ export default function getStyles() {
       borderRadius: 16,
       backgroundColor: Colors.darkTyrianPurple,
     },
-    loadingNameTextView: {
-      justifyContent: 'center',
-      borderRadius: 16,
-      overflow: 'hidden',
-      backgroundColor: 'white',
-    },
     loadingCircleView: {
       width: 60,
       height: 60,
       backgroundColor: Colors.darkTyrianPurple,
       borderRadius: 32,
       opacity: 1,
-    },
-
-    loadingInfoText: {
-      fontSize: 22,
-      width: '100%',
-      backgroundColor: Colors.loadingJordyBlue,
-      // borderRadius: 16,
     },
 
     elementView: {
@@ -87,8 +74,6 @@ export default function getStyles() {
     elementIcon: {
       width: 32,
       height: 32,
-      // color: 'black',
-      // backgroundColor: 'orange',
       borderRadius: 16,
     },
 

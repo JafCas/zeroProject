@@ -30,16 +30,6 @@ export default function PokeCard({
 }: pokeCardProps) {
   const styles = getStyles();
 
-  const displaypokemonNumber = isLoading ? ' ' : `# ${data && data.pokemonId}`;
-  const displayPokemonName = isLoading ? ' ' : data && data.pokemonName;
-  const numberTextViewStyle = isLoading
-    ? styles.emptyInfoView
-    : styles.numberTextView;
-  const nameTextViewStyle = isLoading
-    ? styles.loadingNameTextView
-    : styles.nameTextView;
-  const infoTextStyle = isLoading ? styles.loadingInfoText : styles.infoText;
-
   interface LoadingAvatarProps {
     children: ReactElement;
   }
@@ -67,6 +57,36 @@ export default function PokeCard({
     );
   };
 
+  const DisplayLoadingCard = () => {
+    return (
+      <>
+        <View style={styles.pokeImageView}>
+          <LoadingAvatar>
+            <View style={styles.loadingCircleView} />
+          </LoadingAvatar>
+        </View>
+        <View style={styles.infoView}>
+          <LoadingAvatar>
+            <View style={styles.emptyInfoView} />
+          </LoadingAvatar>
+          <LoadingAvatar>
+            <View style={styles.emptyInfoView} />
+          </LoadingAvatar>
+        </View>
+        <View style={styles.elementView}>
+          <LoadingAvatar>
+            <AntDesign
+              name="circle"
+              size={32}
+              style={styles.elementIcon}
+              color={Colors.darkTyrianPurple}
+            />
+          </LoadingAvatar>
+        </View>
+      </>
+    );
+  };
+
   return (
     <TouchableOpacity style={[styles.pressCard, style]} onPress={onPress}>
       <View style={styles.largeImageView}>
@@ -80,31 +100,7 @@ export default function PokeCard({
       </View>
       <View style={styles.innerView}>
         {isLoading ? (
-          <>
-            <View style={styles.pokeImageView}>
-              <LoadingAvatar>
-                <View style={styles.loadingCircleView} />
-              </LoadingAvatar>
-            </View>
-            <View style={styles.infoView}>
-              <LoadingAvatar>
-                <View style={styles.emptyInfoView} />
-              </LoadingAvatar>
-              <LoadingAvatar>
-                <View style={styles.emptyInfoView} />
-              </LoadingAvatar>
-            </View>
-            <View style={styles.elementView}>
-              <LoadingAvatar>
-                <AntDesign
-                  name="circle"
-                  size={32}
-                  style={styles.elementIcon}
-                  color={Colors.darkTyrianPurple}
-                />
-              </LoadingAvatar>
-            </View>
-          </>
+          <DisplayLoadingCard />
         ) : (
           <>
             <View style={styles.pokeImageView}>
@@ -114,11 +110,13 @@ export default function PokeCard({
               />
             </View>
             <View style={styles.infoView}>
-              <View style={numberTextViewStyle}>
-                <Text style={infoTextStyle}>{displaypokemonNumber}</Text>
+              <View style={styles.numberTextView}>
+                <Text style={styles.infoText}>{`# ${
+                  data && data.pokemonId
+                }`}</Text>
               </View>
-              <View style={nameTextViewStyle}>
-                <Text style={infoTextStyle}>{displayPokemonName}</Text>
+              <View style={styles.nameTextView}>
+                <Text style={styles.infoText}>{data && data.pokemonName}</Text>
               </View>
             </View>
             <View style={styles.elementView}>

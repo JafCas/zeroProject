@@ -9,8 +9,9 @@ export default function getStyles() {
       alignItems: 'center',
     },
     modalView: {
+      flex: 1,
       alignItems: 'center',
-      backgroundColor: '#800080a0',
+      // backgroundColor: '#800080a0',
       // backgroundColor:
       //   Platform.OS === 'android' ? Colors.darkPeach : Colors.loadingJordyBlue,
       borderRadius: 20,
@@ -22,13 +23,14 @@ export default function getStyles() {
       elevation: 5,
 
       /** iOS */
-      shadowColor: '#000',
-      shadowOffset: {
-        width: 0,
-        height: 2,
-      },
-      shadowOpacity: 0.6,
-      shadowRadius: 8,
+      shadowOpacity: 0.2,
+      shadowRadius: 4,
+    },
+    flatListView: {
+      borderRadius: 16,
+      margin: 6,
+      flex: 1,
+      width: '100%',
     },
   });
 }
