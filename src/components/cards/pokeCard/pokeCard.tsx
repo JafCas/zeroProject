@@ -7,7 +7,7 @@ import { Colors } from '../../../assets/colors/mainColors';
 
 import getStyles from './styles';
 
-import { PokeDataReturn } from '../../../services/fetchPokeData';
+import { PokeCardDataReturn } from '../../../services/fetchPokeData';
 
 export type PokeData = {
   pokemonSprite?: string;
@@ -18,7 +18,7 @@ export type PokeData = {
 export type pokeCardProps = {
   onPress?: () => void;
   isLoading?: boolean;
-  data?: PokeDataReturn;
+  data?: PokeCardDataReturn;
   style?: ViewStyle;
 };
 

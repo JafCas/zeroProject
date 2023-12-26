@@ -6,7 +6,7 @@ import MyPokeDisplay from '../myPokeDisplay/MyPokeDisplay';
 
 // Styles
 import { optionsArray } from '../../components/misc/optionsArray';
-import PokeSelectorModal from '../../components/modals/pokeSelector/PokeSelector';
+import PokeSelectorModal from '../../components/modals/pokeSelector/PokeSelectorModal';
 import StatusButton from '../../components/buttons/statusButton/StatusButton';
 
 import { HEADER_TEXT } from '../../constants';

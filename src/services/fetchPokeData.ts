@@ -1,4 +1,4 @@
-export interface PokeDataReturn {
+export interface PokeCardDataReturn {
   pokemonId: number | null;
   pokemonName: string | null;
   pokemonSprite?: string;
@@ -9,9 +9,9 @@ export interface PokeDataReturn {
  * @param pokemonUrls the endpoint where the function will get the data from.
  * @returns Pokemon data to be displayed in Poke Cards.
  */
-const fetchPokeData = async (
+const fetchPokeCardData = async (
   pokemonUrls?: string[],
-): Promise<{ pokeData: PokeDataReturn[] }> => {
+): Promise<{ pokeData: PokeCardDataReturn[] }> => {
   try {
     if (!pokemonUrls || pokemonUrls.length === 0) {
       return { pokeData: [] };
@@ -28,7 +28,7 @@ const fetchPokeData = async (
         pokemonId: pokeJson.id,
         pokemonName: formatPokemonName,
         pokemonSprite: pokeJson.sprites.front_default,
-      } as PokeDataReturn;
+      } as PokeCardDataReturn;
     });
 
     const pokeData = await Promise.all(pokeApiResponses);
@@ -41,4 +41,4 @@ const fetchPokeData = async (
   }
 };
 
-export default fetchPokeData;
+export default fetchPokeCardData;

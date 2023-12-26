@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, Modal, SafeAreaView, View } from 'react-native';
 
-import fetchPokeData, { PokeDataReturn } from '../../../services/fetchPokeData';
+import fetchPokeCardData, {
+  PokeCardDataReturn,
+} from '../../../services/fetchPokeData';
 
 import getStyles from './styles';
 
@@ -23,7 +25,7 @@ const PokeSelectorModal = ({
   const styles = getStyles();
 
   const [isLoading, setIsLoading] = useState(true);
-  const [pokeCardsData, setPokeCardsData] = useState<PokeDataReturn[]>([
+  const [pokeCardsData, setPokeCardsData] = useState<PokeCardDataReturn[]>([
     {
       pokemonSprite: undefined,
       pokemonName: null,
@@ -38,7 +40,7 @@ const PokeSelectorModal = ({
   const getPokemonInfo = async (pokemonUrl: string[]) => {
     try {
       setIsLoading(true);
-      const { pokeData: data } = await fetchPokeData(pokemonUrl);
+      const { pokeData: data } = await fetchPokeCardData(pokemonUrl);
       const pokeCardInfo = data;
       setPokeCardsData(pokeCardInfo);
     } catch (error) {
