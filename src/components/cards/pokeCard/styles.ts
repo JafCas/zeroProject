@@ -6,9 +6,6 @@ export default function getStyles() {
     pressCard: {
       flex: 1,
       marginVertical: 4,
-    },
-
-    pokeCardView: {
       backgroundColor: Colors.jordyBlue,
       height: 82,
       borderRadius: 16,
@@ -21,19 +18,19 @@ export default function getStyles() {
     },
 
     pokeImageView: {
-      flex: 1,
+      flex: 2,
       alignItems: 'center',
       justifyContent: 'center',
     },
 
     imageCircle: {
-      width: 64,
-      height: 64,
+      width: 72,
+      height: 72,
     },
 
     infoView: {
-      flex: 3,
-      justifyContent: 'center',
+      flex: 4,
+      justifyContent: 'space-around',
       paddingHorizontal: 8,
     },
 
@@ -53,13 +50,24 @@ export default function getStyles() {
     },
 
     // isLoading = true
-    loadingNumberTextView: {
-      flex: 1,
-      justifyContent: 'center',
+    emptyInfoView: {
+      width: '100%',
+      height: 24,
+      borderRadius: 16,
+      backgroundColor: Colors.darkTyrianPurple,
     },
     loadingNameTextView: {
-      flex: 1,
       justifyContent: 'center',
+      borderRadius: 16,
+      overflow: 'hidden',
+      backgroundColor: 'white',
+    },
+    loadingCircleView: {
+      width: 60,
+      height: 60,
+      backgroundColor: Colors.darkTyrianPurple,
+      borderRadius: 32,
+      opacity: 1,
     },
 
     loadingInfoText: {
