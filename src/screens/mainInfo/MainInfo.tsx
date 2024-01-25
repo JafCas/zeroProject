@@ -51,10 +51,8 @@ const MainInfo = () => {
       setIsLoading(true);
       const response = await fetch(cleffaUri);
       const json = await response.json();
-      console.log('fetch response', response);
       if (response.status === 200) {
         setPokemonResults(json.results);
-        console.log('json that has been sent', json.results);
       }
     } catch (error) {
       console.log(error);
@@ -62,8 +60,6 @@ const MainInfo = () => {
       setIsLoading(false);
     }
   };
-
-  // console.log('cambio el esteit');
 
   return (
     <SafeAreaView style={styles.safeAreaView}>

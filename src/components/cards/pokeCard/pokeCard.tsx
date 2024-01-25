@@ -33,7 +33,6 @@ export default function PokeCard({
   interface LoadingAvatarProps {
     children: ReactElement;
   }
-  console.log('rendering pokecard');
 
   const LoadingAvatar = ({ children }: LoadingAvatarProps) => {
     return (
