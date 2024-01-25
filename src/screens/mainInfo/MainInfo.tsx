@@ -6,7 +6,7 @@ import MyPokeDisplay from '../myPokeDisplay/MyPokeDisplay';
 
 // Styles
 import { optionsArray } from '../../components/misc/optionsArray';
-import PokeSelectorModal from '../../components/modals/pokeSelector/PokeSelector';
+import PokeSelectorModal from '../../components/modals/pokeSelector/PokeSelectorModal';
 import StatusButton from '../../components/buttons/statusButton/StatusButton';
 
 import { HEADER_TEXT } from '../../constants';
@@ -28,7 +28,6 @@ export const FlagContext = createContext(false);
 
 const MainInfo = () => {
   const url = config.API_URL;
-  console.log('url: ', url);
   // const endpoint = 'pokemon?limit=173&offset=0';
   const cleffaEndpoint = 'pokemon?limit=173';
   // const uri = `${url}${endpoint}`;
@@ -52,7 +51,6 @@ const MainInfo = () => {
       setIsLoading(true);
       const response = await fetch(cleffaUri);
       const json = await response.json();
-      console.log('response', response);
       if (response.status === 200) {
         setPokemonResults(json.results);
       }
@@ -63,11 +61,9 @@ const MainInfo = () => {
     }
   };
 
-  console.log('cambio el esteit');
-
   return (
     <SafeAreaView style={styles.safeAreaView}>
-      {isModalVisible && isLoading === false && (
+      {isModalVisible && !isLoading && (
         <PokeSelectorModal
           isModalVisible={isModalVisible}
           pokeData={pokemonResults}

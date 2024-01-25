@@ -1,38 +1,44 @@
-interface PokeDataReturn {
-  pokemonSprite: string;
-  pokemonName: string;
-  pokemonId: number;
+export interface PokeCardDataReturn {
+  pokemonId: number | null;
+  pokemonName: string | null;
+  pokemonSprite?: string;
 }
 
 /**
  * Function to call the Pokemon API and get each Pokemon Data.
- * @param pokemonUrl the endpoint where the function will get the data from.
+ * @param pokemonUrls the endpoint where the function will get the data from.
  * @returns Pokemon data to be displayed in Poke Cards.
  */
-const fetchPokeData = async (
-  pokemonUrl: string,
-): Promise<{ data: PokeDataReturn; isLoading: boolean }> => {
+const fetchPokeCardData = async (
+  pokemonUrls?: string[],
+): Promise<{ pokeData: PokeCardDataReturn[] }> => {
   try {
-    // TODO: Check how to return isLoading flag from here
-    // const isLoading = true;
+    if (!pokemonUrls || pokemonUrls.length === 0) {
+      return { pokeData: [] };
+    }
 
-    const pokemonResponse = await fetch(pokemonUrl);
-    const pokeJson = await pokemonResponse.json();
-    const formatPokemonName =
-      pokeJson.name.charAt(0).toUpperCase() + pokeJson.name.slice(1);
+    //Promise array for the API calls.
+    const pokeApiResponses = pokemonUrls.map(async url => {
+      const response = await fetch(url);
+      const pokeJson = await response.json();
+      const formatPokemonName =
+        pokeJson.name.charAt(0).toUpperCase() + pokeJson.name.slice(1);
 
-    const pokemonData: PokeDataReturn = {
-      pokemonSprite: pokeJson.sprites.front_default,
-      pokemonName: formatPokemonName,
-      pokemonId: pokeJson.id,
-    };
+      return {
+        pokemonId: pokeJson.id,
+        pokemonName: formatPokemonName,
+        pokemonSprite: pokeJson.sprites.front_default,
+      } as PokeCardDataReturn;
+    });
 
-    return { data: pokemonData, isLoading: false };
+    const pokeData = await Promise.all(pokeApiResponses);
+
+    return { pokeData };
   } catch (error) {
-    console.log('there was an error: ', error);
+    console.log('error: ', error);
 
     throw { data: null, isLoading: false, error };
   }
 };
 
-export default fetchPokeData;
+export default fetchPokeCardData;

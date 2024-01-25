@@ -1,108 +1,34 @@
-import React, { ReactElement, useRef } from 'react';
-import {
-  Animated,
-  Image,
-  Text,
-  TouchableOpacity,
-  View,
-  ViewStyle,
-} from 'react-native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-
-import getStyles from './styles';
-import { Colors } from '../../../assets/colors/mainColors';
+import React, { ReactElement } from 'react';
+import { Image, Text, TouchableOpacity, View, ViewStyle } from 'react-native';
+import AntDesign from 'react-native-vector-icons/MaterialCommunityIcons';
 import { MotiView } from 'moti';
 
-type pokeCardProps = {
-  onPress: () => void;
-  imageUrl?: string;
-  isLoading: boolean;
-  pokemonName?: string;
-  pokemonNumber?: number;
+import { Colors } from '../../../assets/colors/mainColors';
+
+import getStyles from './styles';
+
+import { PokeCardDataReturn } from '../../../services/fetchPokeData';
+
+export type PokeData = {
+  pokemonSprite?: string;
+  pokemonName: string | null;
+  pokemonNumber: number | null;
+};
+
+export type pokeCardProps = {
+  onPress?: () => void;
+  isLoading?: boolean;
+  data?: PokeCardDataReturn;
   style?: ViewStyle;
 };
 
 export default function PokeCard({
   onPress,
-  imageUrl,
   isLoading,
-  pokemonName = 'Hellow',
-  pokemonNumber = 0,
+  data,
   style,
 }: pokeCardProps) {
   const styles = getStyles();
-
-  const provitionalFunction = async () => {
-    console.log('card presionaa');
-    await setTimeout(() => {
-      changeIn();
-    }, 1000);
-    // changeIn();
-  };
-
-  const changeColor = useRef(new Animated.Value(0)).current;
-
-  const changeIn = () => {
-    // Will change fadeAnim value to 1 in 0.5 seconds
-    Animated.timing(changeColor, {
-      toValue: 1,
-      duration: 500,
-      useNativeDriver: true,
-    }).start();
-  };
-
-  const changeOut = () => {
-    // Will change fadeAnim value to 0 in 0.5 seconds
-    Animated.timing(changeColor, {
-      toValue: 0,
-      duration: 500,
-      useNativeDriver: true,
-    }).start();
-  };
-
-  const displaypokemonNumber = isLoading ? ' ' : `# ${pokemonNumber}`;
-  const displayPokemonName = isLoading ? ' ' : pokemonName;
-  const numberTextViewStyle = isLoading
-    ? styles.loadingNumberTextView
-    : styles.numberTextView;
-  const nameTextViewStyle = isLoading
-    ? styles.loadingNameTextView
-    : styles.nameTextView;
-  const infoTextStyle = isLoading ? styles.loadingInfoText : styles.infoText;
-
-  // const LoadingCircle = ({ size }: { size: number }) => {
-  //   return (
-  //     <MotiView
-  //       from={{
-  //         width: size,
-  //         height: size,
-  //         borderRadius: size / 2,
-  //       }}
-  //       animate={{
-  //         width: size + 20,
-  //         height: size + 20,
-  //         borderRadius: (size + 20) / 2,
-  //       }}
-  //       transition={{
-  //         type: 'timing',
-  //         duration: 800,
-  //         loop: true,
-  //       }}
-  //       style={{
-  //         width: size,
-  //         height: size,
-  //         borderRadius: size / 2,
-  //         borderWidth: size / 10,
-  //         borderColor: Colors.peach,
-  //         // neon effect
-  //         shadowColor: Colors.lightPeach,
-  //         shadowOffset: { width: 0, height: 0 },
-  //         shadowOpacity: 1,
-  //         shadowRadius: 4,
-  //       }}
-  //     />
-  //   );
-  // };
 
   interface LoadingAvatarProps {
     children: ReactElement;
@@ -121,12 +47,8 @@ export default function PokeCard({
         }}
         transition={{
           type: 'timing',
-          duration: 669,
+          duration: 740,
           loop: true,
-        }}
-        style={{
-          opacity: 0,
-          // width: 0,
         }}
       >
         {children}
@@ -134,90 +56,74 @@ export default function PokeCard({
     );
   };
 
-  console.log('state en pokecard');
+  const DisplayLoadingCard = () => {
+    return (
+      <>
+        <View style={styles.pokeImageView}>
+          <LoadingAvatar>
+            <View style={styles.loadingCircleView} />
+          </LoadingAvatar>
+        </View>
+        <View style={styles.infoView}>
+          <LoadingAvatar>
+            <View style={styles.emptyInfoView} />
+          </LoadingAvatar>
+          <LoadingAvatar>
+            <View style={styles.emptyInfoView} />
+          </LoadingAvatar>
+        </View>
+        <View style={styles.elementView}>
+          <LoadingAvatar>
+            <AntDesign
+              name="circle"
+              size={32}
+              style={styles.elementIcon}
+              color={Colors.darkTyrianPurple}
+            />
+          </LoadingAvatar>
+        </View>
+      </>
+    );
+  };
+
   return (
-    <TouchableOpacity style={styles.pressCard} onPress={onPress}>
-      <Animated.View style={[styles.pokeCardView, style]}>
-        <View style={styles.largeImageView}>
-          {imageUrl !== '' && !isLoading && (
-            <Image style={styles.largeImage} source={{ uri: imageUrl }} />
-          )}
-        </View>
-        <View style={styles.innerView}>
-          {isLoading ? (
-            <>
-              <View style={{ flex: 1, justifyContent: 'center' }}>
-                <View style={styles.pokeImageView}>
-                  {/* // <LoadingCircle size={60} />
-                  // <LoadingAvatar size={60} /> */}
-                  <LoadingAvatar>
-                    <View
-                      style={{
-                        width: 64,
-                        height: 64,
-                        backgroundColor: Colors.loadingJordyBlue,
-                        borderRadius: 32,
-                        opacity: 1,
-                      }}
-                    />
-                  </LoadingAvatar>
-                </View>
+    <TouchableOpacity style={[styles.pressCard, style]} onPress={onPress}>
+      <View style={styles.largeImageView}>
+        {data && data.pokemonSprite !== '' && !isLoading && (
+          <Image
+            style={styles.largeImage}
+            // TODO: Cambiar el conditioning para data, quiza se necesite state changes, ojala no
+            source={{ uri: data && data.pokemonSprite }}
+          />
+        )}
+      </View>
+      <View style={styles.innerView}>
+        {isLoading ? (
+          <DisplayLoadingCard />
+        ) : (
+          <>
+            <View style={styles.pokeImageView}>
+              <Image
+                style={styles.imageCircle}
+                source={{ uri: data && data.pokemonSprite }}
+              />
+            </View>
+            <View style={styles.infoView}>
+              <View style={styles.numberTextView}>
+                <Text style={styles.infoText}>{`# ${
+                  data && data.pokemonId
+                }`}</Text>
               </View>
-              <View style={styles.infoView}>
-                <View style={numberTextViewStyle}>
-                  <LoadingAvatar>
-                    <Text style={infoTextStyle}>{displaypokemonNumber}</Text>
-                  </LoadingAvatar>
-                </View>
-                <View style={nameTextViewStyle}>
-                  <LoadingAvatar>
-                    <Text style={infoTextStyle}>{displayPokemonName}</Text>
-                  </LoadingAvatar>
-                </View>
+              <View style={styles.nameTextView}>
+                <Text style={styles.infoText}>{data && data.pokemonName}</Text>
               </View>
-              <View style={styles.elementView}>
-                <LoadingAvatar>
-                  <View
-                    style={{
-                      backgroundColor: Colors.loadingJordyBlue,
-                      width: 32,
-                      height: 32,
-                      borderRadius: 16,
-                    }}
-                  />
-                </LoadingAvatar>
-              </View>
-            </>
-          ) : (
-            <>
-              <View style={{ flex: 1, justifyContent: 'center' }}>
-                <View style={styles.pokeImageView}>
-                  <Image
-                    style={styles.imageCircle}
-                    source={{ uri: imageUrl }}
-                    // resizeMode="contain"
-                  />
-                </View>
-              </View>
-              <View style={styles.infoView}>
-                <View style={numberTextViewStyle}>
-                  <Text style={infoTextStyle}>{displaypokemonNumber}</Text>
-                </View>
-                <View style={nameTextViewStyle}>
-                  <Text style={infoTextStyle}>{displayPokemonName}</Text>
-                </View>
-              </View>
-              <View style={styles.elementView}>
-                <AntDesign
-                  name="customerservice"
-                  size={32}
-                  style={styles.elementIcon}
-                />
-              </View>
-            </>
-          )}
-        </View>
-      </Animated.View>
+            </View>
+            <View style={styles.elementView}>
+              <AntDesign name="pokeball" size={32} style={styles.elementIcon} />
+            </View>
+          </>
+        )}
+      </View>
     </TouchableOpacity>
   );
 }

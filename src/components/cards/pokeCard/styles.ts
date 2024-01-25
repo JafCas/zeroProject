@@ -1,28 +1,14 @@
-import { Animated, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Colors } from '../../../assets/colors/mainColors';
 
-export default function getStyles(changeFlag?: Animated.Value) {
+export default function getStyles() {
   return StyleSheet.create({
     pressCard: {
       flex: 1,
-      width: '100%',
-    },
-
-    pokeCardView: {
-      backgroundColor: Colors.jordyBlue,
-      opacity: changeFlag,
-      height: 120,
-      borderRadius: 16,
-      shadowColor: 'black',
       marginVertical: 4,
-
-      /** Android */
-      elevation: 8,
-
-      /** iOS */
-      shadowOffset: { width: 0, height: 0 },
-      shadowOpacity: 0.4,
-      shadowRadius: 4,
+      backgroundColor: Colors.jordyBlue,
+      height: 82,
+      borderRadius: 16,
     },
 
     innerView: {
@@ -32,19 +18,19 @@ export default function getStyles(changeFlag?: Animated.Value) {
     },
 
     pokeImageView: {
-      flex: 1,
+      flex: 2,
       alignItems: 'center',
       justifyContent: 'center',
     },
 
     imageCircle: {
-      width: 180,
-      height: 180,
+      width: 72,
+      height: 72,
     },
 
     infoView: {
-      flex: 3,
-      justifyContent: 'center',
+      flex: 4,
+      justifyContent: 'space-around',
       paddingHorizontal: 8,
     },
 
@@ -64,20 +50,18 @@ export default function getStyles(changeFlag?: Animated.Value) {
     },
 
     // isLoading = true
-    loadingNumberTextView: {
-      flex: 1,
-      justifyContent: 'center',
-    },
-    loadingNameTextView: {
-      flex: 1,
-      justifyContent: 'center',
-    },
-
-    loadingInfoText: {
-      fontSize: 22,
+    emptyInfoView: {
       width: '100%',
-      backgroundColor: Colors.loadingJordyBlue,
-      // borderRadius: 16,
+      height: 24,
+      borderRadius: 16,
+      backgroundColor: Colors.darkTyrianPurple,
+    },
+    loadingCircleView: {
+      width: 60,
+      height: 60,
+      backgroundColor: Colors.darkTyrianPurple,
+      borderRadius: 32,
+      opacity: 1,
     },
 
     elementView: {
@@ -90,26 +74,23 @@ export default function getStyles(changeFlag?: Animated.Value) {
     elementIcon: {
       width: 32,
       height: 32,
-      // color: 'black',
-      // backgroundColor: 'orange',
       borderRadius: 16,
     },
 
-
     largeImageView: {
       height: '100%',
-      width: '80%',
+      width: '100%',
       position: 'absolute',
       alignSelf: 'center',
+      borderRadius: 16,
       opacity: 0.4,
-      // backgroundColor: 'white',
+      overflow: 'hidden',
     },
 
     largeImage: {
       height: '100%',
       width: '360%',
       alignSelf: 'center',
-      opacity: 0.4,
     },
   });
 }

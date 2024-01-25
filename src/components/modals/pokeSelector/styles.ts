@@ -9,22 +9,28 @@ export default function getStyles() {
       alignItems: 'center',
     },
     modalView: {
-      backgroundColor: Platform.OS === 'android' ? '#800080a0' : '#f5f5dcbb',
-      borderRadius: 20,
-      padding: 8,
+      flex: 1,
       alignItems: 'center',
-      shadowColor: '#000',
-      shadowOffset: {
-        width: 0,
-        height: 2,
-      },
-      shadowOpacity: 0.25,
-      shadowRadius: 4,
-      elevation: 5,
+      // backgroundColor: '#800080a0',
+      // backgroundColor:
+      //   Platform.OS === 'android' ? Colors.darkPeach : Colors.loadingJordyBlue,
+      borderRadius: 20,
       width: '96%',
       height: '96%',
       opacity: 1,
-      paddingVertical: 8,
+
+      /** Android */
+      elevation: 5,
+
+      /** iOS */
+      shadowOpacity: 0.2,
+      shadowRadius: 4,
+    },
+    flatListView: {
+      borderRadius: 16,
+      margin: 6,
+      flex: 1,
+      width: '100%',
     },
   });
 }
