@@ -7,7 +7,7 @@ import SignIn from './src/screens/signIn/SignIn';
 import MainInfo from './src/screens/mainInfo/MainInfo';
 import { ThemeContext } from './src/context/ThemeContext';
 import { Provider } from 'react-redux';
-import store from './src/app/store';
+import { store } from './src/app/store';
 import { Counter } from './src/counter/Counter';
 
 const Stack = createNativeStackNavigator();
