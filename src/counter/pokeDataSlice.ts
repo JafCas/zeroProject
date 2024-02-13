@@ -17,7 +17,7 @@ const initialState: CounterState = {
   element: '',
 };
 
-export const counterSlice = createSlice({
+export const pokeDataSlice = createSlice({
   name: 'cardData',
   initialState,
   reducers: {
@@ -58,7 +58,7 @@ export const {
   CARD_DATA_SET_SPRITE,
   CARD_DATA_SET_NAME,
   CARD_DATA_SET_ELEMENT,
-} = counterSlice.actions;
+} = pokeDataSlice.actions;
 
 export const selectPokemonId = (state: RootState) =>
   state.pokemonData.pokemonId;
@@ -69,4 +69,4 @@ export const selectPokemonName = (state: RootState) =>
 export const selectPokemonElement = (state: RootState) =>
   state.pokemonData.element;
 
-export default counterSlice.reducer;
+export default pokeDataSlice.reducer;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CARD_DATA_SET_ID, decrement, increment, incrementByAmount } from './counterSlice';
+import { CARD_DATA_SET_ID, decrement, increment, incrementByAmount } from './pokeDataSlice';
 import { Button, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 
