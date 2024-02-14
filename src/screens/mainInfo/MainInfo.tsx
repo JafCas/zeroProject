@@ -76,6 +76,7 @@ const MainInfo = () => {
           pokeData={pokemonResults}
           onDisplayModal={() => {
             setIsModalVisible(false);
+            // dispatch(CARD_DATA_SET_NAME('hAllo Hallo'));
           }}
         />
       )}

@@ -10,6 +10,8 @@ import getStyles from './styles';
 import PokeCard from '../../cards/pokeCard/pokeCard';
 
 import { Pokimon } from '../../../screens/mainInfo/MainInfo';
+import { useAppDispatch } from '../../../app/hooks';
+import { CARD_DATA_SET_NAME } from '../../../counter/pokeDataSlice';
 
 interface PokeSelectorModalProps {
   isModalVisible: boolean;
@@ -50,6 +52,13 @@ const PokeSelectorModal = ({
     }
   };
 
+  const dispatch = useAppDispatch();
+
+  const onCardPress = (pokemonName: string) => {
+    onDisplayModal();
+    dispatch(CARD_DATA_SET_NAME(pokemonName));
+  };
+
   // Map and store the first 10 pokemon url to display through cards.
   useEffect(() => {
     if (pokeData.length > 0) {
@@ -78,7 +87,7 @@ const PokeSelectorModal = ({
                 pokeItem ? (
                   <PokeCard
                     key={pokeItem.pokemonId}
-                    onPress={onDisplayModal}
+                    onPress={() => onCardPress(pokeItem.pokemonName || '')}
                     isLoading={isLoading}
                     data={pokeItem}
                   />
