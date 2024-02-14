@@ -16,9 +16,9 @@ const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
-    <ReduxProvider store={store}>
-      {/* <ThemeContext.Provider value={isDarkMode}>
-        <NavigationContainer>
+    <ThemeContext.Provider value={isDarkMode}>
+      <NavigationContainer>
+        <ReduxProvider store={store}>
           <Stack.Navigator initialRouteName="MainInfo">
             <Stack.Screen
               name="SignIn"
@@ -31,12 +31,9 @@ const App = () => {
               options={{ headerShown: false }}
             />
           </Stack.Navigator>
-        </NavigationContainer>
-      </ThemeContext.Provider> */}
-      <SafeAreaView>
-        <Counter />
-      </SafeAreaView>
-    </ReduxProvider>
+        </ReduxProvider>
+      </NavigationContainer>
+    </ThemeContext.Provider>
   );
 };
 
