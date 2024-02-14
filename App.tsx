@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, useColorScheme } from 'react-native';
+import { useColorScheme } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -8,7 +8,6 @@ import MainInfo from './src/screens/mainInfo/MainInfo';
 import { ThemeContext } from './src/context/ThemeContext';
 import { Provider as ReduxProvider } from 'react-redux';
 import { store } from './src/app/store';
-import { Counter } from './src/counter/Counter';
 
 const Stack = createNativeStackNavigator();
 
