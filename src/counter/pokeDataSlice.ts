@@ -1,5 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../app/store';
+import { HEADER_TEXT } from '../constants';
 
 interface CounterState {
   value: number;
@@ -13,7 +14,7 @@ const initialState: CounterState = {
   value: 0,
   pokemonId: 0,
   spriteUri: '',
-  pokemonName: '',
+  pokemonName: HEADER_TEXT,
   element: '',
 };
 

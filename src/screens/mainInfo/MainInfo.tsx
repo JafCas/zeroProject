@@ -9,13 +9,14 @@ import { optionsArray } from '../../components/misc/optionsArray';
 import PokeSelectorModal from '../../components/modals/pokeSelector/PokeSelectorModal';
 import StatusButton from '../../components/buttons/statusButton/StatusButton';
 
-import { HEADER_TEXT } from '../../constants';
-
 import getStyles from './styles';
 
 import { useTheme } from '../../context/ThemeContext';
 
 import config from '../../config';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+
+import { CARD_DATA_SET_NAME } from '../../counter/pokeDataSlice';
 
 export type Pokimon = {
   name: string;
@@ -37,6 +38,10 @@ const MainInfo = () => {
   const [pokemonResults, setPokemonResults] = useState<Pokimon[]>([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isLoading, setIsLoading] = useState<boolean | null>(null);
+
+  const pickedName = useAppSelector(state => state.pokemonData.pokemonName);
+
+  const dispatch = useAppDispatch();
 
   const isDarkMode = useTheme();
   const styles = getStyles(isDarkMode, isStatusActive);
@@ -61,6 +66,8 @@ const MainInfo = () => {
     }
   };
 
+  console.log('cambia el esteit');
+
   return (
     <SafeAreaView style={styles.safeAreaView}>
       {isModalVisible && !isLoading && (
@@ -82,14 +89,17 @@ const MainInfo = () => {
         </View>
         <View style={styles.headerView}>
           <View>
-            <Text style={styles.headerText}>{HEADER_TEXT}</Text>
+            <Text style={styles.headerText}>{pickedName}</Text>
           </View>
           <View style={styles.square} />
         </View>
         <View style={styles.optionsView}>
           {optionsArray.map((option, index) => {
             return (
-              <TouchableOpacity key={index}>
+              <TouchableOpacity
+                key={index}
+                onPress={() => dispatch(CARD_DATA_SET_NAME('hAllo Hallo'))} // Use the imported action
+              >
                 <Text style={styles.optionsText}>
                   {option.name.toUpperCase()}
                 </Text>

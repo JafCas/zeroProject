@@ -20,27 +20,25 @@ export function Counter() {
 
   return (
     <View>
+      <TouchableOpacity onPress={() => dispatch(increment())}>
+        <Text>Increment</Text>
+      </TouchableOpacity>
+      <Text>{pickedId}</Text>
+      <TouchableOpacity onPress={() => dispatch(decrement())}>
+        <Text>Decrement</Text>
+      </TouchableOpacity>
       <View>
-        <TouchableOpacity onPress={() => dispatch(increment())}>
-          <Text>Increment</Text>
-        </TouchableOpacity>
-        <Text>{pickedId}</Text>
-        <TouchableOpacity onPress={() => dispatch(decrement())}>
-          <Text>Decrement</Text>
-        </TouchableOpacity>
-        <View>
-          <TextInput
-            onChangeText={setCounterValue}
-            value={counterValue}
-            keyboardType="numeric"
-          />
-          <Button
-            title="incrementAmount"
-            onPress={() => {
-              dispatch(CARD_DATA_SET_ID(Number(counterValue) || 0));
-            }}
-          />
-        </View>
+        <TextInput
+          onChangeText={setCounterValue}
+          value={counterValue}
+          keyboardType="numeric"
+        />
+        <Button
+          title="incrementAmount"
+          onPress={() => {
+            dispatch(CARD_DATA_SET_ID(Number(counterValue) || 0));
+          }}
+        />
       </View>
     </View>
   );
