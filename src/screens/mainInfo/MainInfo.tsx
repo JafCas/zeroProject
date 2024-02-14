@@ -40,6 +40,7 @@ const MainInfo = () => {
   const [isLoading, setIsLoading] = useState<boolean | null>(null);
 
   const pickedName = useAppSelector(state => state.pokemonData.pokemonName);
+  const pickedId = useAppSelector(state => state.pokemonData.pokemonId);
 
   const dispatch = useAppDispatch();
 
@@ -49,8 +50,11 @@ const MainInfo = () => {
   const photoUrl =
     'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/173.png';
 
+  const isPokemonSelected = pickedId !== 0;
+
   const onStatusTrigger = async () => {
-    setIsStatusActive(!isStatusActive);
+    // const isPokemonSelected = pickedId !== 0;
+    // setIsStatusActive(isPokemonSelected);
     setIsModalVisible(true);
     try {
       setIsLoading(true);
@@ -63,6 +67,7 @@ const MainInfo = () => {
       console.log(error);
     } finally {
       setIsLoading(false);
+      // setIsStatusActive(isPokemonSelected);
     }
   };
 
@@ -76,21 +81,20 @@ const MainInfo = () => {
           pokeData={pokemonResults}
           onDisplayModal={() => {
             setIsModalVisible(false);
-            // dispatch(CARD_DATA_SET_NAME('hAllo Hallo'));
           }}
         />
       )}
       <View style={styles.container}>
         <View style={styles.statusView}>
           <TouchableOpacity onPress={onStatusTrigger}>
-            <FlagContext.Provider value={isStatusActive}>
-              <StatusButton />
+            <FlagContext.Provider value={isPokemonSelected}>
+              <StatusButton statusId={pickedName} />
             </FlagContext.Provider>
           </TouchableOpacity>
         </View>
         <View style={styles.headerView}>
           <View>
-            <Text style={styles.headerText}>{pickedName}</Text>
+            <Text style={styles.headerText}>{`#${pickedId}`}</Text>
           </View>
           <View style={styles.square} />
         </View>
