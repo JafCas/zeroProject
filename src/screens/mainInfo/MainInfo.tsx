@@ -53,8 +53,6 @@ const MainInfo = () => {
   const isPokemonSelected = pickedId !== 0;
 
   const onStatusTrigger = async () => {
-    // const isPokemonSelected = pickedId !== 0;
-    // setIsStatusActive(isPokemonSelected);
     setIsModalVisible(true);
     try {
       setIsLoading(true);
@@ -70,8 +68,6 @@ const MainInfo = () => {
       // setIsStatusActive(isPokemonSelected);
     }
   };
-
-  console.log('cambia el esteit');
 
   return (
     <SafeAreaView style={styles.safeAreaView}>
@@ -101,10 +97,7 @@ const MainInfo = () => {
         <View style={styles.optionsView}>
           {optionsArray.map((option, index) => {
             return (
-              <TouchableOpacity
-                key={index}
-                onPress={() => dispatch(CARD_DATA_SET_NAME('hAllo Hallo'))} // Use the imported action
-              >
+              <TouchableOpacity key={index}>
                 <Text style={styles.optionsText}>
                   {option.name.toUpperCase()}
                 </Text>
