@@ -14,7 +14,7 @@ import getStyles from './styles';
 import { useTheme } from '../../context/ThemeContext';
 
 import config from '../../config';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../context/redux/hooks';
 
 import { CARD_DATA_SET_NAME } from '../../counter/pokeDataSlice';
 

@@ -6,7 +6,7 @@ import {
   incrementByAmount,
 } from './pokeDataSlice';
 import { Button, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import { useAppDispatch, useAppSelector } from '../app/hooks';
+import { useAppDispatch, useAppSelector } from '../context/redux/hooks';
 
 export function Counter() {
   const count = useAppSelector(state => state.pokemonData.value);

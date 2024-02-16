@@ -10,7 +10,7 @@ import getStyles from './styles';
 import PokeCard from '../../cards/pokeCard/pokeCard';
 
 import { Pokimon } from '../../../screens/mainInfo/MainInfo';
-import { useAppDispatch } from '../../../app/hooks';
+import { useAppDispatch } from '../../../context/redux/hooks';
 import {
   CARD_DATA_SET_ID,
   CARD_DATA_SET_NAME,
