@@ -66,7 +66,7 @@ export default function getStyles() {
 
     elementView: {
       flex: 1,
-      alignItems: 'flex-end',
+      alignItems: 'center',
       justifyContent: 'center',
       paddingTop: 8,
       paddingEnd: 8,

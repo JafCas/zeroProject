@@ -7,7 +7,7 @@ interface CounterState {
   pokemonId: number;
   spriteUri: string;
   pokemonName: string;
-  element: string;
+  pokemonTypes: string[];
 }
 
 const initialState: CounterState = {
@@ -15,7 +15,7 @@ const initialState: CounterState = {
   pokemonId: 0,
   spriteUri: '',
   pokemonName: STATUS,
-  element: '',
+  pokemonTypes: [],
 };
 
 export const pokeDataSlice = createSlice({
@@ -44,8 +44,8 @@ export const pokeDataSlice = createSlice({
     CARD_DATA_SET_NAME: (state, action: PayloadAction<string>) => {
       state.pokemonName = action.payload;
     },
-    CARD_DATA_SET_ELEMENT: (state, action: PayloadAction<string>) => {
-      state.element = action.payload;
+    CARD_DATA_SET_TYPES: (state, action: PayloadAction<string[]>) => {
+      state.pokemonTypes = action.payload;
     },
   },
 });
@@ -58,7 +58,7 @@ export const {
   CARD_DATA_SET_ID,
   CARD_DATA_SET_SPRITE,
   CARD_DATA_SET_NAME,
-  CARD_DATA_SET_ELEMENT,
+  CARD_DATA_SET_TYPES,
 } = pokeDataSlice.actions;
 
 export const selectPokemonId = (state: RootState) =>
@@ -67,7 +67,7 @@ export const selectPokemonSprite = (state: RootState) =>
   state.pokemonData.spriteUri;
 export const selectPokemonName = (state: RootState) =>
   state.pokemonData.pokemonName;
-export const selectPokemonElement = (state: RootState) =>
-  state.pokemonData.element;
+export const selectPokemonTypes = (state: RootState) =>
+  state.pokemonData.pokemonTypes;
 
 export default pokeDataSlice.reducer;

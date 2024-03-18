@@ -120,12 +120,18 @@ export default function PokeCard({
               </View>
             </View>
             <View style={styles.elementView}>
-              <MaterialIcon
-                name="water-drop"
+              {data &&
+                data.pokemonTypes &&
+                data.pokemonTypes.length > 0 &&
+                data.pokemonTypes.map((type, index) => (
+                  <MaterialCommunityIcon
+                    key={index}
+                    name={type.type.name}
                 size={32}
                 style={styles.elementIcon}
                 color={Colors.loadingJordyBlue}
               />
+                ))}
             </View>
           </>
         )}

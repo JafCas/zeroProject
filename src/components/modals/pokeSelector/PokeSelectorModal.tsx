@@ -3,6 +3,7 @@ import { FlatList, Modal, SafeAreaView, View } from 'react-native';
 
 import fetchPokeCardData, {
   PokeCardDataReturn,
+  PokemonType,
 } from '../../../services/fetchPokeData';
 
 import getStyles from './styles';
@@ -14,6 +15,7 @@ import { useAppDispatch } from '../../../context/redux/hooks';
 import {
   CARD_DATA_SET_ID,
   CARD_DATA_SET_NAME,
+  CARD_DATA_SET_TYPES,
 } from '../../../counter/pokeDataSlice';
 
 interface PokeSelectorModalProps {
@@ -35,6 +37,7 @@ const PokeSelectorModal = ({
       pokemonSprite: undefined,
       pokemonName: null,
       pokemonId: null,
+      pokemonTypes: [],
     },
   ]);
 
@@ -57,10 +60,20 @@ const PokeSelectorModal = ({
 
   const dispatch = useAppDispatch();
 
-  const onCardPress = (pokemonName: string, pokemonId: number) => {
+  const onCardPress = (
+    pokemonName: string,
+    pokemonId: number,
+    pokemonTypes: PokemonType[],
+  ) => {
+    let pokemonTypesArray: string[] = [];
+    pokemonTypes.map(type => {
+      pokemonTypesArray.push(type.type.name);
+    });
+
     onDisplayModal();
     dispatch(CARD_DATA_SET_NAME(pokemonName));
     dispatch(CARD_DATA_SET_ID(pokemonId));
+    dispatch(CARD_DATA_SET_TYPES(pokemonTypesArray));
   };
 
   // Map and store the first 10 pokemon url to display through cards.
@@ -91,12 +104,13 @@ const PokeSelectorModal = ({
                 pokeItem ? (
                   <PokeCard
                     key={pokeItem.pokemonId}
-                    onPress={() =>
+                    onPress={() => {
                       onCardPress(
                         pokeItem.pokemonName || '',
                         pokeItem.pokemonId || 0,
-                      )
-                    }
+                        pokeItem.pokemonTypes || [],
+                      );
+                    }}
                     isLoading={isLoading}
                     data={pokeItem}
                   />
