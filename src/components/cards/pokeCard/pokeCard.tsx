@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react';
 import { Image, Text, TouchableOpacity, View, ViewStyle } from 'react-native';
-import AntDesign from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import { MotiView } from 'moti';
 
 import { Colors } from '../../../assets/colors/mainColors';
@@ -74,7 +75,7 @@ export default function PokeCard({
         </View>
         <View style={styles.elementView}>
           <LoadingAvatar>
-            <AntDesign
+            <MaterialCommunityIcon
               name="circle"
               size={32}
               style={styles.elementIcon}
@@ -119,7 +120,12 @@ export default function PokeCard({
               </View>
             </View>
             <View style={styles.elementView}>
-              <AntDesign name="pokeball" size={32} style={styles.elementIcon} />
+              <MaterialIcon
+                name="water-drop"
+                size={32}
+                style={styles.elementIcon}
+                color={Colors.loadingJordyBlue}
+              />
             </View>
           </>
         )}
