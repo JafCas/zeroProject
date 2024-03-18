@@ -6,12 +6,27 @@ export default function getStyles() {
     pressCard: {
       flex: 1,
       marginVertical: 4,
-      backgroundColor: Colors.jordyBlue,
+      backgroundColor: '#474747b2',
       height: 82,
       borderRadius: 16,
     },
 
-    innerView: {
+    largeImageView: {
+      height: '100%',
+      width: '100%',
+      position: 'absolute',
+      borderRadius: 16,
+      opacity: 0.7,
+      overflow: 'hidden',
+    },
+
+    largeImage: {
+      height: '100%',
+      width: '360%',
+      alignSelf: 'center',
+    },
+
+    insideCardView: {
       flex: 1,
       margin: 4,
       flexDirection: 'row',
@@ -24,8 +39,8 @@ export default function getStyles() {
     },
 
     imageCircle: {
-      width: 72,
-      height: 72,
+      width: 80,
+      height: 80,
     },
 
     infoView: {
@@ -42,11 +57,17 @@ export default function getStyles() {
       flex: 1,
       justifyContent: 'center',
       alignItems: 'flex-end',
-      // ver: 20,
     },
 
     infoText: {
       fontSize: 22,
+    },
+
+    typeIconsView: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingEnd: 8,
     },
 
     // isLoading = true
@@ -62,35 +83,6 @@ export default function getStyles() {
       backgroundColor: Colors.darkTyrianPurple,
       borderRadius: 32,
       opacity: 1,
-    },
-
-    elementView: {
-      flex: 1,
-      alignItems: 'flex-end',
-      paddingTop: 8,
-      paddingEnd: 8,
-    },
-
-    elementIcon: {
-      width: 32,
-      height: 32,
-      borderRadius: 16,
-    },
-
-    largeImageView: {
-      height: '100%',
-      width: '100%',
-      position: 'absolute',
-      alignSelf: 'center',
-      borderRadius: 16,
-      opacity: 0.4,
-      overflow: 'hidden',
-    },
-
-    largeImage: {
-      height: '100%',
-      width: '360%',
-      alignSelf: 'center',
     },
   });
 }

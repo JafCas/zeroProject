@@ -1,7 +1,16 @@
+export type PokemonType = {
+  slot: number;
+  type: {
+    name: string;
+    url: string;
+  };
+};
+
 export interface PokeCardDataReturn {
   pokemonId: number | null;
   pokemonName: string | null;
   pokemonSprite?: string;
+  pokemonTypes?: PokemonType[];
 }
 
 /**
@@ -28,6 +37,7 @@ const fetchPokeCardData = async (
         pokemonId: pokeJson.id,
         pokemonName: formatPokemonName,
         pokemonSprite: pokeJson.sprites.front_default,
+        pokemonTypes: pokeJson.types,
       } as PokeCardDataReturn;
     });
 

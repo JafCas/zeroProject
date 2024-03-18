@@ -3,6 +3,7 @@ import { FlatList, Modal, SafeAreaView, View } from 'react-native';
 
 import fetchPokeCardData, {
   PokeCardDataReturn,
+  PokemonType,
 } from '../../../services/fetchPokeData';
 
 import getStyles from './styles';
@@ -10,6 +11,12 @@ import getStyles from './styles';
 import PokeCard from '../../cards/pokeCard/pokeCard';
 
 import { Pokimon } from '../../../screens/mainInfo/MainInfo';
+import { useAppDispatch } from '../../../context/redux/hooks';
+import {
+  CARD_DATA_SET_ID,
+  CARD_DATA_SET_NAME,
+  CARD_DATA_SET_TYPES,
+} from '../../../counter/pokeDataSlice';
 
 interface PokeSelectorModalProps {
   isModalVisible: boolean;
@@ -30,6 +37,7 @@ const PokeSelectorModal = ({
       pokemonSprite: undefined,
       pokemonName: null,
       pokemonId: null,
+      pokemonTypes: [],
     },
   ]);
 
@@ -50,6 +58,24 @@ const PokeSelectorModal = ({
     }
   };
 
+  const dispatch = useAppDispatch();
+
+  const onCardPress = (
+    pokemonName: string,
+    pokemonId: number,
+    pokemonTypes: PokemonType[],
+  ) => {
+    let pokemonTypesArray: string[] = [];
+    pokemonTypes.map(type => {
+      pokemonTypesArray.push(type.type.name);
+    });
+
+    onDisplayModal();
+    dispatch(CARD_DATA_SET_NAME(pokemonName));
+    dispatch(CARD_DATA_SET_ID(pokemonId));
+    dispatch(CARD_DATA_SET_TYPES(pokemonTypesArray));
+  };
+
   // Map and store the first 10 pokemon url to display through cards.
   useEffect(() => {
     if (pokeData.length > 0) {
@@ -60,25 +86,32 @@ const PokeSelectorModal = ({
 
   return (
     <Modal
-      animationType="slide"
+      animationType="fade"
       transparent={true}
       visible={isModalVisible}
       onRequestClose={() => {
         console.log('cerrao');
       }}
     >
-      <SafeAreaView style={styles.centeredView}>
+      <SafeAreaView style={styles.modalBackgroundView}>
         <View style={styles.modalView}>
           {/* TODO: Add empty cards and modal content for empty scenario */}
           {pokeCardsData && !isLoading ? (
             <FlatList
+              showsVerticalScrollIndicator={false}
               style={styles.flatListView}
               data={pokeCardsData}
               renderItem={({ item: pokeItem }) =>
                 pokeItem ? (
                   <PokeCard
                     key={pokeItem.pokemonId}
-                    onPress={onDisplayModal}
+                    onPress={() => {
+                      onCardPress(
+                        pokeItem.pokemonName || '',
+                        pokeItem.pokemonId || 0,
+                        pokeItem.pokemonTypes || [],
+                      );
+                    }}
                     isLoading={isLoading}
                     data={pokeItem}
                   />

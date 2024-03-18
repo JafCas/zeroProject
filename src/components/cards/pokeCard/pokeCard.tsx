@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react';
 import { Image, Text, TouchableOpacity, View, ViewStyle } from 'react-native';
-import AntDesign from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import { MotiView } from 'moti';
 
 import { Colors } from '../../../assets/colors/mainColors';
@@ -8,6 +9,7 @@ import { Colors } from '../../../assets/colors/mainColors';
 import getStyles from './styles';
 
 import { PokeCardDataReturn } from '../../../services/fetchPokeData';
+import TypeBadge from '../../badges/TypeBadge';
 
 export type PokeData = {
   pokemonSprite?: string;
@@ -74,7 +76,7 @@ export default function PokeCard({
         </View>
         <View style={styles.elementView}>
           <LoadingAvatar>
-            <AntDesign
+            <MaterialCommunityIcon
               name="circle"
               size={32}
               style={styles.elementIcon}
@@ -85,6 +87,8 @@ export default function PokeCard({
       </>
     );
   };
+
+  // console.log('data: ', data);
 
   return (
     <TouchableOpacity style={[styles.pressCard, style]} onPress={onPress}>
@@ -97,7 +101,7 @@ export default function PokeCard({
           />
         )}
       </View>
-      <View style={styles.innerView}>
+      <View style={styles.insideCardView}>
         {isLoading ? (
           <DisplayLoadingCard />
         ) : (
@@ -118,8 +122,13 @@ export default function PokeCard({
                 <Text style={styles.infoText}>{data && data.pokemonName}</Text>
               </View>
             </View>
-            <View style={styles.elementView}>
-              <AntDesign name="pokeball" size={32} style={styles.elementIcon} />
+            <View style={styles.typeIconsView}>
+              {data &&
+                data.pokemonTypes &&
+                data.pokemonTypes.length &&
+                data.pokemonTypes.map((type, index) => (
+                  <TypeBadge key={index} iconName={type.type.name} />
+                ))}
             </View>
           </>
         )}

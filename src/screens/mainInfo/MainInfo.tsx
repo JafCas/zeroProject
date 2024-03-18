@@ -9,13 +9,15 @@ import { optionsArray } from '../../components/misc/optionsArray';
 import PokeSelectorModal from '../../components/modals/pokeSelector/PokeSelectorModal';
 import StatusButton from '../../components/buttons/statusButton/StatusButton';
 
-import { HEADER_TEXT } from '../../constants';
-
 import getStyles from './styles';
 
 import { useTheme } from '../../context/ThemeContext';
 
 import config from '../../config';
+import { useAppDispatch, useAppSelector } from '../../context/redux/hooks';
+
+import { CARD_DATA_SET_NAME } from '../../counter/pokeDataSlice';
+import TypeBadge from '../../components/badges/TypeBadge';
 
 export type Pokimon = {
   name: string;
@@ -38,14 +40,21 @@ const MainInfo = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isLoading, setIsLoading] = useState<boolean | null>(null);
 
+  const pickedName = useAppSelector(state => state.pokemonData.pokemonName);
+  const pickedId = useAppSelector(state => state.pokemonData.pokemonId);
+  const pickedTypes = useAppSelector(state => state.pokemonData.pokemonTypes);
+
+  const dispatch = useAppDispatch();
+
   const isDarkMode = useTheme();
   const styles = getStyles(isDarkMode, isStatusActive);
 
   const photoUrl =
     'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/173.png';
 
+  const isPokemonSelected = pickedId !== 0;
+
   const onStatusTrigger = async () => {
-    setIsStatusActive(!isStatusActive);
     setIsModalVisible(true);
     try {
       setIsLoading(true);
@@ -58,6 +67,7 @@ const MainInfo = () => {
       console.log(error);
     } finally {
       setIsLoading(false);
+      // setIsStatusActive(isPokemonSelected);
     }
   };
 
@@ -75,16 +85,24 @@ const MainInfo = () => {
       <View style={styles.container}>
         <View style={styles.statusView}>
           <TouchableOpacity onPress={onStatusTrigger}>
-            <FlagContext.Provider value={isStatusActive}>
-              <StatusButton />
+            <FlagContext.Provider value={isPokemonSelected}>
+              <StatusButton statusId={pickedName} />
             </FlagContext.Provider>
           </TouchableOpacity>
         </View>
         <View style={styles.headerView}>
           <View>
-            <Text style={styles.headerText}>{HEADER_TEXT}</Text>
+            <Text style={styles.headerText}>{`#${pickedId}`}</Text>
           </View>
-          <View style={styles.square} />
+          {pickedTypes.length > 0 ? (
+            [
+              pickedTypes.map((type, index) => {
+                return <TypeBadge key={index} iconName={type} />;
+              }),
+            ]
+          ) : (
+            <TypeBadge iconName="pokeball" />
+          )}
         </View>
         <View style={styles.optionsView}>
           {optionsArray.map((option, index) => {

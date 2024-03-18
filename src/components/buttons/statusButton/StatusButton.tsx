@@ -8,7 +8,11 @@ import { STATUS } from '../../../constants';
 
 import getStyles from './styles';
 
-function StatusButton() {
+type StatusButtonProps = {
+  statusId: string;
+};
+
+function StatusButton({ statusId: statusText }: StatusButtonProps) {
   const isStatusActive = useContext(FlagContext);
 
   const styles = getStyles(isStatusActive);
@@ -20,7 +24,7 @@ function StatusButton() {
         size={32}
         style={styles.statusCircle}
       />
-      <Text style={styles.statusText}>{STATUS}</Text>
+      <Text style={styles.statusText}>{statusText}</Text>
     </View>
   );
 }
