@@ -3,21 +3,19 @@ import { Colors } from '../../../assets/colors/mainColors';
 
 export default function getStyles() {
   return StyleSheet.create({
-    centeredView: {
+    modalBackgroundView: {
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
+      backgroundColor: '#00000086',
     },
     modalView: {
       flex: 1,
       alignItems: 'center',
-      // backgroundColor: '#800080a0',
-      // backgroundColor:
-      //   Platform.OS === 'android' ? Colors.darkPeach : Colors.loadingJordyBlue,
       borderRadius: 20,
       width: '96%',
-      height: '96%',
       opacity: 1,
+      paddingHorizontal: 4,
 
       /** Android */
       elevation: 5,
@@ -28,7 +26,6 @@ export default function getStyles() {
     },
     flatListView: {
       borderRadius: 16,
-      margin: 6,
       flex: 1,
       width: '100%',
     },

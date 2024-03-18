@@ -17,6 +17,7 @@ import config from '../../config';
 import { useAppDispatch, useAppSelector } from '../../context/redux/hooks';
 
 import { CARD_DATA_SET_NAME } from '../../counter/pokeDataSlice';
+import TypeBadge from '../../components/badges/TypeBadge';
 
 export type Pokimon = {
   name: string;
@@ -41,6 +42,7 @@ const MainInfo = () => {
 
   const pickedName = useAppSelector(state => state.pokemonData.pokemonName);
   const pickedId = useAppSelector(state => state.pokemonData.pokemonId);
+  const pickedTypes = useAppSelector(state => state.pokemonData.pokemonTypes);
 
   const dispatch = useAppDispatch();
 
@@ -92,7 +94,15 @@ const MainInfo = () => {
           <View>
             <Text style={styles.headerText}>{`#${pickedId}`}</Text>
           </View>
-          <View style={styles.square} />
+          {pickedTypes.length > 0 ? (
+            [
+              pickedTypes.map((type, index) => {
+                return <TypeBadge key={index} iconName={type} />;
+              }),
+            ]
+          ) : (
+            <TypeBadge iconName="pokeball" />
+          )}
         </View>
         <View style={styles.optionsView}>
           {optionsArray.map((option, index) => {

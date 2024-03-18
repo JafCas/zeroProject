@@ -9,6 +9,7 @@ import { Colors } from '../../../assets/colors/mainColors';
 import getStyles from './styles';
 
 import { PokeCardDataReturn } from '../../../services/fetchPokeData';
+import TypeBadge from '../../badges/TypeBadge';
 
 export type PokeData = {
   pokemonSprite?: string;
@@ -87,6 +88,8 @@ export default function PokeCard({
     );
   };
 
+  // console.log('data: ', data);
+
   return (
     <TouchableOpacity style={[styles.pressCard, style]} onPress={onPress}>
       <View style={styles.largeImageView}>
@@ -98,7 +101,7 @@ export default function PokeCard({
           />
         )}
       </View>
-      <View style={styles.innerView}>
+      <View style={styles.insideCardView}>
         {isLoading ? (
           <DisplayLoadingCard />
         ) : (
@@ -119,18 +122,12 @@ export default function PokeCard({
                 <Text style={styles.infoText}>{data && data.pokemonName}</Text>
               </View>
             </View>
-            <View style={styles.elementView}>
+            <View style={styles.typeIconsView}>
               {data &&
                 data.pokemonTypes &&
-                data.pokemonTypes.length > 0 &&
+                data.pokemonTypes.length &&
                 data.pokemonTypes.map((type, index) => (
-                  <MaterialCommunityIcon
-                    key={index}
-                    name={type.type.name}
-                size={32}
-                style={styles.elementIcon}
-                color={Colors.loadingJordyBlue}
-              />
+                  <TypeBadge key={index} iconName={type.type.name} />
                 ))}
             </View>
           </>

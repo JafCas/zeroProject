@@ -7,6 +7,7 @@ export const Colors = {
   peach: '#FFE5AD',
   darkPeach: '#C28F21',
   darkTyrianPurple: '#58002C',
+  newGray: '#DDDDDD',
   lightPeach: '#F8E9C9',
   lightTyrianPurple: '#96014c',
 };

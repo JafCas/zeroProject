@@ -13,7 +13,7 @@ export function Counter() {
   const pickedId = useAppSelector(state => state.pokemonData.pokemonId);
   const pickedName = useAppSelector(state => state.pokemonData.pokemonName);
   const pickedSprite = useAppSelector(state => state.pokemonData.spriteUri);
-  const pickedElement = useAppSelector(state => state.pokemonData.element);
+  const pickedElement = useAppSelector(state => state.pokemonData.type);
   const dispatch = useAppDispatch();
 
   const [counterValue, setCounterValue] = useState('10');
