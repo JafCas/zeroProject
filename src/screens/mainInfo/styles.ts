@@ -58,7 +58,6 @@ const getStyles = (isDarkMode: boolean, isStatusActive: boolean) => {
       flexDirection: 'row',
       justifyContent: 'space-around',
       alignItems: 'center',
-      paddingEnd: 40,
     },
     optionsText: {
       fontWeight: '600',
@@ -66,7 +65,6 @@ const getStyles = (isDarkMode: boolean, isStatusActive: boolean) => {
     },
     infoView: {
       flex: 9,
-      paddingTop: 100,
       alignItems: 'center',
     },
   });

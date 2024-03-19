@@ -18,6 +18,7 @@ import { useAppDispatch, useAppSelector } from '../../context/redux/hooks';
 
 import { CARD_DATA_SET_NAME } from '../../counter/pokeDataSlice';
 import TypeBadge from '../../components/badges/TypeBadge';
+import TestSlider from '../../components/sliders/TestSlider';
 
 export type Pokimon = {
   name: string;
@@ -105,20 +106,17 @@ const MainInfo = () => {
           )}
         </View>
         <View style={styles.optionsView}>
-          {optionsArray.map((option, index) => {
-            return (
-              <TouchableOpacity key={index}>
-                <Text style={styles.optionsText}>
-                  {option.name.toUpperCase()}
-                </Text>
-              </TouchableOpacity>
-            );
-          })}
+          {optionsArray.map((option, index) => (
+            <TouchableOpacity key={index} onPress={() => {}}>
+              <Text style={styles.optionsText}>
+                {option.name.toUpperCase()}
+              </Text>
+            </TouchableOpacity>
+          ))}
         </View>
+
         <View style={styles.infoView}>
-          <UrlContext.Provider value={photoUrl}>
-            <MyPokeDisplay isImageDisplayable={true} />
-          </UrlContext.Provider>
+          <TestSlider />
         </View>
       </View>
     </SafeAreaView>
