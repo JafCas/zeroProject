@@ -1,7 +1,6 @@
 import React, { ReactElement } from 'react';
 import { Image, Text, TouchableOpacity, View, ViewStyle } from 'react-native';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import { MotiView } from 'moti';
 
 import { Colors } from '../../../assets/colors/mainColors';
@@ -87,8 +86,6 @@ export default function PokeCard({
       </>
     );
   };
-
-  // console.log('data: ', data);
 
   return (
     <TouchableOpacity style={[styles.pressCard, style]} onPress={onPress}>
