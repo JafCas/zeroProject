@@ -1,5 +1,12 @@
 import React, { createContext, useState } from 'react';
-import { SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
+import {
+  FlatList,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
 // Components
 import MyPokeDisplay from '../myPokeDisplay/MyPokeDisplay';
@@ -18,7 +25,7 @@ import { useAppDispatch, useAppSelector } from '../../context/redux/hooks';
 
 import { CARD_DATA_SET_NAME } from '../../counter/pokeDataSlice';
 import TypeBadge from '../../components/badges/TypeBadge';
-import TestSlider from '../../components/sliders/TestSlider';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 export type Pokimon = {
   name: string;
@@ -29,7 +36,16 @@ export const UrlContext = createContext('');
 export const FlagContext = createContext(false);
 // export const CleffaContext = createContext(Response);
 
-const MainInfo = () => {
+// TODO: Solve type annotations
+// type RootStackParamList = {
+//   Home: undefined;
+//   Profile: { userId: string };
+//   Feed: { sort: 'latest' | 'top' } | undefined;
+// };
+
+// type Props = NativeStackScreenProps<RootStackParamList, 'MainInfo'>;
+
+const MainInfo = ({ navigation }) => {
   const url = config.API_URL;
   // const endpoint = 'pokemon?limit=173&offset=0';
   const cleffaEndpoint = 'pokemon?limit=173';
@@ -72,6 +88,15 @@ const MainInfo = () => {
     }
   };
 
+  const flatListRef = React.useRef(null);
+
+  const SLIDER_DATA = [
+    { name: 'Info' },
+    { name: 'Evolutions' },
+    { name: 'Third' },
+    { name: 'Fourth' },
+  ];
+
   return (
     <SafeAreaView style={styles.safeAreaView}>
       {isModalVisible && !isLoading && (
@@ -107,7 +132,17 @@ const MainInfo = () => {
         </View>
         <View style={styles.optionsView}>
           {optionsArray.map((option, index) => (
-            <TouchableOpacity key={index} onPress={() => {}}>
+            <TouchableOpacity
+              key={index}
+              onPress={() => {
+                if (flatListRef.current) {
+                  (flatListRef.current as FlatList).scrollToIndex({
+                    index: index,
+                  });
+                }
+                // navigation.push(option.name);
+              }}
+            >
               <Text style={styles.optionsText}>
                 {option.name.toUpperCase()}
               </Text>
@@ -116,7 +151,28 @@ const MainInfo = () => {
         </View>
 
         <View style={styles.infoView}>
-          <TestSlider />
+          <FlatList
+            data={SLIDER_DATA}
+            ref={flatListRef}
+            keyExtractor={item => item.name}
+            horizontal
+            initialScrollIndex={3}
+            snapToInterval={100}
+            getItemLayout={(data, index) => ({
+              length: 100,
+              offset: 100 * index,
+              index,
+            })}
+            showsHorizontalScrollIndicator={false}
+            decelerationRate={'fast'}
+            renderItem={({ item }) => {
+              return (
+                <View style={stylesu.slider}>
+                  <Text>{item.name}</Text>
+                </View>
+              );
+            }}
+          />
         </View>
       </View>
     </SafeAreaView>
@@ -124,3 +180,12 @@ const MainInfo = () => {
 };
 
 export default MainInfo;
+
+const stylesu = StyleSheet.create({
+  slider: {
+    height: 100,
+    width: 200,
+    backgroundColor: 'lightgrey',
+    margin: 10,
+  },
+});
