@@ -11,7 +11,7 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		37754E4CDEB55EFC77AEE263 /* libPods-zeroProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B13275FCFC554EB2FA851D75 /* libPods-zeroProject.a */; };
+		67C69127D4D8839B60C55F1E /* libPods-zeroProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF167F13FF63C8B19DDC92C /* libPods-zeroProject.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		9A8C84F22B0151990064D767 /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A8C84DF2B0151990064D767 /* Fontisto.ttf */; };
 		9A8C84F32B0151990064D767 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A8C84E02B0151990064D767 /* Octicons.ttf */; };
@@ -32,7 +32,7 @@
 		9A8C85022B0151990064D767 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A8C84EF2B0151990064D767 /* SimpleLineIcons.ttf */; };
 		9A8C85032B0151990064D767 /* FontAwesome6_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A8C84F02B0151990064D767 /* FontAwesome6_Brands.ttf */; };
 		9A8C85042B0151990064D767 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A8C84F12B0151990064D767 /* MaterialIcons.ttf */; };
-		FE1EB87AAF47A014CFFFE17C /* libPods-zeroProject-zeroProjectTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D667BCDF66ACEB007689E45B /* libPods-zeroProject-zeroProjectTests.a */; };
+		BD1527CCE15C385E52251D92 /* libPods-zeroProject-zeroProjectTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0581392A9E6BB5FEE1915FDA /* libPods-zeroProject-zeroProjectTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,16 +49,16 @@
 		00E356EE1AD99517003FC87E /* zeroProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = zeroProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* zeroProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = zeroProjectTests.m; sourceTree = "<group>"; };
-		06D1185B9BD888996E84B43E /* Pods-zeroProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zeroProject.debug.xcconfig"; path = "Target Support Files/Pods-zeroProject/Pods-zeroProject.debug.xcconfig"; sourceTree = "<group>"; };
-		071DA6FB7D7D7F1D45F1F8DC /* Pods-zeroProject-zeroProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zeroProject-zeroProjectTests.release.xcconfig"; path = "Target Support Files/Pods-zeroProject-zeroProjectTests/Pods-zeroProject-zeroProjectTests.release.xcconfig"; sourceTree = "<group>"; };
+		0138612D4465523E767A7062 /* Pods-zeroProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zeroProject.release.xcconfig"; path = "Target Support Files/Pods-zeroProject/Pods-zeroProject.release.xcconfig"; sourceTree = "<group>"; };
+		0581392A9E6BB5FEE1915FDA /* libPods-zeroProject-zeroProjectTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-zeroProject-zeroProjectTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* zeroProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zeroProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = zeroProject/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = zeroProject/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = zeroProject/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = zeroProject/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = zeroProject/main.m; sourceTree = "<group>"; };
-		2498A57AE27A26D7E42E3172 /* Pods-zeroProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zeroProject.release.xcconfig"; path = "Target Support Files/Pods-zeroProject/Pods-zeroProject.release.xcconfig"; sourceTree = "<group>"; };
-		645C90430FF74695BCEB0156 /* Pods-zeroProject-zeroProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zeroProject-zeroProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-zeroProject-zeroProjectTests/Pods-zeroProject-zeroProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
+		273155E288CC65BFC098734C /* Pods-zeroProject-zeroProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zeroProject-zeroProjectTests.release.xcconfig"; path = "Target Support Files/Pods-zeroProject-zeroProjectTests/Pods-zeroProject-zeroProjectTests.release.xcconfig"; sourceTree = "<group>"; };
+		3AF167F13FF63C8B19DDC92C /* libPods-zeroProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-zeroProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = zeroProject/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A8C84DF2B0151990064D767 /* Fontisto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fontisto.ttf; sourceTree = "<group>"; };
 		9A8C84E02B0151990064D767 /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
@@ -79,8 +79,8 @@
 		9A8C84EF2B0151990064D767 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleLineIcons.ttf; sourceTree = "<group>"; };
 		9A8C84F02B0151990064D767 /* FontAwesome6_Brands.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome6_Brands.ttf; sourceTree = "<group>"; };
 		9A8C84F12B0151990064D767 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
-		B13275FCFC554EB2FA851D75 /* libPods-zeroProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-zeroProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D667BCDF66ACEB007689E45B /* libPods-zeroProject-zeroProjectTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-zeroProject-zeroProjectTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A49127710AAF7B4E1D141553 /* Pods-zeroProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zeroProject.debug.xcconfig"; path = "Target Support Files/Pods-zeroProject/Pods-zeroProject.debug.xcconfig"; sourceTree = "<group>"; };
+		C8C322FA19024108762940DE /* Pods-zeroProject-zeroProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zeroProject-zeroProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-zeroProject-zeroProjectTests/Pods-zeroProject-zeroProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -89,7 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE1EB87AAF47A014CFFFE17C /* libPods-zeroProject-zeroProjectTests.a in Frameworks */,
+				BD1527CCE15C385E52251D92 /* libPods-zeroProject-zeroProjectTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,7 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37754E4CDEB55EFC77AEE263 /* libPods-zeroProject.a in Frameworks */,
+				67C69127D4D8839B60C55F1E /* libPods-zeroProject.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +138,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				B13275FCFC554EB2FA851D75 /* libPods-zeroProject.a */,
-				D667BCDF66ACEB007689E45B /* libPods-zeroProject-zeroProjectTests.a */,
+				3AF167F13FF63C8B19DDC92C /* libPods-zeroProject.a */,
+				0581392A9E6BB5FEE1915FDA /* libPods-zeroProject-zeroProjectTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -206,10 +206,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				06D1185B9BD888996E84B43E /* Pods-zeroProject.debug.xcconfig */,
-				2498A57AE27A26D7E42E3172 /* Pods-zeroProject.release.xcconfig */,
-				645C90430FF74695BCEB0156 /* Pods-zeroProject-zeroProjectTests.debug.xcconfig */,
-				071DA6FB7D7D7F1D45F1F8DC /* Pods-zeroProject-zeroProjectTests.release.xcconfig */,
+				A49127710AAF7B4E1D141553 /* Pods-zeroProject.debug.xcconfig */,
+				0138612D4465523E767A7062 /* Pods-zeroProject.release.xcconfig */,
+				C8C322FA19024108762940DE /* Pods-zeroProject-zeroProjectTests.debug.xcconfig */,
+				273155E288CC65BFC098734C /* Pods-zeroProject-zeroProjectTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -221,12 +221,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "zeroProjectTests" */;
 			buildPhases = (
-				CFFF4B9DC3CF33919E16016E /* [CP] Check Pods Manifest.lock */,
+				C9634D43BF43336352858074 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				47E9DFD2A34FF023E36DA47E /* [CP] Embed Pods Frameworks */,
-				8C0999AF7019359ECE1B0717 /* [CP] Copy Pods Resources */,
+				E7D9AD7A0E9FA52A8AA8FAA7 /* [CP] Embed Pods Frameworks */,
+				D59E8E87E13AEA8553093372 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -242,14 +242,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "zeroProject" */;
 			buildPhases = (
-				83F9787AEABD637124416895 /* [CP] Check Pods Manifest.lock */,
+				4CC9ACB01B9AF756899765A3 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				17A2524982126E64D106FA62 /* [CP] Embed Pods Frameworks */,
-				24703302E27EFC1BC4A50FA9 /* [CP] Copy Pods Resources */,
+				BFB8B08A534456E521E2084D /* [CP] Embed Pods Frameworks */,
+				E0BF27F33C32C471082E8B7D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -351,58 +351,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		17A2524982126E64D106FA62 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-zeroProject/Pods-zeroProject-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-zeroProject/Pods-zeroProject-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-zeroProject/Pods-zeroProject-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		24703302E27EFC1BC4A50FA9 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-zeroProject/Pods-zeroProject-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-zeroProject/Pods-zeroProject-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-zeroProject/Pods-zeroProject-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		47E9DFD2A34FF023E36DA47E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-zeroProject-zeroProjectTests/Pods-zeroProject-zeroProjectTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-zeroProject-zeroProjectTests/Pods-zeroProject-zeroProjectTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-zeroProject-zeroProjectTests/Pods-zeroProject-zeroProjectTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		83F9787AEABD637124416895 /* [CP] Check Pods Manifest.lock */ = {
+		4CC9ACB01B9AF756899765A3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -424,24 +373,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8C0999AF7019359ECE1B0717 /* [CP] Copy Pods Resources */ = {
+		BFB8B08A534456E521E2084D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-zeroProject-zeroProjectTests/Pods-zeroProject-zeroProjectTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-zeroProject/Pods-zeroProject-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-zeroProject-zeroProjectTests/Pods-zeroProject-zeroProjectTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-zeroProject/Pods-zeroProject-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-zeroProject-zeroProjectTests/Pods-zeroProject-zeroProjectTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-zeroProject/Pods-zeroProject-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CFFF4B9DC3CF33919E16016E /* [CP] Check Pods Manifest.lock */ = {
+		C9634D43BF43336352858074 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -461,6 +410,57 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D59E8E87E13AEA8553093372 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-zeroProject-zeroProjectTests/Pods-zeroProject-zeroProjectTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-zeroProject-zeroProjectTests/Pods-zeroProject-zeroProjectTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-zeroProject-zeroProjectTests/Pods-zeroProject-zeroProjectTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E0BF27F33C32C471082E8B7D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-zeroProject/Pods-zeroProject-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-zeroProject/Pods-zeroProject-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-zeroProject/Pods-zeroProject-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E7D9AD7A0E9FA52A8AA8FAA7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-zeroProject-zeroProjectTests/Pods-zeroProject-zeroProjectTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-zeroProject-zeroProjectTests/Pods-zeroProject-zeroProjectTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-zeroProject-zeroProjectTests/Pods-zeroProject-zeroProjectTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -515,7 +515,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 645C90430FF74695BCEB0156 /* Pods-zeroProject-zeroProjectTests.debug.xcconfig */;
+			baseConfigurationReference = C8C322FA19024108762940DE /* Pods-zeroProject-zeroProjectTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -542,7 +542,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 071DA6FB7D7D7F1D45F1F8DC /* Pods-zeroProject-zeroProjectTests.release.xcconfig */;
+			baseConfigurationReference = 273155E288CC65BFC098734C /* Pods-zeroProject-zeroProjectTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -566,7 +566,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 06D1185B9BD888996E84B43E /* Pods-zeroProject.debug.xcconfig */;
+			baseConfigurationReference = A49127710AAF7B4E1D141553 /* Pods-zeroProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -593,7 +593,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2498A57AE27A26D7E42E3172 /* Pods-zeroProject.release.xcconfig */;
+			baseConfigurationReference = 0138612D4465523E767A7062 /* Pods-zeroProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
