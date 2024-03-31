@@ -66,6 +66,7 @@ const getStyles = (isDarkMode: boolean, isStatusActive: boolean) => {
     infoView: {
       flex: 9,
       alignItems: 'center',
+      // backgroundColor: 'red',
     },
   });
 };

@@ -1,21 +1,34 @@
 import { StyleSheet } from 'react-native';
 import { Colors } from '../../../assets/colors/mainColors';
+import {
+  horizontalScale,
+  verticalScale,
+  moderateScale,
+} from '../../../utils/metrics';
 
 export default function getStyles() {
   return StyleSheet.create({
     pressCard: {
       flex: 1,
-      marginVertical: 4,
+      marginVertical: verticalScale(4),
       backgroundColor: '#474747b2',
-      height: 82,
-      borderRadius: 16,
+      height: horizontalScale(82),
+      borderRadius: moderateScale(16),
+
+      elevation: 4,
+
+      /** Android */
+
+      /** iOS */
+      shadowOpacity: 0.2,
+      shadowRadius: 4,
     },
 
     largeImageView: {
       height: '100%',
       width: '100%',
       position: 'absolute',
-      borderRadius: 16,
+      borderRadius: moderateScale(16),
       opacity: 0.7,
       overflow: 'hidden',
     },
@@ -28,7 +41,8 @@ export default function getStyles() {
 
     insideCardView: {
       flex: 1,
-      margin: 4,
+      marginVertical: verticalScale(4),
+      marginHorizontal: horizontalScale(4),
       flexDirection: 'row',
     },
 
@@ -39,14 +53,14 @@ export default function getStyles() {
     },
 
     imageCircle: {
-      width: 80,
-      height: 80,
+      width: horizontalScale(80),
+      height: verticalScale(80),
     },
 
     infoView: {
       flex: 4,
       justifyContent: 'space-around',
-      paddingHorizontal: 8,
+      paddingHorizontal: horizontalScale(8),
     },
 
     numberTextView: {
@@ -60,14 +74,14 @@ export default function getStyles() {
     },
 
     infoText: {
-      fontSize: 22,
+      fontSize: moderateScale(16),
     },
 
     typeIconsView: {
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
-      paddingEnd: 8,
+      paddingEnd: horizontalScale(8),
     },
 
     // isLoading = true

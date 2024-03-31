@@ -1,6 +1,12 @@
 import { Platform, StyleSheet } from 'react-native';
 import { Colors } from '../../../assets/colors/mainColors';
 
+import {
+  horizontalScale,
+  moderateScale,
+  verticalScale,
+} from '../../../utils/metrics';
+
 export default function getStyles() {
   return StyleSheet.create({
     modalBackgroundView: {
@@ -8,24 +14,21 @@ export default function getStyles() {
       justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: '#00000086',
+      paddingVertical: Platform.OS === 'android' ? verticalScale(16) : 0,
     },
+
     modalView: {
       flex: 1,
-      alignItems: 'center',
-      borderRadius: 20,
       width: '96%',
       opacity: 1,
-      paddingHorizontal: 4,
-
-      /** Android */
-      elevation: 5,
-
-      /** iOS */
-      shadowOpacity: 0.2,
-      shadowRadius: 4,
+      overflow: 'hidden',
+      borderRadius: moderateScale(20),
+      paddingHorizontal: horizontalScale(4),
+      alignItems: 'center',
     },
+
     flatListView: {
-      borderRadius: 16,
+      borderRadius: moderateScale(16),
       flex: 1,
       width: '100%',
     },

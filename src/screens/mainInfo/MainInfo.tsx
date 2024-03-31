@@ -27,6 +27,8 @@ import { CARD_DATA_SET_NAME } from '../../counter/pokeDataSlice';
 import TypeBadge from '../../components/badges/TypeBadge';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
+import { horizontalScale, verticalScale } from '../../utils/metrics';
+
 export type Pokimon = {
   name: string;
   url: string;
@@ -183,8 +185,11 @@ export default MainInfo;
 
 const stylesu = StyleSheet.create({
   slider: {
-    height: 100,
-    width: 200,
+    flex: 1,
+    // height: verticalScale(200),
+    height: '100%',
+    width: horizontalScale(350),
+    // width: '100%',
     backgroundColor: 'lightgrey',
     margin: 10,
   },

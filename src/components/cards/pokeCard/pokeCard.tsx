@@ -59,7 +59,7 @@ export default function PokeCard({
 
   const DisplayLoadingCard = () => {
     return (
-      <>
+      <View>
         <View style={styles.pokeImageView}>
           <LoadingAvatar>
             <View style={styles.loadingCircleView} />
@@ -83,7 +83,7 @@ export default function PokeCard({
             />
           </LoadingAvatar>
         </View>
-      </>
+      </View>
     );
   };
 
