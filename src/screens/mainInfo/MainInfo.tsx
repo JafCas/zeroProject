@@ -2,7 +2,6 @@ import React, { createContext, useEffect, useState } from 'react';
 import {
   FlatList,
   SafeAreaView,
-  StyleSheet,
   Text,
   TouchableOpacity,
   View,
@@ -23,11 +22,7 @@ import { useTheme } from '../../context/ThemeContext';
 import config from '../../config';
 import { useAppDispatch, useAppSelector } from '../../context/redux/hooks';
 
-import { CARD_DATA_SET_NAME } from '../../counter/pokeDataSlice';
 import TypeBadge from '../../components/badges/TypeBadge';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-
-import { horizontalScale, verticalScale } from '../../utils/metrics';
 
 export type Pokimon = {
   name: string;
@@ -63,13 +58,8 @@ const MainInfo = ({ navigation }) => {
   const pickedId = useAppSelector(state => state.pokemonData.pokemonId);
   const pickedTypes = useAppSelector(state => state.pokemonData.pokemonTypes);
 
-  const dispatch = useAppDispatch();
-
   const isDarkMode = useTheme();
   const styles = getStyles(isDarkMode, isStatusActive);
-
-  const photoUrl =
-    'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/173.png';
 
   const isPokemonSelected = pickedId !== 0;
 
@@ -90,7 +80,6 @@ const MainInfo = ({ navigation }) => {
     }
   };
 
-  const flatListRef = React.useRef(null);
   const secondRef = React.useRef<FlatList>(null);
 
   const [sliderIndex, setSliderIndex] = useState(0);
@@ -165,14 +154,14 @@ const MainInfo = ({ navigation }) => {
 
         <View style={styles.infoView}>
           <FlatList
+            horizontal
             ref={secondRef}
+            keyExtractor={item => item.name}
+            showsHorizontalScrollIndicator={false}
             initialScrollIndex={sliderIndex}
             data={SLIDER_DATA}
-            keyExtractor={item => item.name}
-            horizontal
-            snapToInterval={100}
+            pagingEnabled
             style={styles.flatListView}
-            showsHorizontalScrollIndicator={false}
             decelerationRate={'fast'}
             renderItem={({ item }) => (
               <View key={`Flatlist.item.${item}`} style={styles.slider}>

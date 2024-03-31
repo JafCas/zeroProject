@@ -71,19 +71,15 @@ const getStyles = (isDarkMode: boolean, isStatusActive: boolean) => {
     },
     flatListView: {
       flex: 1,
-      width: '100%',
-      backgroundColor: 'blue',
+      width: Dimensions.get('window').width,
     },
     slider: {
       flex: 1,
-      // height: verticalScale(200),
-      // height: '100%',
-      // width: horizontalScale(150),
-      // width: '100%',
-      width: Dimensions.get('window').width - horizontalScale(40),
+      width: Dimensions.get('window').width,
+      marginHorizontal: horizontalScale(0),
+      padding: 10,
+
       backgroundColor: 'lightgrey',
-      // margin: 10,
-      marginHorizontal: horizontalScale(10),
     },
   });
 };
