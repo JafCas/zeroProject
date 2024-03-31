@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import {
   FlatList,
   SafeAreaView,
@@ -91,6 +91,22 @@ const MainInfo = ({ navigation }) => {
   };
 
   const flatListRef = React.useRef(null);
+  const secondRef = React.useRef<FlatList>(null);
+
+  const [sliderIndex, setSliderIndex] = useState(0);
+
+  const onOptionPress = (optionIndex: number) => {
+    setSliderIndex(optionIndex);
+  };
+  //   if()
+
+  useEffect(() => {
+    secondRef.current?.scrollToIndex({
+      index: sliderIndex,
+      // animated: false,
+      viewPosition: 0,
+    });
+  }, [sliderIndex]);
 
   const SLIDER_DATA = [
     { name: 'Info' },
@@ -137,12 +153,7 @@ const MainInfo = ({ navigation }) => {
             <TouchableOpacity
               key={index}
               onPress={() => {
-                if (flatListRef.current) {
-                  (flatListRef.current as FlatList).scrollToIndex({
-                    index: index,
-                  });
-                }
-                // navigation.push(option.name);
+                onOptionPress(index);
               }}
             >
               <Text style={styles.optionsText}>
@@ -154,26 +165,21 @@ const MainInfo = ({ navigation }) => {
 
         <View style={styles.infoView}>
           <FlatList
+            ref={secondRef}
+            initialScrollIndex={sliderIndex}
             data={SLIDER_DATA}
-            ref={flatListRef}
             keyExtractor={item => item.name}
             horizontal
-            initialScrollIndex={3}
             snapToInterval={100}
-            getItemLayout={(data, index) => ({
-              length: 100,
-              offset: 100 * index,
-              index,
-            })}
+            style={styles.flatListView}
             showsHorizontalScrollIndicator={false}
             decelerationRate={'fast'}
-            renderItem={({ item }) => {
-              return (
-                <View style={stylesu.slider}>
-                  <Text>{item.name}</Text>
-                </View>
-              );
-            }}
+            renderItem={({ item }) => (
+              <View key={`Flatlist.item.${item}`} style={styles.slider}>
+                <Text>{item.name}</Text>
+              </View>
+            )}
+            // onc
           />
         </View>
       </View>
@@ -182,15 +188,3 @@ const MainInfo = ({ navigation }) => {
 };
 
 export default MainInfo;
-
-const stylesu = StyleSheet.create({
-  slider: {
-    flex: 1,
-    // height: verticalScale(200),
-    height: '100%',
-    width: horizontalScale(350),
-    // width: '100%',
-    backgroundColor: 'lightgrey',
-    margin: 10,
-  },
-});

@@ -96,7 +96,7 @@ const PokeSelectorModal = ({
       <SafeAreaView style={styles.modalBackgroundView}>
         <View style={styles.modalView}>
           {/* TODO: Add empty cards and modal content for empty scenario */}
-          {pokeCardsData && !isLoading ? (
+          {!isLoading && pokeCardsData ? (
             <FlatList
               showsVerticalScrollIndicator={false}
               style={styles.flatListView}
