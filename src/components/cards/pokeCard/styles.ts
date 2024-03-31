@@ -15,7 +15,7 @@ export default function getStyles() {
       height: horizontalScale(82),
       borderRadius: moderateScale(16),
 
-      elevation: 4,
+      elevation: 0,
 
       /** Android */
 
