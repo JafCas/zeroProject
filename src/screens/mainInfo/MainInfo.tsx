@@ -23,6 +23,7 @@ import config from '../../config';
 import { useAppDispatch, useAppSelector } from '../../context/redux/hooks';
 
 import TypeBadge from '../../components/badges/TypeBadge';
+import SliderContainer from '../../components/slider/SliderContainer';
 
 export type Pokimon = {
   name: string;
@@ -138,7 +139,7 @@ const MainInfo = ({ navigation }) => {
           )}
         </View>
         <View style={styles.optionsView}>
-          {optionsArray.map((option, index) => (
+          {SLIDER_DATA.map((option, index) => (
             <TouchableOpacity
               key={index}
               onPress={() => {
@@ -164,11 +165,12 @@ const MainInfo = ({ navigation }) => {
             style={styles.flatListView}
             decelerationRate={'fast'}
             renderItem={({ item }) => (
-              <View key={`Flatlist.item.${item}`} style={styles.slider}>
-                <Text>{item.name}</Text>
-              </View>
+              <SliderContainer key={`Flatlist.item.${item}`} name={item.name} />
             )}
-            // onc
+            // onViewableItemsChanged={() => {}}
+            onScrollEndDrag={event => {
+              console.log(event.nativeEvent.contentOffset.y);
+            }}
           />
         </View>
       </View>
