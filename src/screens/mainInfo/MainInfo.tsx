@@ -148,7 +148,6 @@ const MainInfo = ({ navigation }) => {
                 style={[
                   styles.optionsText,
                   {
-                    // backgroundColor: sliderIndex === index ? 'green' : 'red',
                     padding: 5,
                     borderWidth: sliderIndex === index ? 1 : 0,
                   },
@@ -169,7 +168,7 @@ const MainInfo = ({ navigation }) => {
             initialScrollIndex={sliderIndex}
             data={SLIDER_DATA}
             pagingEnabled
-            style={styles.flatListView}
+            style={styles.flatListView} 
             decelerationRate={'fast'}
             renderItem={({ item }) => (
               <SliderContainer key={`Flatlist.item.${item}`} name={item.name} />
@@ -179,7 +178,6 @@ const MainInfo = ({ navigation }) => {
                 event.nativeEvent.contentOffset.x /
                   event.nativeEvent.layoutMeasurement.width,
               );
-              console.log('index:', index);
               if (sliderIndex !== index) {
                 setSliderIndex(index);
               }
