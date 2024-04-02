@@ -88,12 +88,10 @@ const MainInfo = ({ navigation }) => {
   const onOptionPress = (optionIndex: number) => {
     setSliderIndex(optionIndex);
   };
-  //   if()
 
   useEffect(() => {
     secondRef.current?.scrollToIndex({
       index: sliderIndex,
-      // animated: false,
       viewPosition: 0,
     });
   }, [sliderIndex]);
@@ -146,7 +144,16 @@ const MainInfo = ({ navigation }) => {
                 onOptionPress(index);
               }}
             >
-              <Text style={styles.optionsText}>
+              <Text
+                style={[
+                  styles.optionsText,
+                  {
+                    // backgroundColor: sliderIndex === index ? 'green' : 'red',
+                    padding: 5,
+                    borderWidth: sliderIndex === index ? 1 : 0,
+                  },
+                ]}
+              >
                 {option.name.toUpperCase()}
               </Text>
             </TouchableOpacity>
@@ -167,9 +174,15 @@ const MainInfo = ({ navigation }) => {
             renderItem={({ item }) => (
               <SliderContainer key={`Flatlist.item.${item}`} name={item.name} />
             )}
-            // onViewableItemsChanged={() => {}}
-            onScrollEndDrag={event => {
-              console.log(event.nativeEvent.contentOffset.y);
+            onMomentumScrollEnd={event => {
+              const index = Math.floor(
+                event.nativeEvent.contentOffset.x /
+                  event.nativeEvent.layoutMeasurement.width,
+              );
+              console.log('index:', index);
+              if (sliderIndex !== index) {
+                setSliderIndex(index);
+              }
             }}
           />
         </View>
