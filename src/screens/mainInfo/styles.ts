@@ -1,5 +1,6 @@
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 import { Colors, Status } from '../../assets/colors/mainColors';
+import { horizontalScale } from '../../utils/metrics';
 
 const getStyles = (isDarkMode: boolean, isStatusActive: boolean) => {
   return StyleSheet.create({
@@ -58,16 +59,27 @@ const getStyles = (isDarkMode: boolean, isStatusActive: boolean) => {
       flexDirection: 'row',
       justifyContent: 'space-around',
       alignItems: 'center',
-      paddingEnd: 40,
     },
     optionsText: {
       fontWeight: '600',
       color: isDarkMode ? Colors.peach : Colors.tyrianPurple,
     },
+
     infoView: {
       flex: 9,
-      paddingTop: 100,
       alignItems: 'center',
+    },
+    flatListView: {
+      flex: 1,
+      width: Dimensions.get('window').width,
+    },
+    slider: {
+      flex: 1,
+      width: Dimensions.get('window').width,
+      marginHorizontal: horizontalScale(0),
+      padding: 10,
+
+      backgroundColor: 'lightgrey',
     },
   });
 };

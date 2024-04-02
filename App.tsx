@@ -1,7 +1,10 @@
 import React from 'react';
 import { useColorScheme } from 'react-native';
+// import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import { enableScreens } from 'react-native-screens';
+import { createSharedElementStackNavigator } from 'react-navigation-shared-element';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import SignIn from './src/screens/signIn/SignIn';
 import MainInfo from './src/screens/mainInfo/MainInfo';
@@ -9,7 +12,9 @@ import { ThemeContext } from './src/context/ThemeContext';
 import { Provider as ReduxProvider } from 'react-redux';
 import { store } from './src/context/store';
 
-const Stack = createNativeStackNavigator();
+enableScreens();
+
+const Stack = createSharedElementStackNavigator();
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';

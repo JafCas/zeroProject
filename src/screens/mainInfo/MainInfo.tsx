@@ -1,5 +1,11 @@
-import React, { createContext, useState } from 'react';
-import { SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
+import React, { createContext, useEffect, useState } from 'react';
+import {
+  FlatList,
+  SafeAreaView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
 // Components
 import MyPokeDisplay from '../myPokeDisplay/MyPokeDisplay';
@@ -16,8 +22,8 @@ import { useTheme } from '../../context/ThemeContext';
 import config from '../../config';
 import { useAppDispatch, useAppSelector } from '../../context/redux/hooks';
 
-import { CARD_DATA_SET_NAME } from '../../counter/pokeDataSlice';
 import TypeBadge from '../../components/badges/TypeBadge';
+import SliderContainer from '../../components/slider/SliderContainer';
 
 export type Pokimon = {
   name: string;
@@ -28,7 +34,16 @@ export const UrlContext = createContext('');
 export const FlagContext = createContext(false);
 // export const CleffaContext = createContext(Response);
 
-const MainInfo = () => {
+// TODO: Solve type annotations
+// type RootStackParamList = {
+//   Home: undefined;
+//   Profile: { userId: string };
+//   Feed: { sort: 'latest' | 'top' } | undefined;
+// };
+
+// type Props = NativeStackScreenProps<RootStackParamList, 'MainInfo'>;
+
+const MainInfo = ({ navigation }) => {
   const url = config.API_URL;
   // const endpoint = 'pokemon?limit=173&offset=0';
   const cleffaEndpoint = 'pokemon?limit=173';
@@ -44,13 +59,8 @@ const MainInfo = () => {
   const pickedId = useAppSelector(state => state.pokemonData.pokemonId);
   const pickedTypes = useAppSelector(state => state.pokemonData.pokemonTypes);
 
-  const dispatch = useAppDispatch();
-
   const isDarkMode = useTheme();
   const styles = getStyles(isDarkMode, isStatusActive);
-
-  const photoUrl =
-    'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/173.png';
 
   const isPokemonSelected = pickedId !== 0;
 
@@ -70,6 +80,28 @@ const MainInfo = () => {
       // setIsStatusActive(isPokemonSelected);
     }
   };
+
+  const secondRef = React.useRef<FlatList>(null);
+
+  const [sliderIndex, setSliderIndex] = useState(0);
+
+  const onOptionPress = (optionIndex: number) => {
+    setSliderIndex(optionIndex);
+  };
+
+  useEffect(() => {
+    secondRef.current?.scrollToIndex({
+      index: sliderIndex,
+      viewPosition: 0,
+    });
+  }, [sliderIndex]);
+
+  const SLIDER_DATA = [
+    { name: 'Info' },
+    { name: 'Evolutions' },
+    { name: 'Third' },
+    { name: 'Fourth' },
+  ];
 
   return (
     <SafeAreaView style={styles.safeAreaView}>
@@ -105,20 +137,52 @@ const MainInfo = () => {
           )}
         </View>
         <View style={styles.optionsView}>
-          {optionsArray.map((option, index) => {
-            return (
-              <TouchableOpacity key={index}>
-                <Text style={styles.optionsText}>
-                  {option.name.toUpperCase()}
-                </Text>
-              </TouchableOpacity>
-            );
-          })}
+          {SLIDER_DATA.map((option, index) => (
+            <TouchableOpacity
+              key={index}
+              onPress={() => {
+                onOptionPress(index);
+              }}
+            >
+              <Text
+                style={[
+                  styles.optionsText,
+                  {
+                    padding: 5,
+                    borderWidth: sliderIndex === index ? 1 : 0,
+                  },
+                ]}
+              >
+                {option.name.toUpperCase()}
+              </Text>
+            </TouchableOpacity>
+          ))}
         </View>
+
         <View style={styles.infoView}>
-          <UrlContext.Provider value={photoUrl}>
-            <MyPokeDisplay isImageDisplayable={true} />
-          </UrlContext.Provider>
+          <FlatList
+            horizontal
+            ref={secondRef}
+            keyExtractor={item => item.name}
+            showsHorizontalScrollIndicator={false}
+            initialScrollIndex={sliderIndex}
+            data={SLIDER_DATA}
+            pagingEnabled
+            style={styles.flatListView} 
+            decelerationRate={'fast'}
+            renderItem={({ item }) => (
+              <SliderContainer key={`Flatlist.item.${item}`} name={item.name} />
+            )}
+            onMomentumScrollEnd={event => {
+              const index = Math.floor(
+                event.nativeEvent.contentOffset.x /
+                  event.nativeEvent.layoutMeasurement.width,
+              );
+              if (sliderIndex !== index) {
+                setSliderIndex(index);
+              }
+            }}
+          />
         </View>
       </View>
     </SafeAreaView>

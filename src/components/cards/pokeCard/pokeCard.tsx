@@ -1,7 +1,6 @@
 import React, { ReactElement } from 'react';
 import { Image, Text, TouchableOpacity, View, ViewStyle } from 'react-native';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import { MotiView } from 'moti';
 
 import { Colors } from '../../../assets/colors/mainColors';
@@ -60,7 +59,7 @@ export default function PokeCard({
 
   const DisplayLoadingCard = () => {
     return (
-      <>
+      <View>
         <View style={styles.pokeImageView}>
           <LoadingAvatar>
             <View style={styles.loadingCircleView} />
@@ -84,11 +83,9 @@ export default function PokeCard({
             />
           </LoadingAvatar>
         </View>
-      </>
+      </View>
     );
   };
-
-  // console.log('data: ', data);
 
   return (
     <TouchableOpacity style={[styles.pressCard, style]} onPress={onPress}>
