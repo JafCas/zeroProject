@@ -16,7 +16,7 @@ function StatusButton({ statusId: statusText }: StatusButtonProps) {
 
   const styles = getStyles(isStatusActive);
 
-  const iconSize = moderateScale(32);
+  const iconSize = moderateScale(20);
 
   return (
     <View style={styles.buttonContent}>

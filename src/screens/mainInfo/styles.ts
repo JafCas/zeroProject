@@ -47,7 +47,7 @@ const getStyles = (isDarkMode: boolean, isStatusActive: boolean) => {
       justifyContent: 'space-between',
     },
     headerText: {
-      fontSize: moderateScale(26),
+      fontSize: moderateScale(16),
       fontWeight: 'bold',
       color: isDarkMode ? Colors.peach : Colors.tyrianPurple,
     },
@@ -59,7 +59,7 @@ const getStyles = (isDarkMode: boolean, isStatusActive: boolean) => {
       width: horizontalScale(40),
     },
     optionsView: {
-      height: 30,
+      height: verticalScale(30),
       width: '100%',
       flexDirection: 'row',
       justifyContent: 'space-around',
@@ -69,6 +69,7 @@ const getStyles = (isDarkMode: boolean, isStatusActive: boolean) => {
       paddingHorizontal: horizontalScale(5),
       paddingVertical: verticalScale(5),
       fontWeight: '600',
+      fontSize: moderateScale(8),
       color: isDarkMode ? Colors.peach : Colors.tyrianPurple,
     },
 

@@ -48,11 +48,13 @@ const TypeBadge = ({ iconName }: { iconName: string }) => {
 
   const styles = getStyles(typeColor);
 
+  const iconSize = moderateScale(16);
+
   return (
     <View style={styles.iconView}>
       <MaterialCommunityIcon
         name={name}
-        size={24}
+        size={iconSize}
         style={styles.elementIcon}
         color={Colors.lightPeach}
       />
@@ -71,6 +73,7 @@ const getStyles = (typeColor?: string) => {
       borderRadius: moderateScale(20),
       width: horizontalScale(29),
       height: verticalScale(29),
+      // height: '36%',
       marginHorizontal: horizontalScale(4),
       marginVertical: verticalScale(4),
 
