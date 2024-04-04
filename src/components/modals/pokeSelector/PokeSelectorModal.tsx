@@ -8,7 +8,7 @@ import fetchPokeCardData, {
 
 import getStyles from './styles';
 
-import PokeCard from '../../cards/pokeCard/pokeCard';
+import PokeCard from '../../cards/pokeCard/PokeCard';
 
 import { Pokimon } from '../../../screens/mainInfo/MainInfo';
 import { useAppDispatch } from '../../../context/redux/hooks';

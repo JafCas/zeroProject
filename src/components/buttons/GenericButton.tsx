@@ -5,6 +5,11 @@ import * as Constants from '../../constants';
 
 import { Colors } from '../../assets/colors/mainColors';
 import { useTheme } from '../../context/ThemeContext';
+import {
+  horizontalScale,
+  moderateScale,
+  verticalScale,
+} from '../../utils/metrics';
 
 interface GenericButtonProps {
   onPress: () => void;
@@ -44,14 +49,15 @@ const getStyles = (isDarkMode: boolean, buttonColor: string) => {
     buttonContainer: {
       backgroundColor: buttonColor,
       marginHorizontal: '30%',
-      borderRadius: 30,
-      padding: 10,
+      borderRadius: moderateScale(30),
+      paddingHorizontal: horizontalScale(10),
+      paddingVertical: verticalScale(10),
       alignItems: 'center',
       elevation: 3,
     },
     textStyle: {
       color: isDarkMode ? Colors.tyrianPurple : Colors.peach,
-      fontSize: 16,
+      fontSize: moderateScale(16),
       fontWeight: '600',
     },
   });

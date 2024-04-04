@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { Status } from '../../../assets/colors/mainColors';
+import { horizontalScale, moderateScale } from '../../../utils/metrics';
 
 const getStyles = (isStatusActive: boolean) => {
   return StyleSheet.create({
@@ -8,13 +9,13 @@ const getStyles = (isStatusActive: boolean) => {
       alignItems: 'center',
     },
     statusCircle: {
-      marginLeft: 10,
-      marginRight: 5,
+      marginLeft: horizontalScale(10),
+      marginRight: horizontalScale(5),
       color: isStatusActive ? Status.active : Status.inactive,
     },
     statusText: {
       color: isStatusActive ? Status.active : Status.inactive,
-      fontSize: 16,
+      fontSize: moderateScale(16),
     },
   });
 };

@@ -4,9 +4,8 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import { FlagContext } from '../../../screens/mainInfo/MainInfo';
 
-import { STATUS } from '../../../constants';
-
 import getStyles from './styles';
+import { moderateScale } from '../../../utils/metrics';
 
 type StatusButtonProps = {
   statusId: string;
@@ -17,11 +16,13 @@ function StatusButton({ statusId: statusText }: StatusButtonProps) {
 
   const styles = getStyles(isStatusActive);
 
+  const iconSize = moderateScale(32);
+
   return (
     <View style={styles.buttonContent}>
       <MaterialCommunityIcons
         name="pokeball"
-        size={32}
+        size={iconSize}
         style={styles.statusCircle}
       />
       <Text style={styles.statusText}>{statusText}</Text>

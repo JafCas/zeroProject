@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { Colors } from '../../../assets/colors/mainColors';
+import { Background, Colors } from '../../../assets/colors/mainColors';
 import {
   horizontalScale,
   verticalScale,
@@ -11,7 +11,7 @@ export default function getStyles() {
     pressCard: {
       flex: 1,
       marginVertical: verticalScale(4),
-      backgroundColor: '#474747b2',
+      backgroundColor: Background.cardsBackground,
       height: horizontalScale(82),
       borderRadius: moderateScale(16),
 

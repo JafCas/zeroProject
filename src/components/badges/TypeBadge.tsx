@@ -1,7 +1,12 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { Colors } from '../../assets/colors/mainColors';
+import { Colors, elementTypeColors } from '../../assets/colors/mainColors';
+import {
+  horizontalScale,
+  moderateScale,
+  verticalScale,
+} from '../../utils/metrics';
 
 /**
  * Sets the icon name and type color based on the given name.
@@ -24,17 +29,6 @@ const setIconName = (name: string): { iconName: string; typeColor: string } => {
     'fairy' = 'heart',
     'psychic' = 'brain',
   }
-  enum typeColors {
-    water = '#6890f0',
-    fire = '#f08030',
-    grass = '#78c850',
-    poison = '#b97fc9',
-    flying = '#a890f0',
-    normal = '#a8a878',
-    fairy = '#ee99ac',
-    psychic = '#f85888',
-    electric = '#f8d030',
-  }
 
   // If the name is in the list, set the iconName to the corresponding value in the enum.
   if (unknownTypeNamesList.includes(name)) {
@@ -42,7 +36,7 @@ const setIconName = (name: string): { iconName: string; typeColor: string } => {
       unkwnownTypeNames[name as keyof typeof unkwnownTypeNames] || name;
   }
   // Set the typeColor to the corresponding value in the enum.
-  const typeColor = typeColors[name as keyof typeof typeColors];
+  const typeColor = elementTypeColors[name as keyof typeof elementTypeColors];
 
   return { iconName, typeColor };
 };
@@ -74,13 +68,14 @@ const getStyles = (typeColor?: string) => {
       backgroundColor: typeColor,
       alignItems: 'center',
       justifyContent: 'center',
-      borderRadius: 20,
-      width: 29,
-      height: 29,
-      margin: 4,
+      borderRadius: moderateScale(20),
+      width: horizontalScale(29),
+      height: verticalScale(29),
+      marginHorizontal: horizontalScale(4),
+      marginVertical: verticalScale(4),
 
-      borderColor: '#e0e0e0',
-      borderWidth: 0.5,
+      borderColor: Colors.whiteBorder,
+      borderWidth: moderateScale(0.5),
     },
 
     elementIcon: {},
