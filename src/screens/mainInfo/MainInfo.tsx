@@ -7,11 +7,7 @@ import {
   View,
 } from 'react-native';
 
-// Components
-import MyPokeDisplay from '../myPokeDisplay/MyPokeDisplay';
-
 // Styles
-import { optionsArray } from '../../components/misc/optionsArray';
 import PokeSelectorModal from '../../components/modals/pokeSelector/PokeSelectorModal';
 import StatusButton from '../../components/buttons/statusButton/StatusButton';
 
@@ -20,7 +16,7 @@ import getStyles from './styles';
 import { useTheme } from '../../context/ThemeContext';
 
 import config from '../../config';
-import { useAppDispatch, useAppSelector } from '../../context/redux/hooks';
+import { useAppSelector } from '../../context/redux/hooks';
 
 import TypeBadge from '../../components/badges/TypeBadge';
 import SliderContainer from '../../components/slider/SliderContainer';
@@ -32,16 +28,6 @@ export type Pokimon = {
 
 export const UrlContext = createContext('');
 export const FlagContext = createContext(false);
-// export const CleffaContext = createContext(Response);
-
-// TODO: Solve type annotations
-// type RootStackParamList = {
-//   Home: undefined;
-//   Profile: { userId: string };
-//   Feed: { sort: 'latest' | 'top' } | undefined;
-// };
-
-// type Props = NativeStackScreenProps<RootStackParamList, 'MainInfo'>;
 
 const MainInfo = ({ navigation }) => {
   const url = config.API_URL;
@@ -50,7 +36,6 @@ const MainInfo = ({ navigation }) => {
   // const uri = `${url}${endpoint}`;
   const cleffaUri = `${url}${cleffaEndpoint}`;
 
-  const [isStatusActive, setIsStatusActive] = useState(false);
   const [pokemonResults, setPokemonResults] = useState<Pokimon[]>([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isLoading, setIsLoading] = useState<boolean | null>(null);
@@ -60,7 +45,7 @@ const MainInfo = ({ navigation }) => {
   const pickedTypes = useAppSelector(state => state.pokemonData.pokemonTypes);
 
   const isDarkMode = useTheme();
-  const styles = getStyles(isDarkMode, isStatusActive);
+  const styles = getStyles(isDarkMode, false);
 
   const isPokemonSelected = pickedId !== 0;
 
@@ -147,10 +132,7 @@ const MainInfo = ({ navigation }) => {
               <Text
                 style={[
                   styles.optionsText,
-                  {
-                    padding: 5,
-                    borderWidth: sliderIndex === index ? 1 : 0,
-                  },
+                  { borderWidth: sliderIndex === index ? 1 : 0 },
                 ]}
               >
                 {option.name.toUpperCase()}
@@ -168,7 +150,7 @@ const MainInfo = ({ navigation }) => {
             initialScrollIndex={sliderIndex}
             data={SLIDER_DATA}
             pagingEnabled
-            style={styles.flatListView} 
+            style={styles.flatListView}
             decelerationRate={'fast'}
             renderItem={({ item }) => (
               <SliderContainer key={`Flatlist.item.${item}`} name={item.name} />

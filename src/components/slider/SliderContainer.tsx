@@ -1,5 +1,6 @@
 import React from 'react';
 import { Dimensions, StyleSheet, Text, View } from 'react-native';
+import { Colors } from '../../assets/colors/mainColors';
 
 type Props = {
   name: string;
@@ -20,9 +21,8 @@ const styles = StyleSheet.create({
   slider: {
     flex: 1,
     width: Dimensions.get('window').width,
-    // marginHorizontal: horizontalScalE(0),
     padding: 10,
 
-    backgroundColor: 'lightgrey',
+    backgroundColor: Colors.newGray,
   },
 });

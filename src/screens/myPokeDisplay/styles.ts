@@ -1,4 +1,10 @@
 import { StyleSheet } from 'react-native';
+import { Background, Colors } from '../../assets/colors/mainColors';
+import {
+  horizontalScale,
+  moderateScale,
+  verticalScale,
+} from '../../utils/metrics';
 
 const styles = StyleSheet.create({
   container: {
@@ -6,22 +12,23 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   square: {
-    height: 200,
-    width: 200,
-    backgroundColor: 'white',
+    height: verticalScale(200),
+    width: horizontalScale(200),
+    backgroundColor: Background.light,
   },
   textContainer: {
-    margin: 5,
+    marginHorizontal: horizontalScale(5),
+    marginVertical: verticalScale(5),
   },
   text: {
-    fontSize: 16,
-    color: 'gray',
+    fontSize: moderateScale(16),
+    color: Colors.newGray,
   },
   reloadCircle: {
-    height: 45,
-    width: 45,
-    backgroundColor: 'gray',
-    borderRadius: 25,
+    height: verticalScale(45),
+    width: horizontalScale(45),
+    backgroundColor: Colors.newGray,
+    borderRadius: moderateScale(25),
   },
 });
 

@@ -13,7 +13,7 @@ export default function getStyles() {
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#00000086',
+      backgroundColor: Colors.transparentBlack,
       paddingVertical: Platform.OS === 'android' ? verticalScale(16) : 0,
     },
 

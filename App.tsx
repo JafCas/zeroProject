@@ -23,7 +23,7 @@ const App = () => {
     <ThemeContext.Provider value={isDarkMode}>
       <NavigationContainer>
         <ReduxProvider store={store}>
-          <Stack.Navigator initialRouteName="MainInfo">
+          <Stack.Navigator initialRouteName="SignIn">
             <Stack.Screen
               name="SignIn"
               component={SignIn}

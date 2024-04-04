@@ -1,14 +1,11 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import { Image, Text, TouchableOpacity, View, ViewStyle } from 'react-native';
-import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { MotiView } from 'moti';
-
-import { Colors } from '../../../assets/colors/mainColors';
 
 import getStyles from './styles';
 
 import { PokeCardDataReturn } from '../../../services/fetchPokeData';
 import TypeBadge from '../../badges/TypeBadge';
+import LoadingPokeCard from './LoadingPokeCard';
 
 export type PokeData = {
   pokemonSprite?: string;
@@ -31,62 +28,6 @@ export default function PokeCard({
 }: pokeCardProps) {
   const styles = getStyles();
 
-  interface LoadingAvatarProps {
-    children: ReactElement;
-  }
-
-  const LoadingAvatar = ({ children }: LoadingAvatarProps) => {
-    return (
-      <MotiView
-        from={{
-          opacity: 0.4,
-          // width: 64,
-        }}
-        animate={{
-          opacity: 0.8,
-          // width: 68,
-        }}
-        transition={{
-          type: 'timing',
-          duration: 740,
-          loop: true,
-        }}
-      >
-        {children}
-      </MotiView>
-    );
-  };
-
-  const DisplayLoadingCard = () => {
-    return (
-      <View>
-        <View style={styles.pokeImageView}>
-          <LoadingAvatar>
-            <View style={styles.loadingCircleView} />
-          </LoadingAvatar>
-        </View>
-        <View style={styles.infoView}>
-          <LoadingAvatar>
-            <View style={styles.emptyInfoView} />
-          </LoadingAvatar>
-          <LoadingAvatar>
-            <View style={styles.emptyInfoView} />
-          </LoadingAvatar>
-        </View>
-        <View style={styles.elementView}>
-          <LoadingAvatar>
-            <MaterialCommunityIcon
-              name="circle"
-              size={32}
-              style={styles.elementIcon}
-              color={Colors.darkTyrianPurple}
-            />
-          </LoadingAvatar>
-        </View>
-      </View>
-    );
-  };
-
   return (
     <TouchableOpacity style={[styles.pressCard, style]} onPress={onPress}>
       <View style={styles.largeImageView}>
@@ -100,7 +41,7 @@ export default function PokeCard({
       </View>
       <View style={styles.insideCardView}>
         {isLoading ? (
-          <DisplayLoadingCard />
+          <LoadingPokeCard />
         ) : (
           <>
             <View style={styles.pokeImageView}>

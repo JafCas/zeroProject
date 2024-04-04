@@ -1,6 +1,10 @@
 import { Dimensions, StyleSheet } from 'react-native';
 import { Colors, Status } from '../../assets/colors/mainColors';
-import { horizontalScale } from '../../utils/metrics';
+import {
+  horizontalScale,
+  moderateScale,
+  verticalScale,
+} from '../../utils/metrics';
 
 const getStyles = (isDarkMode: boolean, isStatusActive: boolean) => {
   return StyleSheet.create({
@@ -11,7 +15,8 @@ const getStyles = (isDarkMode: boolean, isStatusActive: boolean) => {
     container: {
       backgroundColor: isDarkMode ? Colors.tyrianPurple : Colors.peach,
       flex: 1,
-      padding: 8,
+      paddingHorizontal: horizontalScale(8),
+      paddingVertical: verticalScale(8),
     },
     // Status section
     statusView: {
@@ -22,15 +27,15 @@ const getStyles = (isDarkMode: boolean, isStatusActive: boolean) => {
       alignItems: 'center',
     },
     statusCircle: {
-      height: 30,
-      width: 30,
-      borderRadius: 16,
+      height: verticalScale(30),
+      width: horizontalScale(30),
+      borderRadius: moderateScale(16),
       backgroundColor: isStatusActive ? Status.active : Status.inactive,
-      marginHorizontal: 10,
+      marginHorizontal: horizontalScale(10),
     },
     statusText: {
       color: isStatusActive ? Status.active : Status.inactive,
-      fontSize: 16,
+      fontSize: moderateScale(16),
     },
 
     // Header
@@ -38,30 +43,33 @@ const getStyles = (isDarkMode: boolean, isStatusActive: boolean) => {
       flex: 1,
       flexDirection: 'row',
       alignItems: 'center',
-      paddingHorizontal: 15,
+      paddingHorizontal: horizontalScale(15),
       justifyContent: 'space-between',
     },
     headerText: {
-      fontSize: 26,
+      fontSize: moderateScale(16),
       fontWeight: 'bold',
       color: isDarkMode ? Colors.peach : Colors.tyrianPurple,
     },
 
     //TODO: Change for toggle icon
     square: {
-      backgroundColor: 'white',
-      height: 40,
-      width: 40,
+      backgroundColor: Colors.whiteBorder,
+      height: verticalScale(40),
+      width: horizontalScale(40),
     },
     optionsView: {
-      height: 30,
+      height: verticalScale(30),
       width: '100%',
       flexDirection: 'row',
       justifyContent: 'space-around',
       alignItems: 'center',
     },
     optionsText: {
+      paddingHorizontal: horizontalScale(5),
+      paddingVertical: verticalScale(5),
       fontWeight: '600',
+      fontSize: moderateScale(8),
       color: isDarkMode ? Colors.peach : Colors.tyrianPurple,
     },
 
@@ -77,9 +85,10 @@ const getStyles = (isDarkMode: boolean, isStatusActive: boolean) => {
       flex: 1,
       width: Dimensions.get('window').width,
       marginHorizontal: horizontalScale(0),
-      padding: 10,
+      paddingHorizontal: horizontalScale(10),
+      paddingVertical: verticalScale(10),
 
-      backgroundColor: 'lightgrey',
+      backgroundColor: Colors.newGray,
     },
   });
 };
