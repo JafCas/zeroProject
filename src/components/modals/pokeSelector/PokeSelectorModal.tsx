@@ -32,11 +32,12 @@ const PokeSelectorModal = ({
   const styles = getStyles();
 
   const [isLoading, setIsLoading] = useState(true);
+  const [isRefreshing, setIsRefreshing] = useState(false);
   const [pokeCardsData, setPokeCardsData] = useState<PokeCardDataReturn[]>([
     {
       pokemonSprite: undefined,
       pokemonName: null,
-      pokemonId: null,
+      pokemonId: 0,
       pokemonTypes: [],
     },
   ]);
@@ -79,7 +80,7 @@ const PokeSelectorModal = ({
   // Map and store the first 10 pokemon url to display through cards.
   useEffect(() => {
     if (pokeData.length > 0) {
-      const firsUrls = pokeData.slice(0, 10).map(pokemon => pokemon.url);
+      const firsUrls = pokeData.slice(0, 16).map(pokemon => pokemon.url);
       getPokemonInfo(firsUrls);
     }
   }, [pokeData]);
@@ -98,25 +99,30 @@ const PokeSelectorModal = ({
           {/* TODO: Add empty cards and modal content for empty scenario */}
           {!isLoading && pokeCardsData ? (
             <FlatList
+              data={pokeCardsData}
+              keyExtractor={item => item.pokemonId.toString()}
+              renderItem={({ item }) => (
+                <PokeCard
+                  onPress={() => {
+                    onCardPress(
+                      item.pokemonName || '',
+                      item.pokemonId || 0,
+                      item.pokemonTypes || [],
+                    );
+                  }}
+                  isLoading={isLoading}
+                  data={item}
+                />
+              )}
+              refreshing={isRefreshing}
+              onRefresh={() => {
+                console.log('refreshing');
+              }}
+              onEndReached={() => {
+                console.log('end reached');
+              }}
               showsVerticalScrollIndicator={false}
               style={styles.flatListView}
-              data={pokeCardsData}
-              renderItem={({ item: pokeItem }) =>
-                pokeItem ? (
-                  <PokeCard
-                    key={pokeItem.pokemonId}
-                    onPress={() => {
-                      onCardPress(
-                        pokeItem.pokemonName || '',
-                        pokeItem.pokemonId || 0,
-                        pokeItem.pokemonTypes || [],
-                      );
-                    }}
-                    isLoading={isLoading}
-                    data={pokeItem}
-                  />
-                ) : null
-              }
             />
           ) : null}
         </View>

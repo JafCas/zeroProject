@@ -7,7 +7,7 @@ export type PokemonType = {
 };
 
 export interface PokeCardDataReturn {
-  pokemonId: number | null;
+  pokemonId: number;
   pokemonName: string | null;
   pokemonSprite?: string;
   pokemonTypes?: PokemonType[];
